@@ -46,6 +46,7 @@ namespace Asys
             t.Controls.Add(body);
 
             tabControl1.TabPages.Add(t);
+            tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
         }
         private void removeTab()
         {
@@ -87,7 +88,7 @@ namespace Asys
         {
             saveFileDialog1.FileName = tabControl1.SelectedTab.Name;
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveFileDialog1.Filter = "RTF|*.rtf";
+            saveFileDialog1.Filter = "Plain Text Files|*.txt|Rich Text Format|*.rtf|C# Files|*.cs|Java Source Files|*.java|All Files|*.*";
             saveFileDialog1.Title = "Save";
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -96,13 +97,18 @@ namespace Asys
                 {
                     getCurrentDocument.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.RichText);
                 }
+
+                string fileName = Path.GetFileName(saveFileDialog1.FileName);
+                tabControl1.SelectedTab.Text = fileName;
+                tabControl1.SelectedTab.Name = fileName;
+
             }
         }
         private void saveAs()
         {
             saveFileDialog1.FileName = tabControl1.SelectedTab.Name;
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveFileDialog1.Filter = "Plain Text Files|*.txt|C# Files|*.cs|Java Source Files|*.java|All Files|*.*";
+            saveFileDialog1.Filter = "Plain Text Files|*.txt|Rich Text Format|*.rtf|C# Files|*.cs|Java Source Files|*.java|All Files|*.*";
             saveFileDialog1.Title = "Save As";
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -111,18 +117,29 @@ namespace Asys
                 {
                     getCurrentDocument.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
                 }
+
+                string fileName = Path.GetFileName(saveFileDialog1.FileName);
+                tabControl1.SelectedTab.Text = fileName;
+                tabControl1.SelectedTab.Name = fileName;
             }
         }
         private void open()
         {
             openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            openFileDialog1.Filter = "Plain Text Files|*.txt|C# Files|*.cs|Java Source Files|*.java|All Files|*.*";
+            openFileDialog1.Filter = "Plain Text Files|*.txt|Rich Text Format|*.rtf|C# Files|*.cs|Java Source Files|*.java|All Files|*.*";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if (openFileDialog1.FileName.Length > 0)
                 {
-                    getCurrentDocument.LoadFile(openFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    string fileName = Path.GetFileName(openFileDialog1.FileName);
+                    tabControl1.SelectedTab.Text = fileName;
+                    tabControl1.SelectedTab.Name = fileName;
+
+                    if (fileName.EndsWith(".rtf"))
+                        getCurrentDocument.LoadFile(openFileDialog1.FileName, RichTextBoxStreamType.RichText);
+                    else
+                        getCurrentDocument.LoadFile(openFileDialog1.FileName, RichTextBoxStreamType.PlainText);
                 }
             }
         }
@@ -325,14 +342,30 @@ namespace Asys
 
         private void formMain_Load(object sender, EventArgs e)
         {
-            string[] args = System.Environment.GetCommandLineArgs();
-            string filePath = args[1];
-            //filePath.Replace("\\\\", "\\");
             addTab();
             getFontCollection();
             setFontSizes();
-            //getCurrentDocument.Text = (File.ReadAllText(filePath));
 
+            string[] args = System.Environment.GetCommandLineArgs();
+            if (args.Length > 1)
+            {
+                string dirPath = args[1];
+                string fileName = "";
+                fileName = Path.GetFileName(dirPath);
+                dirPath = dirPath.Substring(3);
+                dirPath = Path.GetFullPath(dirPath);
+                if (dirPath.Contains('\\')) dirPath = dirPath.Substring(0, dirPath.LastIndexOf('\\'));
+
+                Directory.SetCurrentDirectory(dirPath);
+
+                if (fileName.EndsWith(".rtf"))
+                    getCurrentDocument.LoadFile(dirPath + '\\' + fileName, RichTextBoxStreamType.RichText);
+                else
+                    getCurrentDocument.LoadFile(dirPath + '\\' + fileName, RichTextBoxStreamType.PlainText);
+
+                tabControl1.SelectedTab.Text = fileName;
+                tabControl1.SelectedTab.Name = fileName;
+            }
         }
         #region menustrip
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -492,6 +525,19 @@ namespace Asys
         {
             new AboutAsys().ShowDialog();
         }
-        #endregion events
+
+        private void formMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult exit = MessageBox.Show("Are you sure you want to exit Asys?\nAny unsaved changes will be lost", "Asys", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (exit == DialogResult.Yes) 
+            {
+                ;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+        #endregion events        
     }
 }
