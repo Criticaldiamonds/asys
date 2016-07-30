@@ -66,10 +66,13 @@
     <ManifestKeyFile>Asys_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -142,6 +145,7 @@
     <None Include="assets\Asys_small_ICO_81x105.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\Asys_small_fileICO_256x256.ico" />
     <Content Include="Asys_small_ICO_81x105.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -166,7 +170,7 @@
       <Visible>False</Visible>
       <Description>Asys %28Plain Text Files%29</Description>
       <Progid>asys.txt</Progid>
-      <DefaultIcon>Asys_small_ICO_81x105.ico</DefaultIcon>
+      <DefaultIcon>assets\Asys_small_fileICO_256x256.ico</DefaultIcon>
     </FileAssociation>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

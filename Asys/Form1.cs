@@ -346,25 +346,28 @@ namespace Asys
             getFontCollection();
             setFontSizes();
 
-            string[] args = System.Environment.GetCommandLineArgs();
-            if (args.Length > 1)
+            var args = System.Environment.GetCommandLineArgs();
+            var argPath = args.Skip(1).FirstOrDefault();
+            if (!string.IsNullOrEmpty(argPath))
             {
-                string dirPath = args[1];
-                string fileName = "";
-                fileName = Path.GetFileName(dirPath);
-                dirPath = dirPath.Substring(3);
-                dirPath = Path.GetFullPath(dirPath);
-                if (dirPath.Contains('\\')) dirPath = dirPath.Substring(0, dirPath.LastIndexOf('\\'));
-
+                // your argument is a partial path.  
+                // Your .LoadFile(...) method requires a full path
+                var fullPath = Path.GetFullPath(argPath);
+                /* this part isn't needed unless you want to ensure the directory exists... but if it doesn't exist you can't open it anyway
+                var dirPath = Path.GetDirectoryName(fullPath);
+                if (!Directory.Exists(dirPath))
+                    Directory.CreateDirectory(dirPath);
+                */
+                /* this isn't needed since you are using the full path
                 Directory.SetCurrentDirectory(dirPath);
-
-                if (fileName.EndsWith(".rtf"))
-                    getCurrentDocument.LoadFile(dirPath + '\\' + fileName, RichTextBoxStreamType.RichText);
+                */
+                if (fullPath.EndsWith(".rtf"))
+                    getCurrentDocument.LoadFile(fullPath, RichTextBoxStreamType.RichText);
                 else
-                    getCurrentDocument.LoadFile(dirPath + '\\' + fileName, RichTextBoxStreamType.PlainText);
+                    getCurrentDocument.LoadFile(fullPath, RichTextBoxStreamType.PlainText);
 
-                tabControl1.SelectedTab.Text = fileName;
-                tabControl1.SelectedTab.Name = fileName;
+                tabControl1.SelectedTab.Text = Path.GetFileName(fullPath);
+                tabControl1.SelectedTab.Name = Path.GetFileName(fullPath);
             }
         }
         #region menustrip
