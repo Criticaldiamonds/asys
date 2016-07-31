@@ -11,14 +11,19 @@ namespace Asys
 {
     partial class AboutAsys : Form
     {
+        string NAME = "Asys";
+        string VERSION = "1.0.93.2";
+        string COPYRIGHT = "Copyright (c) 2016 Criticaldiamonds (Giovanni M.)";
+        string COMPANY = "Criticaldiamonds";
+
         public AboutAsys()
         {
             InitializeComponent();
-            this.Text = String.Format("About {0}", AssemblyTitle);
+            this.Text = String.Format("About {0}", NAME);
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
-            // this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
+            this.labelVersion.Text = String.Format("Version {0}", VERSION);
+            this.labelCopyright.Text = COPYRIGHT;
+            this.labelCompanyName.Text = COMPANY;
             // this.textBoxDescription.Text = AssemblyDescription;
         }
 

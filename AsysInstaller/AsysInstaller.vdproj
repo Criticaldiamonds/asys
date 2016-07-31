@@ -39,6 +39,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DEEA2700C7D5461796D05D895F424D13"
+        "OwnerKey" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E883076881CB4C76847DBFE92F31D9C2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -47,6 +53,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DEEA2700C7D5461796D05D895F424D13"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -99,6 +111,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -136,7 +156,7 @@
             "Folder" = "8:_9ADD70AA38014B10803FDC0B911D6F4B"
             "Condition" = "8:Not Installed"
             "Transitive" = "11:TRUE"
-            "Vital" = "11:TRUE"
+            "Vital" = "11:FALSE"
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:TRUE"
@@ -144,7 +164,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
@@ -186,6 +206,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DEEA2700C7D5461796D05D895F424D13"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.VisualStudio.DebuggerVisualizers, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_DEEA2700C7D5461796D05D895F424D13"
+                    {
+                    "Name" = "8:Microsoft.VisualStudio.DebuggerVisualizers.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Microsoft.VisualStudio.DebuggerVisualizers.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_FAA3AD7E853E4DE2A27A03EC26633AE4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E883076881CB4C76847DBFE92F31D9C2"
@@ -309,7 +360,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Asys"
         "ProductCode" = "8:{59E1D42C-EAA5-4786-866E-3440D1DBEFAC}"
-        "PackageCode" = "8:{6D2559F2-3C31-47F5-9812-D98C524319E5}"
+        "PackageCode" = "8:{1CE653F9-5F6D-434A-9FFA-8E8F7000AEC1}"
         "UpgradeCode" = "8:{0B18DBE6-243D-43F9-85FC-9118C440B6BA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -429,6 +480,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1F316599E2364050A5635DF54CE23238"
+            {
+            "Name" = "8:Uninstall Asys"
+            "Arguments" = "8:/x {59E1D42C-EAA5-4786-866E-3440D1DBEFAC} /qr"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_7922734165044AA29F6484C4817C32A8"
+            "Folder" = "8:_1CE6315219C14453B0FE5E234254623D"
+            "WorkingFolder" = "8:_9ADD70AA38014B10803FDC0B911D6F4B"
+            "Icon" = "8:_96B4AD7124A34B98A16EEFFFD1B931DC"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_60DCF18B539B4FE5808AAC6D1A091603"
             {
             "Name" = "8:Asys"

@@ -136,8 +136,8 @@
             this.textBoxDescription.Size = new System.Drawing.Size(271, 126);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "Asys is a multi-purpose text editor.\r\nAsys has the capability to have multiple do" +
-    "cuments open at once, and supports text formatting.";
+            this.textBoxDescription.Text = "Asys is a multi-purpose text editor, with the capability to have multiple documen" +
+    "ts open at once, and supports text formatting.";
             // 
             // okButton
             // 

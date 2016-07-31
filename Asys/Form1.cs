@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Drawing.Text;
@@ -36,6 +31,7 @@ namespace Asys
             body.Name = "Body";
             body.Dock = DockStyle.Fill;
             body.ContextMenuStrip = contextMenuStrip1;
+            body.AcceptsTab = true;
 
             TabPage t = new TabPage();
             tabCount += 1;
@@ -54,6 +50,7 @@ namespace Asys
             {
                 tabControl1.TabPages.Remove(tabControl1.SelectedTab);
                 tabCount -= 1;
+                tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
             }
             else
             {
@@ -183,6 +180,16 @@ namespace Asys
                 toolStripComboBox1.Items.Add(ff.Name);
             }
             toolStripComboBox1.SelectedIndex = 0;
+            int i = 0;
+            foreach (var item in toolStripComboBox1.Items)
+            {
+                i++;
+                if (item.ToString().ToUpper().Equals("TIMES NEW ROMAN"))
+                {
+                    toolStripComboBox1.SelectedIndex = i - 1;
+                    break;
+                }
+            }
         }
         private void setFontSizes()
         {
@@ -330,6 +337,7 @@ namespace Asys
         #endregion 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // Char count
             if (getCurrentDocument.Text.Length > 0)
             {
                 toolStripStatusLabel1.Text = getCurrentDocument.Text.Length.ToString();
@@ -338,6 +346,9 @@ namespace Asys
             {
                 toolStripStatusLabel1.Text = "0";
             }
+            // Word count
+            char[] delims = new char[] { ' ', '\r', '\n' };
+            toolStripStatusLabel3.Text = getCurrentDocument.Text.Split(delims, StringSplitOptions.RemoveEmptyEntries).Length.ToString();
         }
 
         private void formMain_Load(object sender, EventArgs e)
@@ -350,17 +361,8 @@ namespace Asys
             var argPath = args.Skip(1).FirstOrDefault();
             if (!string.IsNullOrEmpty(argPath))
             {
-                // your argument is a partial path.  
-                // Your .LoadFile(...) method requires a full path
                 var fullPath = Path.GetFullPath(argPath);
-                /* this part isn't needed unless you want to ensure the directory exists... but if it doesn't exist you can't open it anyway
-                var dirPath = Path.GetDirectoryName(fullPath);
-                if (!Directory.Exists(dirPath))
-                    Directory.CreateDirectory(dirPath);
-                */
-                /* this isn't needed since you are using the full path
-                Directory.SetCurrentDirectory(dirPath);
-                */
+
                 if (fullPath.EndsWith(".rtf"))
                     getCurrentDocument.LoadFile(fullPath, RichTextBoxStreamType.RichText);
                 else
@@ -541,6 +543,59 @@ namespace Asys
                 e.Cancel = true;
             }
         }
-        #endregion events        
+
+        private void imageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "All Files|*.*";
+            openFileDialog1.Multiselect = true;
+            var clipdata = Clipboard.GetDataObject();
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                foreach (string fname in openFileDialog1.FileNames)
+                {
+                    var img = Image.FromFile(fname);
+                    Clipboard.SetImage(img);
+                    getCurrentDocument.Paste();
+                }
+            }
+            Clipboard.SetDataObject(clipdata);
+        }
+
+        private void sidebarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sidebarToolStripMenuItem.Checked)
+            {
+                toolStrip1.Visible = true;
+            }
+            else
+            {
+                toolStrip1.Visible = false;
+            }
+        }
+
+        private void toolbarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (toolbarToolStripMenuItem.Checked)
+            {
+                toolStrip2.Visible = true;
+            }
+            else
+            {
+                toolStrip2.Visible = false;
+            }
+        }
+        private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new AsysHelpDialog().Show();
+        }
+
+        private void formMain_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            new AsysHelpDialog().Show();
+        }
+        #endregion events
+
+
     }
 }
