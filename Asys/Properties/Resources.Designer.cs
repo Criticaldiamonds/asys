@@ -63,6 +63,7 @@ namespace Asys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap align_center {
             get {
                 object obj = ResourceManager.GetObject("align_center", resourceCulture);
@@ -93,6 +94,8 @@ namespace Asys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+=======
+>>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
         internal static System.Drawing.Bitmap Asys_full_151x259 {
             get {
                 object obj = ResourceManager.GetObject("Asys_full_151x259", resourceCulture);
@@ -143,6 +146,7 @@ namespace Asys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap bullet_list {
             get {
                 object obj = ResourceManager.GetObject("bullet_list", resourceCulture);
@@ -163,6 +167,8 @@ namespace Asys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+=======
+>>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
         internal static System.Drawing.Bitmap doc_menu_strip {
             get {
                 object obj = ResourceManager.GetObject("doc_menu_strip", resourceCulture);
@@ -189,6 +195,7 @@ namespace Asys.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+<<<<<<< HEAD
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -209,5 +216,7 @@ namespace Asys.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+=======
+>>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
     }
 }
