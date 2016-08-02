@@ -45,7 +45,7 @@ namespace Asys
             tabControl1.TabPages.Add(t);
             tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
         }
-        private void removeTab()
+        public void removeTab()
         {
             if (tabControl1.TabPages.Count != 1)
             {
@@ -668,16 +668,35 @@ namespace Asys
             new AboutAsys().ShowDialog();
         }
 
+        public bool shouldClose = false;
+
+        public void setShouldClose(bool flag)
+        {
+            shouldClose = flag;
+        }
+
         private void formMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult exit = MessageBox.Show("Are you sure you want to exit Asys?\nAny unsaved changes will be lost", "Asys", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (exit == DialogResult.Yes) 
+            if (tabCount > 1)
             {
-                ;
+                if (!shouldClose)
+                {
+                    e.Cancel = true;
+                    new AsysCloseHandler(tabCount, this).ShowDialog();
+                }
+                else { e.Cancel = false; }
             }
             else
             {
-                e.Cancel = true;
+                if (!shouldClose)
+                {
+                    e.Cancel = true;
+                    new AsysSingleTabCloseHandler(this).ShowDialog();
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
             }
         }
 
@@ -860,6 +879,41 @@ namespace Asys
                     toolStripButton11.Checked = false;
             }
             catch (Exception ex) { ; }
+        }
+
+        private void newToolStripButton_Click_2(object sender, EventArgs e)
+        {
+            addTab();
+        }
+
+        private void openToolStripButton_Click_2(object sender, EventArgs e)
+        {
+            open();
+        }
+
+        private void saveToolStripButton_Click_2(object sender, EventArgs e)
+        {
+            save();
+        }
+
+        private void cutToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            cut();
+        }
+
+        private void copyToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            copy();
+        }
+
+        private void pasteToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            paste();
+        }
+
+        private void toolStripButton10_Click_1(object sender, EventArgs e)
+        {
+            removeTab();
         }
     }
 }

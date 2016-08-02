@@ -101,6 +101,18 @@
     <Compile Include="AboutAsys.Designer.cs">
       <DependentUpon>AboutAsys.cs</DependentUpon>
     </Compile>
+    <Compile Include="AsysSingleTabCloseHandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AsysSingleTabCloseHandler.Designer.cs">
+      <DependentUpon>AsysSingleTabCloseHandler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AsysCloseHandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AsysCloseHandler.Designer.cs">
+      <DependentUpon>AsysCloseHandler.cs</DependentUpon>
+    </Compile>
     <Compile Include="AsysHelpDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +129,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutAsys.resx">
       <DependentUpon>AboutAsys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AsysSingleTabCloseHandler.resx">
+      <DependentUpon>AsysSingleTabCloseHandler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AsysCloseHandler.resx">
+      <DependentUpon>AsysCloseHandler.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AsysHelpDialog.resx">
       <DependentUpon>AsysHelpDialog.cs</DependentUpon>
@@ -173,6 +191,8 @@
     <None Include="assets\buttons\align_right.png" />
     <None Include="assets\buttons\subscript.png" />
     <None Include="assets\buttons\superscript.png" />
+    <None Include="assets\buttons\close_tab.png" />
+    <None Include="assets\buttons\close.png" />
     <Content Include="Asys_small_ICO_81x105.ico" />
   </ItemGroup>
   <ItemGroup>
