@@ -27,13 +27,8 @@
     <PublisherName>Criticaldiamonds</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-<<<<<<< HEAD
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>1.0.106.%2a</ApplicationVersion>
-=======
     <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.74.%2a</ApplicationVersion>
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -65,18 +60,16 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-<<<<<<< HEAD
     <ManifestCertificateThumbprint>2C36A5479753BB60968CA4263E41DEB27E61AFEC</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>
     </ManifestKeyFile>
-=======
-    <ManifestCertificateThumbprint>124B28B63621E5E2198A48D72391FAD9FA3D1F46</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>2C36A5479753BB60968CA4263E41DEB27E61AFEC</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Asys_TemporaryKey.pfx</ManifestKeyFile>
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>false</GenerateManifests>
@@ -88,10 +81,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Reference Include="Microsoft.VisualBasic" />
-=======
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -133,27 +123,25 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="app.manifest" />
-<<<<<<< HEAD
     <None Include="assets\buttons\bullet_list.png" />
-=======
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
     <None Include="Asys_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -180,14 +168,11 @@
     <None Include="assets\Documentation\doc_menu_strip.PNG" />
     <None Include="assets\Documentation\doc_sidebar.PNG" />
     <None Include="assets\Documentation\doc_toolbar.PNG" />
-<<<<<<< HEAD
     <None Include="assets\buttons\align_center.png" />
     <None Include="assets\buttons\align_left.png" />
     <None Include="assets\buttons\align_right.png" />
     <None Include="assets\buttons\subscript.png" />
     <None Include="assets\buttons\superscript.png" />
-=======
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
     <Content Include="Asys_small_ICO_81x105.ico" />
   </ItemGroup>
   <ItemGroup>

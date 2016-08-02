@@ -52,12 +52,8 @@
             this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 4);
             this.tableLayoutPanel.Controls.Add(this.okButton, 1, 5);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
             this.tableLayoutPanel.Location = new System.Drawing.Point(12, 11);
-            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
-=======
-            this.tableLayoutPanel.Location = new System.Drawing.Point(9, 9);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 6;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -66,29 +62,18 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-<<<<<<< HEAD
             this.tableLayoutPanel.Size = new System.Drawing.Size(556, 326);
-=======
-            this.tableLayoutPanel.Size = new System.Drawing.Size(417, 265);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // logoPictureBox
             // 
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logoPictureBox.Image = global::Asys.Properties.Resources.Asys_full_151x259;
-<<<<<<< HEAD
-            this.logoPictureBox.Location = new System.Drawing.Point(4, 4);
-            this.logoPictureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.logoPictureBox.Location = new System.Drawing.Point(5, 5);
+            this.logoPictureBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.logoPictureBox.Name = "logoPictureBox";
             this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
-            this.logoPictureBox.Size = new System.Drawing.Size(175, 318);
-=======
-            this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.logoPictureBox.Name = "logoPictureBox";
-            this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
-            this.logoPictureBox.Size = new System.Drawing.Size(131, 259);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
+            this.logoPictureBox.Size = new System.Drawing.Size(173, 316);
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logoPictureBox.TabIndex = 12;
             this.logoPictureBox.TabStop = false;
@@ -96,19 +81,11 @@
             // labelProductName
             // 
             this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
             this.labelProductName.Location = new System.Drawing.Point(191, 0);
             this.labelProductName.Margin = new System.Windows.Forms.Padding(8, 0, 4, 0);
             this.labelProductName.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelProductName.Name = "labelProductName";
             this.labelProductName.Size = new System.Drawing.Size(361, 21);
-=======
-            this.labelProductName.Location = new System.Drawing.Point(143, 0);
-            this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-            this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
-            this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(271, 17);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
             this.labelProductName.TabIndex = 19;
             this.labelProductName.Text = "Asys";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -116,19 +93,11 @@
             // labelVersion
             // 
             this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
             this.labelVersion.Location = new System.Drawing.Point(191, 32);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(8, 0, 4, 0);
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(361, 21);
-=======
-            this.labelVersion.Location = new System.Drawing.Point(143, 26);
-            this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-            this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(271, 17);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
             this.labelVersion.TabIndex = 0;
             this.labelVersion.Text = "Version 1.0";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,19 +105,11 @@
             // labelCopyright
             // 
             this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
             this.labelCopyright.Location = new System.Drawing.Point(191, 64);
             this.labelCopyright.Margin = new System.Windows.Forms.Padding(8, 0, 4, 0);
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(361, 21);
-=======
-            this.labelCopyright.Location = new System.Drawing.Point(143, 52);
-            this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-            this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
-            this.labelCopyright.Name = "labelCopyright";
-            this.labelCopyright.Size = new System.Drawing.Size(271, 17);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
             this.labelCopyright.TabIndex = 21;
             this.labelCopyright.Text = "Copyright (c) 2016 Criticaldiamonds (Giovanni M.)";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -156,19 +117,11 @@
             // labelCompanyName
             // 
             this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
             this.labelCompanyName.Location = new System.Drawing.Point(191, 96);
             this.labelCompanyName.Margin = new System.Windows.Forms.Padding(8, 0, 4, 0);
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 21);
             this.labelCompanyName.Name = "labelCompanyName";
             this.labelCompanyName.Size = new System.Drawing.Size(361, 21);
-=======
-            this.labelCompanyName.Location = new System.Drawing.Point(143, 78);
-            this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-            this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
-            this.labelCompanyName.Name = "labelCompanyName";
-            this.labelCompanyName.Size = new System.Drawing.Size(271, 17);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
             this.labelCompanyName.TabIndex = 22;
             this.labelCompanyName.Text = "Criticaldiamonds";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -176,22 +129,13 @@
             // textBoxDescription
             // 
             this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
             this.textBoxDescription.Location = new System.Drawing.Point(191, 132);
             this.textBoxDescription.Margin = new System.Windows.Forms.Padding(8, 4, 4, 4);
-=======
-            this.textBoxDescription.Location = new System.Drawing.Point(143, 107);
-            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-<<<<<<< HEAD
             this.textBoxDescription.Size = new System.Drawing.Size(361, 155);
-=======
-            this.textBoxDescription.Size = new System.Drawing.Size(271, 126);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = "Asys is a multi-purpose text editor, with the capability to have multiple documen" +
@@ -201,16 +145,10 @@
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-<<<<<<< HEAD
-            this.okButton.Location = new System.Drawing.Point(452, 295);
-            this.okButton.Margin = new System.Windows.Forms.Padding(4);
+            this.okButton.Location = new System.Drawing.Point(451, 296);
+            this.okButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(100, 27);
-=======
-            this.okButton.Location = new System.Drawing.Point(339, 239);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 23);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
+            this.okButton.Size = new System.Drawing.Size(100, 25);
             this.okButton.TabIndex = 24;
             this.okButton.Text = "&OK";
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
@@ -218,28 +156,16 @@
             // AboutAsys
             // 
             this.AcceptButton = this.okButton;
-<<<<<<< HEAD
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 348);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutAsys";
             this.Padding = new System.Windows.Forms.Padding(12, 11, 12, 11);
-=======
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 283);
-            this.Controls.Add(this.tableLayoutPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "AboutAsys";
-            this.Padding = new System.Windows.Forms.Padding(9);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

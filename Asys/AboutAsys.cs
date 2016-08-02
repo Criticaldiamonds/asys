@@ -12,11 +12,7 @@ namespace Asys
     partial class AboutAsys : Form
     {
         string NAME = "Asys";
-<<<<<<< HEAD
         string VERSION = "1.0.106.3";
-=======
-        string VERSION = "1.0.93.2";
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
         string COPYRIGHT = "Copyright (c) 2016 Criticaldiamonds (Giovanni M.)";
         string COMPANY = "Criticaldiamonds";
 

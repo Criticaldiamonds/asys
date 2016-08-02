@@ -32,10 +32,7 @@ namespace Asys
             body.Dock = DockStyle.Fill;
             body.ContextMenuStrip = contextMenuStrip1;
             body.AcceptsTab = true;
-<<<<<<< HEAD
             body.Click += body_click;
-=======
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
 
             TabPage t = new TabPage();
             tabCount += 1;
@@ -48,10 +45,6 @@ namespace Asys
             tabControl1.TabPages.Add(t);
             tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
         private void removeTab()
         {
             if (tabControl1.TabPages.Count != 1)
@@ -222,7 +215,6 @@ namespace Asys
         #region font
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             Font original = getCurrentDocument.SelectionFont;
             Font bold = null;
             if (original.Italic)
@@ -259,10 +251,6 @@ namespace Asys
                 reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular | FontStyle.Italic | FontStyle.Underline | FontStyle.Strikeout);
             else
                 reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular);
-=======
-            Font bold = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Bold);
-            Font reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
 
             if (getCurrentDocument.SelectionFont.Bold) { getCurrentDocument.SelectionFont = reg; }
             else { getCurrentDocument.SelectionFont = bold; }
@@ -270,7 +258,6 @@ namespace Asys
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             Font original = getCurrentDocument.SelectionFont;
             Font italic = null;
             if (original.Bold)
@@ -307,10 +294,6 @@ namespace Asys
                 reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular | FontStyle.Bold | FontStyle.Underline | FontStyle.Strikeout);
             else
                 reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular);
-=======
-            Font italic = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Italic);
-            Font reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
 
             if (getCurrentDocument.SelectionFont.Italic) { getCurrentDocument.SelectionFont = reg; }
             else { getCurrentDocument.SelectionFont = italic; }
@@ -318,7 +301,6 @@ namespace Asys
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             Font original = getCurrentDocument.SelectionFont;
             Font under = null;
             if (original.Bold)
@@ -355,18 +337,13 @@ namespace Asys
                 reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular | FontStyle.Bold | FontStyle.Underline | FontStyle.Strikeout);
             else
                 reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular);
-=======
-            Font under = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Underline);
-            Font reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
-
+            
             if (getCurrentDocument.SelectionFont.Underline) { getCurrentDocument.SelectionFont = reg; }
             else { getCurrentDocument.SelectionFont = under; }
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             Font original = getCurrentDocument.SelectionFont;
             Font strike = null;
             if (original.Bold)
@@ -403,12 +380,7 @@ namespace Asys
                 reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular | FontStyle.Bold | FontStyle.Underline | FontStyle.Italic);
             else
                 reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular);
-
-=======
-            Font strike = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Strikeout);
-            Font reg = new Font(getCurrentDocument.SelectionFont.FontFamily, getCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular);
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
-
+            
             if (getCurrentDocument.SelectionFont.Strikeout) { getCurrentDocument.SelectionFont = reg; }
             else { getCurrentDocument.SelectionFont = strike; }
         }
@@ -761,7 +733,6 @@ namespace Asys
         }
         #endregion events
 
-<<<<<<< HEAD
         private void toolStripButton13_Click(object sender, EventArgs e)
         {
             getCurrentDocument.SelectionAlignment = HorizontalAlignment.Left;
@@ -890,8 +861,5 @@ namespace Asys
             }
             catch (Exception ex) { ; }
         }
-=======
-
->>>>>>> cc4895d86b8d236edf65e941d9b6b47cdc7e341d
     }
 }
