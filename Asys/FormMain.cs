@@ -42,40 +42,40 @@ namespace Asys
             t.Text = DocText;
             t.Controls.Add(body);
 
-            tabControl1.TabPages.Add(t);
-            tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
+            documentTab.TabPages.Add(t);
+            documentTab.SelectedIndex = documentTab.TabPages.Count - 1;
         }
         public void removeTab()
         {
-            if (tabControl1.TabPages.Count != 1)
+            if (documentTab.TabPages.Count != 1)
             {
-                tabControl1.TabPages.Remove(tabControl1.SelectedTab);
+                documentTab.TabPages.Remove(documentTab.SelectedTab);
                 tabCount -= 1;
-                tabControl1.SelectedIndex = tabControl1.TabPages.Count - 1;
+                documentTab.SelectedIndex = documentTab.TabPages.Count - 1;
             }
             else
             {
-                tabControl1.TabPages.Remove(tabControl1.SelectedTab);
+                documentTab.TabPages.Remove(documentTab.SelectedTab);
                 tabCount -= 1;
                 addTab();
             }
         }
         private void removeAllTabs()
         {
-            foreach (TabPage p in tabControl1.TabPages)
+            foreach (TabPage p in documentTab.TabPages)
             {
-                tabControl1.TabPages.Remove(p);
+                documentTab.TabPages.Remove(p);
                 tabCount -= 1;
             }
             addTab();
         }
         private void removeAllTabsExceptThis()
         {
-            foreach (TabPage p in tabControl1.TabPages)
+            foreach (TabPage p in documentTab.TabPages)
             {
-                if (p.Name != tabControl1.SelectedTab.Name)
+                if (p.Name != documentTab.SelectedTab.Name)
                 {
-                    tabControl1.TabPages.Remove(p);
+                    documentTab.TabPages.Remove(p);
                     tabCount -= 1;
                 }
             }
@@ -84,8 +84,7 @@ namespace Asys
         #region File Manipulation
         private void save()
         {
-            saveFileDialog1.FileName = tabControl1.SelectedTab.Name;
-            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog1.FileName = documentTab.SelectedTab.Name;
             saveFileDialog1.Filter = "Plain Text Files|*.txt|Rich Text Format|*.rtf|C# Files|*.cs|Java Source Files|*.java|All Files|*.*";
             saveFileDialog1.Title = "Save";
 
@@ -97,15 +96,14 @@ namespace Asys
                 }
 
                 string fileName = Path.GetFileName(saveFileDialog1.FileName);
-                tabControl1.SelectedTab.Text = fileName;
-                tabControl1.SelectedTab.Name = fileName;
+                documentTab.SelectedTab.Text = fileName;
+                documentTab.SelectedTab.Name = fileName;
 
             }
         }
         private void saveAs()
         {
-            saveFileDialog1.FileName = tabControl1.SelectedTab.Name;
-            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog1.FileName = documentTab.SelectedTab.Name;
             saveFileDialog1.Filter = "Plain Text Files|*.txt|Rich Text Format|*.rtf|C# Files|*.cs|Java Source Files|*.java|All Files|*.*";
             saveFileDialog1.Title = "Save As";
 
@@ -117,13 +115,12 @@ namespace Asys
                 }
 
                 string fileName = Path.GetFileName(saveFileDialog1.FileName);
-                tabControl1.SelectedTab.Text = fileName;
-                tabControl1.SelectedTab.Name = fileName;
+                documentTab.SelectedTab.Text = fileName;
+                documentTab.SelectedTab.Name = fileName;
             }
         }
         private void open()
         {
-            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             openFileDialog1.Filter = "Plain Text Files|*.txt|Rich Text Format|*.rtf|C# Files|*.cs|Java Source Files|*.java|All Files|*.*";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -131,8 +128,8 @@ namespace Asys
                 if (openFileDialog1.FileName.Length > 0)
                 {
                     string fileName = Path.GetFileName(openFileDialog1.FileName);
-                    tabControl1.SelectedTab.Text = fileName;
-                    tabControl1.SelectedTab.Name = fileName;
+                    documentTab.SelectedTab.Text = fileName;
+                    documentTab.SelectedTab.Name = fileName;
 
                     if (fileName.EndsWith(".rtf"))
                         getCurrentDocument.LoadFile(openFileDialog1.FileName, RichTextBoxStreamType.RichText);
@@ -178,16 +175,16 @@ namespace Asys
             InstalledFontCollection ifonts = new InstalledFontCollection();
             foreach (FontFamily ff in ifonts.Families)
             {
-                toolStripComboBox1.Items.Add(ff.Name);
+                fontToolStripComboBox.Items.Add(ff.Name);
             }
-            toolStripComboBox1.SelectedIndex = 0;
+            fontToolStripComboBox.SelectedIndex = 0;
             int i = 0;
-            foreach (var item in toolStripComboBox1.Items)
+            foreach (var item in fontToolStripComboBox.Items)
             {
                 i++;
                 if (item.ToString().ToUpper().Equals("TIMES NEW ROMAN"))
                 {
-                    toolStripComboBox1.SelectedIndex = i - 1;
+                    fontToolStripComboBox.SelectedIndex = i - 1;
                     break;
                 }
             }
@@ -196,9 +193,9 @@ namespace Asys
         {
             for (int i = 0; i < 75; i++)
             {
-                toolStripComboBox2.Items.Add(i);
+                fontSizeToolStripComboBox.Items.Add(i);
             }
-            toolStripComboBox2.SelectedIndex = 11; // 12pt
+            fontSizeToolStripComboBox.SelectedIndex = 11; // 12pt
         }
         #endregion
         #endregion
@@ -207,7 +204,7 @@ namespace Asys
         {
             get
             {
-                return (RichTextBox)tabControl1.SelectedTab.Controls["Body"];
+                return (RichTextBox)documentTab.SelectedTab.Controls["Body"];
             }
         }
         #endregion
@@ -450,15 +447,15 @@ namespace Asys
         {
             if (getCurrentDocument.SelectionFont != null)
             {
-                String t = toolStripComboBox1.ComboBox.GetItemText(toolStripComboBox1.ComboBox.SelectedItem);
+                String t = fontToolStripComboBox.ComboBox.GetItemText(fontToolStripComboBox.ComboBox.SelectedItem);
 
                 Font nf = new Font(t, getCurrentDocument.SelectionFont.Size, getCurrentDocument.SelectionFont.Style);
                 getCurrentDocument.SelectionFont = nf;
             }
             else
             {
-                String t = toolStripComboBox1.ComboBox.GetItemText(toolStripComboBox1.ComboBox.SelectedItem);
-                getCurrentDocument.SelectionFont = new Font(t, Int16.Parse(toolStripComboBox2.SelectedIndex.ToString()), FontStyle.Regular);
+                String t = fontToolStripComboBox.ComboBox.GetItemText(fontToolStripComboBox.ComboBox.SelectedItem);
+                getCurrentDocument.SelectionFont = new Font(t, Int16.Parse(fontSizeToolStripComboBox.SelectedIndex.ToString()), FontStyle.Regular);
             }
             
         }
@@ -466,7 +463,7 @@ namespace Asys
         private void toolStripComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             float px;
-            float.TryParse(toolStripComboBox2.SelectedItem.ToString(), out px);
+            float.TryParse(fontSizeToolStripComboBox.SelectedItem.ToString(), out px);
             Font nf = new Font(getCurrentDocument.SelectionFont.Name, px, getCurrentDocument.SelectionFont.Style);
 
             getCurrentDocument.SelectionFont = nf;
@@ -494,6 +491,9 @@ namespace Asys
             getFontCollection();
             setFontSizes();
 
+            openFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.RestoreDirectory = true;
+
             var args = System.Environment.GetCommandLineArgs();
             var argPath = args.Skip(1).FirstOrDefault();
             if (!string.IsNullOrEmpty(argPath))
@@ -505,8 +505,8 @@ namespace Asys
                 else
                     getCurrentDocument.LoadFile(fullPath, RichTextBoxStreamType.PlainText);
 
-                tabControl1.SelectedTab.Text = Path.GetFileName(fullPath);
-                tabControl1.SelectedTab.Name = Path.GetFileName(fullPath);
+                documentTab.SelectedTab.Text = Path.GetFileName(fullPath);
+                documentTab.SelectedTab.Name = Path.GetFileName(fullPath);
             }
         }
         #region menustrip
@@ -755,25 +755,25 @@ namespace Asys
         private void toolStripButton13_Click(object sender, EventArgs e)
         {
             getCurrentDocument.SelectionAlignment = HorizontalAlignment.Left;
-            toolStripButton11.Checked = false;
-            toolStripButton12.Checked = false;
-            toolStripButton13.Checked = true;
+            rightAlignToolStripButton.Checked = false;
+            centerAlignToolStripButton.Checked = false;
+            leftAlignToolStripButton.Checked = true;
         }
 
         private void toolStripButton12_Click(object sender, EventArgs e)
         {
             getCurrentDocument.SelectionAlignment = HorizontalAlignment.Center;
-            toolStripButton11.Checked = false;
-            toolStripButton12.Checked = true;
-            toolStripButton13.Checked = false;
+            rightAlignToolStripButton.Checked = false;
+            centerAlignToolStripButton.Checked = true;
+            leftAlignToolStripButton.Checked = false;
         }
 
         private void toolStripButton11_Click(object sender, EventArgs e)
         {
             getCurrentDocument.SelectionAlignment = HorizontalAlignment.Right;
-            toolStripButton11.Checked = true;
-            toolStripButton12.Checked = false;
-            toolStripButton13.Checked = false;
+            rightAlignToolStripButton.Checked = true;
+            centerAlignToolStripButton.Checked = false;
+            leftAlignToolStripButton.Checked = false;
         }
 
         private void toolStripButton14_Click(object sender, EventArgs e)
@@ -781,12 +781,12 @@ namespace Asys
             if (getCurrentDocument.SelectionBullet)
             {
                 getCurrentDocument.SelectionBullet = false;
-                toolStripButton14.Checked = false;
+                bulletListToolStripButton.Checked = false;
             }
             else
             {
                 getCurrentDocument.SelectionBullet = true;
-                toolStripButton14.Checked = true;
+                bulletListToolStripButton.Checked = true;
             }
         }
 
@@ -836,47 +836,47 @@ namespace Asys
                 Font theFont = getCurrentDocument.SelectionFont;
 
                 int fontName = 0;
-                foreach (var item in toolStripComboBox1.Items)
+                foreach (var item in fontToolStripComboBox.Items)
                 {
                     fontName++;
                     if (item.ToString().ToUpper().Equals(theFont.Name.ToUpper()))
                     {
-                        toolStripComboBox1.SelectedIndex = fontName - 1;
+                        fontToolStripComboBox.SelectedIndex = fontName - 1;
                         break;
                     }
                 }
 
-                toolStripComboBox2.SelectedIndex = (int)theFont.SizeInPoints;
+                fontSizeToolStripComboBox.SelectedIndex = (int)theFont.SizeInPoints;
 
                 if (theFont.Bold)
-                    toolStripButton1.Checked = true;
+                    boldToolStripButton.Checked = true;
                 else
-                    toolStripButton1.Checked = false;
+                    boldToolStripButton.Checked = false;
                 if (theFont.Italic)
-                    toolStripButton2.Checked = true;
+                    italicToolStripButton.Checked = true;
                 else
-                    toolStripButton2.Checked = false;
+                    italicToolStripButton.Checked = false;
                 if (theFont.Underline)
-                    toolStripButton3.Checked = true;
+                    underlineToolStripButton.Checked = true;
                 else
-                    toolStripButton3.Checked = false;
+                    underlineToolStripButton.Checked = false;
                 if (theFont.Strikeout)
-                    toolStripButton4.Checked = true;
+                    strikeoutToolStripButton.Checked = true;
                 else
-                    toolStripButton4.Checked = false;
+                    strikeoutToolStripButton.Checked = false;
 
                 if (getCurrentDocument.SelectionAlignment == HorizontalAlignment.Left)
-                    toolStripButton13.Checked = true;
+                    leftAlignToolStripButton.Checked = true;
                 else
-                    toolStripButton13.Checked = false;
+                    leftAlignToolStripButton.Checked = false;
                 if (getCurrentDocument.SelectionAlignment == HorizontalAlignment.Center)
-                    toolStripButton12.Checked = true;
+                    centerAlignToolStripButton.Checked = true;
                 else
-                    toolStripButton12.Checked = false;
+                    centerAlignToolStripButton.Checked = false;
                 if (getCurrentDocument.SelectionAlignment == HorizontalAlignment.Right)
-                    toolStripButton11.Checked = true;
+                    rightAlignToolStripButton.Checked = true;
                 else
-                    toolStripButton11.Checked = false;
+                    rightAlignToolStripButton.Checked = false;
             }
             catch (Exception ex) { ; }
         }
