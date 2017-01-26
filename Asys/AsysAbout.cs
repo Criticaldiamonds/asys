@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace Asys
 {
-    partial class AboutAsys : Form
+    partial class AsysAbout : Form
     {
         string NAME = "Asys";
-        string VERSION = "1.0.106.3";
-        string COPYRIGHT = "Copyright (c) 2016 Criticaldiamonds (Giovanni M.)";
+        string VERSION = "1.2.2";
+        string COPYRIGHT = "Copyright (c) 2017 Giovanni M.";
         string COMPANY = "Criticaldiamonds";
 
-        public AboutAsys()
+        public AsysAbout()
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", NAME);

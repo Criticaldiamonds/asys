@@ -19,7 +19,7 @@ namespace Asys
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new AboutAsys().ShowDialog();
+            new AsysAbout().ShowDialog();
         }
     }
 }

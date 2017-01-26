@@ -13,11 +13,13 @@ namespace Asys
     public partial class AsysCloseHandler : Form
     {
         int count;
-        formMain frm;
-        public AsysCloseHandler(int count, formMain frm)
+        Asys frm;
+        AsysConsole console;
+        public AsysCloseHandler(int count, Asys frm, AsysConsole console)
         {
             this.count = count;
             this.frm = frm;
+            this.console = console;
             InitializeComponent();
         }
 
@@ -28,13 +30,14 @@ namespace Asys
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frm.removeTab();
+            frm.RemoveTab();
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frm.setShouldClose(true);
+            frm.SetShouldClose(true);
+            console.SetShouldClose();
             Application.Exit();
         }
 

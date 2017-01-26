@@ -39,13 +39,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DEEA2700C7D5461796D05D895F424D13"
+        "MsmKey" = "8:_AE94F148A76BE8631953776A16C27392"
         "OwnerKey" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E883076881CB4C76847DBFE92F31D9C2"
+        "MsmKey" = "8:_B8EC0DD1C8E34A49862027EC8C747619"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -58,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DEEA2700C7D5461796D05D895F424D13"
+        "OwnerKey" = "8:_AE94F148A76BE8631953776A16C27392"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -216,20 +216,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DEEA2700C7D5461796D05D895F424D13"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AE94F148A76BE8631953776A16C27392"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.VisualStudio.DebuggerVisualizers, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:RichTextBoxPrintCtrl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_DEEA2700C7D5461796D05D895F424D13"
+                    "_AE94F148A76BE8631953776A16C27392"
                     {
-                    "Name" = "8:Microsoft.VisualStudio.DebuggerVisualizers.dll"
+                    "Name" = "8:RichTextBoxPrintCtrl.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Microsoft.VisualStudio.DebuggerVisualizers.dll"
+            "SourcePath" = "8:RichTextBoxPrintCtrl.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_FAA3AD7E853E4DE2A27A03EC26633AE4"
@@ -247,10 +247,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E883076881CB4C76847DBFE92F31D9C2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B8EC0DD1C8E34A49862027EC8C747619"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\..\\Desktop\\Hello.rtf"
-            "TargetName" = "8:Hello.rtf"
+            "SourcePath" = "8:..\\Asys\\assets\\asys_small_ICO_256x256.ico"
+            "TargetName" = "8:asys_small_ICO_256x256.ico"
             "Tag" = "8:"
             "Folder" = "8:_427C8201D1DC436CAAB9F46F53D0E5EE"
             "Condition" = "8:"
@@ -367,21 +367,21 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Asys"
-        "ProductCode" = "8:{59E1D42C-EAA5-4786-866E-3440D1DBEFAC}"
-        "PackageCode" = "8:{1CE653F9-5F6D-434A-9FFA-8E8F7000AEC1}"
+        "ProductCode" = "8:{AE44F6D0-D170-4E9D-A3FE-E62B0801F9CA}"
+        "PackageCode" = "8:{06B96B35-3669-4FBD-90B0-B04F98AB1E69}"
         "UpgradeCode" = "8:{0B18DBE6-243D-43F9-85FC-9118C440B6BA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.2.21"
         "Manufacturer" = "8:Criticaldiamonds"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Asys"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Criticaldiamonds"
+        "ARPCONTACT" = "8:Giovanni M."
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:This application will install Asys."
         "ARPURLINFOABOUT" = "8:"
@@ -491,15 +491,15 @@
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1F316599E2364050A5635DF54CE23238"
             {
             "Name" = "8:Uninstall Asys"
-            "Arguments" = "8:/x {59E1D42C-EAA5-4786-866E-3440D1DBEFAC} /qr"
-            "Description" = "8:"
+            "Arguments" = "8:/x {AE44F6D0-D170-4E9D-A3FE-E62B0801F9CA}"
+            "Description" = "8:Removes Asys from your computer"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_7922734165044AA29F6484C4817C32A8"
             "Folder" = "8:_1CE6315219C14453B0FE5E234254623D"
             "WorkingFolder" = "8:_9ADD70AA38014B10803FDC0B911D6F4B"
-            "Icon" = "8:_96B4AD7124A34B98A16EEFFFD1B931DC"
+            "Icon" = "8:_B8EC0DD1C8E34A49862027EC8C747619"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_60DCF18B539B4FE5808AAC6D1A091603"
@@ -527,7 +527,7 @@
             "Target" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
             "Folder" = "8:_1CE6315219C14453B0FE5E234254623D"
             "WorkingFolder" = "8:"
-            "Icon" = "8:_8CF359C7DA0D49909C8569B8F6432217"
+            "Icon" = "8:_B8EC0DD1C8E34A49862027EC8C747619"
             "Feature" = "8:"
             }
         }
