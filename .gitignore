@@ -7,6 +7,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+
+# Extra project parts
+[Aa]sysInstaller/
+[Rr]ichTextBoxPrintCtrl/
+Asys.sln
+# End
+
 # User-specific files
 *.suo
 *.user
