@@ -191,10 +191,11 @@ namespace Asys.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
-        ///\viewkind4\uc1\pard\f0\fs17\par
-        ///}
-        ///.
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fnil\fcharset0 Calibri Light;}{\f2\fnil Calibri Light;}{\f3\fnil\fcharset2 Symbol;}}
+        ///\viewkind4\uc1\pard\f0\fs17{\pict\wmetafile8\picw2142\pich2777\picwgoal1214\pichgoal1574 
+        ///0100090000034232000000002c3200000000050000000b0200000000050000000c02d90a5e082c
+        ///320000430f2000cc0000006900510000000000d90a5e0800000000280000005100000069000000
+        ///010018000000000014640000c40e0000c40e00000000000000000000d3d3d3d3d3d3d3d3d3d3d3 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Changelog {
             get {

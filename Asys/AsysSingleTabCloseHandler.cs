@@ -12,12 +12,8 @@ namespace Asys
 {
     public partial class AsysSingleTabCloseHandler : Form
     {
-        Asys frm;
-        AsysConsole console;
-        public AsysSingleTabCloseHandler(Asys frm, AsysConsole console)
+        public AsysSingleTabCloseHandler()
         {
-            this.frm = frm;
-            this.console = console;
             InitializeComponent();
         }
 
@@ -28,8 +24,8 @@ namespace Asys
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frm.SetShouldClose(true);
-            console.SetShouldClose();
+            Asys.SetShouldClose(true);
+            Asys.console.SetShouldClose();
             Application.Exit();
         }
 

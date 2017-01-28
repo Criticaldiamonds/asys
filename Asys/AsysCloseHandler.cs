@@ -14,12 +14,10 @@ namespace Asys
     {
         int count;
         Asys frm;
-        AsysConsole console;
-        public AsysCloseHandler(int count, Asys frm, AsysConsole console)
+        public AsysCloseHandler(int count, Asys frm)
         {
             this.count = count;
             this.frm = frm;
-            this.console = console;
             InitializeComponent();
         }
 
@@ -36,8 +34,8 @@ namespace Asys
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frm.SetShouldClose(true);
-            console.SetShouldClose();
+            Asys.SetShouldClose(true);
+            Asys.console.SetShouldClose();
             Application.Exit();
         }
 

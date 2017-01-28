@@ -10,11 +10,11 @@ using System.Windows.Forms;
 namespace Asys
 {
     partial class AsysAbout : Form
-    {
-        string NAME = "Asys";
-        string VERSION = "1.2.2";
-        string COPYRIGHT = "Copyright (c) 2017 Giovanni M.";
-        string COMPANY = "Criticaldiamonds";
+    { 
+        string                  NAME = "Asys";
+        public static string    VERSION = "1.2.3";
+        string                  COPYRIGHT = "Copyright (c) 2017 Giovanni M.";
+        string                  COMPANY = "Criticaldiamonds";
 
         public AsysAbout()
         {

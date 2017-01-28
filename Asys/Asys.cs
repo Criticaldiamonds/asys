@@ -15,6 +15,8 @@ namespace Asys
         private FileInteraction fileInteraction;
         public static AsysConsole console;
 
+        private string a_prefs_url = "https://dl.dropboxusercontent.com/u/276558657/Asys/asys.a_prefs";
+
         public Asys()
         {
             Init();
@@ -515,7 +517,7 @@ namespace Asys
 
                 documentTab.SelectedTab.Text = Path.GetFileName(fullPath);
             }
-            console.Append(GetTime() + "Form Loaded");
+            console.Append(GetTime() + "Form done loading");
         }
 
         private void TabGenerator()
@@ -543,6 +545,40 @@ namespace Asys
             if (!(Properties.Settings.Default.prefShowChangelog|Properties.Settings.Default.prefShowWelcome))
             {
                 AddTab();
+            }
+
+            console.Append(GetTime() + "Checking for update");
+            AsysExternalStringParser aesp = new AsysExternalStringParser();
+            aesp.Load(a_prefs_url);
+            string newver = aesp.ParseString("VERSION");
+            if (!(newver == ""))
+            {                
+                ProcessVersion(newver);
+            }
+        }
+
+        void ProcessVersion(string newver)
+        {
+            string[] curVersion = AsysAbout.VERSION.Split('.');
+            string[] newVersion = newver.Split('.');
+
+            int[] o = curVersion.Select(int.Parse).ToArray();
+            int[] n = newVersion.Select(int.Parse).ToArray();
+
+            bool update = false;
+            for (int i = 0; i < o.Length; i++)
+            {
+                if (n[i] > o[i])
+                {
+                    console.Append(GetTime() + "Update Found! Showing update dialog");
+                    update = true;
+                    new AsysNewVerAvaliable(AsysAbout.VERSION, newver).ShowDialog();
+                    break;
+                }
+            }
+            if (!update)
+            {
+                console.Append(GetTime() + "No update found");
             }
         }
 
@@ -732,9 +768,9 @@ namespace Asys
             new AsysAbout().ShowDialog();
         }
 
-        public bool shouldClose = false;
+        public static bool shouldClose = false;
 
-        public void SetShouldClose(bool flag)
+        public static void SetShouldClose(bool flag)
         {
             shouldClose = flag;
         }
@@ -765,7 +801,7 @@ namespace Asys
                 {
                     e.Cancel = true;
                     console.Append(GetTime() + "Canceling CloseEvent, showing dialog");
-                    new AsysCloseHandler(tabCount, this, console).ShowDialog();
+                    new AsysCloseHandler(tabCount, this).ShowDialog();
                 }
                 else 
                 { 
@@ -788,7 +824,7 @@ namespace Asys
                     {
                         e.Cancel = true;
                         console.Append(GetTime() + "Canceling CloseEvent, showing dialog");
-                        new AsysSingleTabCloseHandler(this, console).ShowDialog();
+                        new AsysSingleTabCloseHandler().ShowDialog();
                     }                    
                 }
                 else
@@ -1045,7 +1081,7 @@ namespace Asys
                 else
                     bulletListToolStripButton.Checked = false;
             }
-            catch (Exception ex) { ; }
+            catch (Exception) { ; }
         }
 
         private void newToolStripButton_Click_2(object sender, EventArgs e)
@@ -1146,6 +1182,36 @@ namespace Asys
         {
             console.Append(GetTime() + "Opening Console");
             console.Show();
+        }
+
+        private void undoToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            GetCurrentDocument.Undo();
+        }
+
+        private void redoToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            GetCurrentDocument.Redo();
+        }
+
+        private void cutToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            GetCurrentDocument.Cut();
+        }
+
+        private void copyToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            GetCurrentDocument.Copy();
+        }
+
+        private void pasteToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            GetCurrentDocument.Paste();
+        }
+
+        private void selectAllToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            GetCurrentDocument.SelectAll();
         }
     }
 }

@@ -170,7 +170,7 @@ namespace Asys
                 console.Append(Asys.GetTime() + "Adding " + keyName + " to Map");
                 files.Add(keyName, fileName);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Assuming that it needs to be replaced due to 'Save As'
                 console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.addFileToMap: Instance already exists! Retrying...");

@@ -29,45 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(testv));
-            this.btnPageSetup = new System.Windows.Forms.Button();
-            this.btnPrintPreview = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.richTextBoxPrintCtrl1 = new RichTextBoxPrintCtrl.RichTextBoxPrintCtrl();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnPrintPreview = new System.Windows.Forms.Button();
+            this.btnPageSetup = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnPageSetup
-            // 
-            this.btnPageSetup.Location = new System.Drawing.Point(12, 12);
-            this.btnPageSetup.Name = "btnPageSetup";
-            this.btnPageSetup.Size = new System.Drawing.Size(75, 35);
-            this.btnPageSetup.TabIndex = 0;
-            this.btnPageSetup.Text = "Setup";
-            this.btnPageSetup.UseVisualStyleBackColor = true;
-            this.btnPageSetup.Click += new System.EventHandler(this.btnPageSetup_Click);
-            // 
-            // btnPrintPreview
-            // 
-            this.btnPrintPreview.Location = new System.Drawing.Point(93, 12);
-            this.btnPrintPreview.Name = "btnPrintPreview";
-            this.btnPrintPreview.Size = new System.Drawing.Size(75, 35);
-            this.btnPrintPreview.TabIndex = 1;
-            this.btnPrintPreview.Text = "Preview";
-            this.btnPrintPreview.UseVisualStyleBackColor = true;
-            this.btnPrintPreview.Click += new System.EventHandler(this.btnPrintPreview_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(174, 12);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(75, 35);
-            this.btnPrint.TabIndex = 2;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // richTextBoxPrintCtrl1
             // 
@@ -96,6 +66,36 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(174, 12);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 35);
+            this.btnPrint.TabIndex = 2;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnPrintPreview
+            // 
+            this.btnPrintPreview.Location = new System.Drawing.Point(93, 12);
+            this.btnPrintPreview.Name = "btnPrintPreview";
+            this.btnPrintPreview.Size = new System.Drawing.Size(75, 35);
+            this.btnPrintPreview.TabIndex = 1;
+            this.btnPrintPreview.Text = "Preview";
+            this.btnPrintPreview.UseVisualStyleBackColor = true;
+            this.btnPrintPreview.Click += new System.EventHandler(this.btnPrintPreview_Click);
+            // 
+            // btnPageSetup
+            // 
+            this.btnPageSetup.Location = new System.Drawing.Point(12, 12);
+            this.btnPageSetup.Name = "btnPageSetup";
+            this.btnPageSetup.Size = new System.Drawing.Size(75, 35);
+            this.btnPageSetup.TabIndex = 0;
+            this.btnPageSetup.Text = "Setup";
+            this.btnPageSetup.UseVisualStyleBackColor = true;
+            this.btnPageSetup.Click += new System.EventHandler(this.btnPageSetup_Click);
+            // 
             // testv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -113,13 +113,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnPageSetup;
-        private System.Windows.Forms.Button btnPrintPreview;
-        private System.Windows.Forms.Button btnPrint;
         private RichTextBoxPrintCtrl.RichTextBoxPrintCtrl richTextBoxPrintCtrl1;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnPrintPreview;
+        private System.Windows.Forms.Button btnPageSetup;
     }
 }
