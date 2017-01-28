@@ -223,6 +223,11 @@
             "AssemblyAsmDisplayName" = "8:RichTextBoxPrintCtrl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_AE94F148A76BE8631953776A16C27392"
+                    {
+                    "Name" = "8:RichTextBoxPrintCtrl.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:RichTextBoxPrintCtrl.dll"
             "TargetName" = "8:"
@@ -362,15 +367,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Asys"
-        "ProductCode" = "8:{5B9FB3FD-8023-4B2F-91BA-5B3605911B4A}"
-        "PackageCode" = "8:{F28A84CC-7A39-4F81-A277-E388E066D33C}"
+        "ProductCode" = "8:{4DEE1335-8FBB-48E2-BDF7-8F94185D472A}"
+        "PackageCode" = "8:{188F824D-2EFB-48F6-9707-9959237E1358}"
         "UpgradeCode" = "8:{0B18DBE6-243D-43F9-85FC-9118C440B6BA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.2.3"
+        "ProductVersion" = "8:1.2.4"
         "Manufacturer" = "8:Criticaldiamonds"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -486,7 +491,7 @@
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1F316599E2364050A5635DF54CE23238"
             {
             "Name" = "8:Uninstall Asys"
-            "Arguments" = "8:/x {5B9FB3FD-8023-4B2F-91BA-5B3605911B4A}"
+            "Arguments" = "8:/x {4DEE1335-8FBB-48E2-BDF7-8F94185D472A}"
             "Description" = "8:Removes Asys from your computer"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
