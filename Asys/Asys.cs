@@ -189,31 +189,46 @@ namespace Asys
         #region other methods
         private void GetFontCollection()
         {
-            InstalledFontCollection ifonts = new InstalledFontCollection();
-            foreach (FontFamily ff in ifonts.Families)
+            try
             {
-                fontToolStripComboBox.Items.Add(ff.Name);
-            }
-            fontToolStripComboBox.SelectedIndex = 0;
-            int i = 0;
-            foreach (var item in fontToolStripComboBox.Items)
-            {
-                i++;
-                if (item.ToString().ToUpper().Equals("TIMES NEW ROMAN"))
+                InstalledFontCollection ifonts = new InstalledFontCollection();
+                foreach (FontFamily ff in ifonts.Families)
                 {
-                    fontToolStripComboBox.SelectedIndex = i - 1;
-                    break;
+                    fontToolStripComboBox.Items.Add(ff.Name);
                 }
+                fontToolStripComboBox.SelectedIndex = 0;
+                int i = 0;
+                foreach (var item in fontToolStripComboBox.Items)
+                {
+                    i++;
+                    if (item.ToString().ToUpper().Equals("TIMES NEW ROMAN"))
+                    {
+                        fontToolStripComboBox.SelectedIndex = i - 1;
+                        break;
+                    }
+                }
+                console.Append(GetTime() + "Successfully loaded FontCollection");
             }
-            console.Append(GetTime() + "Successfully loaded FontCollection");
+            catch (Exception ex)
+            {
+                console.Append(GetTime() + "[ERROR]: Asys.GetFontCollection: " + ex.Message);
+            }
+            
         }
         private void SetFontSizes()
         {
-            for (int i = 0; i < 75; i++)
+            try
             {
-                fontSizeToolStripComboBox.Items.Add(i);
+                for (int i = 0; i < 75; i++)
+                {
+                    fontSizeToolStripComboBox.Items.Add(i);
+                }
+                fontSizeToolStripComboBox.SelectedIndex = 12; // 12pt
             }
-            fontSizeToolStripComboBox.SelectedIndex = 12; // 12pt
+            catch (Exception ex)
+            {
+                console.Append(GetTime() + "[ERROR]: Asys.SetFontSizes: " + ex.Message);
+            }
         }
         #endregion
         #endregion
@@ -491,12 +506,39 @@ namespace Asys
         private void Asys_Load(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Form Loading");
+
+            // Get window preferences
             if (Properties.Settings.Default.prefSaveLoc)
             {
                 this.Location = Properties.Settings.Default.sysWinLoc;
                 this.Size = Properties.Settings.Default.sysWinSize;
             }
 
+            // Delete previous installers
+            if (File.Exists(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi"))
+            {
+                console.Append(GetTime() + "Deleting previous installer");
+                try
+                {
+                    File.Delete(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi");
+                }
+                catch (Exception)
+                {
+                    console.Append(GetTime() + "[ERROR]: Asys.Asys_Load: Could not delete previous installer!");
+                }
+            }
+
+            // Start the updater
+            console.Append(GetTime() + "Checking for update");
+            AsysExternalStringParser aesp = new AsysExternalStringParser();
+            aesp.Load(a_prefs_url);
+            string newver = aesp.ParseString("VERSION");
+            if (!(newver == ""))
+            {
+                ProcessVersion(newver);
+            }
+
+            // Load stuff
             TabGenerator();
             GetFontCollection();
             SetFontSizes();
@@ -504,6 +546,7 @@ namespace Asys
             openFileDialog1.RestoreDirectory = true;
             saveFileDialog1.RestoreDirectory = true;
 
+            // Check if there is a file waiting to be opened (via double-click)
             var args = System.Environment.GetCommandLineArgs();
             var argPath = args.Skip(1).FirstOrDefault();
             if (!string.IsNullOrEmpty(argPath))
@@ -517,46 +560,49 @@ namespace Asys
 
                 documentTab.SelectedTab.Text = Path.GetFileName(fullPath);
             }
+
             console.Append(GetTime() + "Form done loading");
         }
 
+        /// <summary>
+        /// Determines which tabs need to be created on startup.
+        /// (Blank, Welcome, Changelog, etc)
+        /// </summary>
         private void TabGenerator()
         {
+            // Check whether to show the Welcome file
             if (Properties.Settings.Default.prefShowWelcome)
             {
                 AddTab();
                 string rtf = Properties.Resources.Welcome;
                 GetCurrentDocument.Rtf = rtf;
                 documentTab.SelectedTab.Text = "Welcome.rtf";
-                documentTab.SelectedTab.Name = "asys_defaultWelcome.rtf";
+                documentTab.SelectedTab.Name = "Welcome.rtf";
                 console.Append(GetTime() + "Displaying Welcome.rtf");
             }
 
+            // Check whether to show the Changelog file
             if (Properties.Settings.Default.prefShowChangelog)
             {
                 AddTab();
                 string rtf = Properties.Resources.Changelog;
                 GetCurrentDocument.Rtf = rtf;
                 documentTab.SelectedTab.Text = "Changelog.rtf";
-                documentTab.SelectedTab.Name = "asys_defaultChangelog.rtf";
+                documentTab.SelectedTab.Name = "Changelog.rtf";
                 console.Append(GetTime() + "Displaying Changelog.rtf");
             }
             
+            // Just show a blank tab
             if (!(Properties.Settings.Default.prefShowChangelog|Properties.Settings.Default.prefShowWelcome))
             {
                 AddTab();
             }
-
-            console.Append(GetTime() + "Checking for update");
-            AsysExternalStringParser aesp = new AsysExternalStringParser();
-            aesp.Load(a_prefs_url);
-            string newver = aesp.ParseString("VERSION");
-            if (!(newver == ""))
-            {                
-                ProcessVersion(newver);
-            }
         }
 
+        /// <summary>
+        /// Process the version numbers to determine if an update is avaliable
+        /// </summary>
+        /// <param name="newver"></param>
         void ProcessVersion(string newver)
         {
             string[] curVersion = AsysAbout.VERSION.Split('.');
@@ -666,27 +712,6 @@ namespace Asys
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
-        {
-            console.Append(GetTime() + "Preparing to save a file");
-            string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
-            documentTab.SelectedTab.Text = fileName;
-        }
-
-        private void newToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            AddTab();
-        }
-
-        private void openToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            console.Append(GetTime() + "Preparing to open a file");
-            if (GetCurrentDocument.Text != String.Empty) AddTab();
-            string fileName = fileInteraction.open(GetCurrentDocument);
-
-            documentTab.SelectedTab.Text = fileName;
-        }
-
-        private void saveToolStripButton_Click_1(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing to save a file");
             string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
@@ -1084,47 +1109,6 @@ namespace Asys
             catch (Exception) { ; }
         }
 
-        private void newToolStripButton_Click_2(object sender, EventArgs e)
-        {
-            AddTab();
-        }
-
-        private void openToolStripButton_Click_2(object sender, EventArgs e)
-        {
-            console.Append(GetTime() + "Preparing to open a file");
-            if (GetCurrentDocument.Text != String.Empty) AddTab();
-            string fileName = fileInteraction.open(GetCurrentDocument);
-
-            documentTab.SelectedTab.Text = fileName;
-        }
-
-        private void saveToolStripButton_Click_2(object sender, EventArgs e)
-        {
-            console.Append(GetTime() + "Preparing to save a file");
-            string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
-            documentTab.SelectedTab.Text = fileName;
-        }
-
-        private void cutToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            Cut();
-        }
-
-        private void copyToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            Copy();
-        }
-
-        private void pasteToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            Paste();
-        }
-
-        private void toolStripButton10_Click_1(object sender, EventArgs e)
-        {
-            RemoveTab();
-        }
-
         private void drawingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Loading Graphics Editor");
@@ -1182,36 +1166,6 @@ namespace Asys
         {
             console.Append(GetTime() + "Opening Console");
             console.Show();
-        }
-
-        private void undoToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            GetCurrentDocument.Undo();
-        }
-
-        private void redoToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            GetCurrentDocument.Redo();
-        }
-
-        private void cutToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            GetCurrentDocument.Cut();
-        }
-
-        private void copyToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            GetCurrentDocument.Copy();
-        }
-
-        private void pasteToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            GetCurrentDocument.Paste();
-        }
-
-        private void selectAllToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            GetCurrentDocument.SelectAll();
         }
     }
 }

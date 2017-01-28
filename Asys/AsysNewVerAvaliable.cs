@@ -17,6 +17,8 @@ namespace Asys
     {
         string oldver, newver;
 
+        bool alreadyRunningInstaller = false;
+
         public AsysNewVerAvaliable(string o, string n)
         {
             InitializeComponent();
@@ -34,6 +36,10 @@ namespace Asys
         {
             string downloadspath = KnownFolders.GetPath(KnownFolder.Downloads);
 
+            btnWait.Enabled = false;
+            lnkDownloadNow.Enabled = false;
+            this.ControlBox = false;
+
             using (WebClient wc = new WebClient())
             {
                 wc.DownloadProgressChanged += wc_DownloadProgressChanged;
@@ -49,6 +55,7 @@ namespace Asys
 
             if (progressBar1.Value == 100)
             {
+                progressBar1.Value = 0;
                 if (checkBox1.Checked)
                 {
                     Install();
@@ -65,19 +72,14 @@ namespace Asys
 
         void Install()
         {
-            string filepath = KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi";
-            Process installerProcess;
-            installerProcess = Process.Start(filepath, "/q");
-            MessageBox.Show("Asys is now being installed...", "Asys", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            while (installerProcess.HasExited == false)
+            if (!alreadyRunningInstaller)
             {
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(250);
+                alreadyRunningInstaller = true;
+                Process.Start(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi");
+                Asys.SetShouldClose(true);
+                Asys.console.SetShouldClose();
+                Application.Exit();
             }
-            MessageBox.Show("Asys is done installing and will now exit.", "Asys", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Asys.SetShouldClose(true);
-            Asys.console.SetShouldClose();
-            Application.Exit();
         }
 
         private void btnWait_Click(object sender, EventArgs e)
