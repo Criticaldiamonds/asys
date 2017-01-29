@@ -270,6 +270,52 @@
         }
         "FileType"
         {
+            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_A2A8E15415B04090B342500930A15A70"
+            {
+            "Name" = "8:Rich Text Files"
+            "Description" = "8:Rich Text Format"
+            "Extensions" = "8:.rtf"
+            "MIME" = "8:"
+            "Icon" = "8:_96B4AD7124A34B98A16EEFFFD1B931DC"
+            "IconIndex" = "3:0"
+                "Command"
+                {
+                "Command" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
+                }
+                "Verbs"
+                {
+                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_88C8B0A6E1EF42DFBB1798DD399AC2DA"
+                    {
+                    "Command" = "8:&Open"
+                    "Verb" = "8:open"
+                    "Arguments" = "8:\"%1\""
+                    "Order" = "3:0"
+                    }
+                }
+            }
+            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_B7B12D1049E74EC98A035CE460B24751"
+            {
+            "Name" = "8:Text Files"
+            "Description" = "8:Plain Text Files"
+            "Extensions" = "8:.txt"
+            "MIME" = "8:"
+            "Icon" = "8:_96B4AD7124A34B98A16EEFFFD1B931DC"
+            "IconIndex" = "3:0"
+                "Command"
+                {
+                "Command" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
+                }
+                "Verbs"
+                {
+                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_3268F1D2D502464A8490D464651EC290"
+                    {
+                    "Command" = "8:&Open"
+                    "Verb" = "8:open"
+                    "Arguments" = "8:\"%1\""
+                    "Order" = "3:0"
+                    }
+                }
+            }
         }
         "Folder"
         {
@@ -367,15 +413,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Asys"
-        "ProductCode" = "8:{4DEE1335-8FBB-48E2-BDF7-8F94185D472A}"
-        "PackageCode" = "8:{188F824D-2EFB-48F6-9707-9959237E1358}"
+        "ProductCode" = "8:{EBEC9C5F-059B-415F-A63D-461B32DED9E0}"
+        "PackageCode" = "8:{51A82447-D292-4C7E-8F49-899762B6656A}"
         "UpgradeCode" = "8:{0B18DBE6-243D-43F9-85FC-9118C440B6BA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.2.4"
+        "ProductVersion" = "8:1.2.5"
         "Manufacturer" = "8:Criticaldiamonds"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -491,7 +537,7 @@
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1F316599E2364050A5635DF54CE23238"
             {
             "Name" = "8:Uninstall Asys"
-            "Arguments" = "8:/x {4DEE1335-8FBB-48E2-BDF7-8F94185D472A}"
+            "Arguments" = "8:/x {EBEC9C5F-059B-415F-A63D-461B32DED9E0}"
             "Description" = "8:Removes Asys from your computer"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"

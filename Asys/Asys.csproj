@@ -28,7 +28,7 @@
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.2.4.0</ApplicationVersion>
+    <ApplicationVersion>1.2.5.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -114,12 +114,6 @@
       <DependentUpon>AsysConsole.cs</DependentUpon>
     </Compile>
     <Compile Include="AsysExternalStringParser.cs" />
-    <Compile Include="AsysGraphicEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AsysGraphicEditor.Designer.cs">
-      <DependentUpon>AsysGraphicEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="AsysNewVerAvaliable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,9 +166,6 @@
     <EmbeddedResource Include="AsysConsole.resx">
       <DependentUpon>AsysConsole.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AsysGraphicEditor.resx">
-      <DependentUpon>AsysGraphicEditor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AsysNewVerAvaliable.resx">
       <DependentUpon>AsysNewVerAvaliable.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,7 +196,7 @@
     <None Include="app.manifest" />
     <None Include="assets\buttons\bullet_list.png" />
     <None Include="Asys_TemporaryKey.pfx" />
-    <EmbeddedResource Include="Changelog.rtf" />
+    <EmbeddedResource Include="assets\rtf\Changelog.rtf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -220,7 +211,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Welcome.rtf" />
+    <EmbeddedResource Include="assets\rtf\Welcome.rtf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

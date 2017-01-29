@@ -66,6 +66,7 @@ namespace Asys
                                     "Asys",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
+                    this.Close();
                 }
             }
         }

@@ -112,7 +112,7 @@ namespace Asys
                 {
                     rtbIn.SaveFile(fileName, RichTextBoxStreamType.PlainText);
                 }
-                console.Append(Asys.GetTime() + "Save Complete");
+                console.Append(Asys.GetTime() + "Save Complete (SilentSave)");
                 return fileName;
             }
             else
@@ -150,7 +150,7 @@ namespace Asys
                         rtbIn.SaveFile(saveDialog.FileName, RichTextBoxStreamType.PlainText);
                     }
                     addFileToMap(fileName, saveDialog.FileName);
-                    console.Append(Asys.GetTime() + "Save Complete (SilentSave)");
+                    console.Append(Asys.GetTime() + "Save Complete");
                     return Path.GetFileName(saveDialog.FileName);
                 }
                 else { return ""; }
