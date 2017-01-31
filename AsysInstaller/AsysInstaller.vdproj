@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7922734165044AA29F6484C4817C32A8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -33,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9591AC9360454F6E89FF98DAAE7173B1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_96B4AD7124A34B98A16EEFFFD1B931DC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -40,7 +40,7 @@
         "Entry"
         {
         "MsmKey" = "8:_AE94F148A76BE8631953776A16C27392"
-        "OwnerKey" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
+        "OwnerKey" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,14 +51,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
+        "MsmKey" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_AE94F148A76BE8631953776A16C27392"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -196,6 +202,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9591AC9360454F6E89FF98DAAE7173B1"
+            {
+            "SourcePath" = "8:..\\Asys\\assets\\Asys_small_256x256.png"
+            "TargetName" = "8:Asys_small_256x256.png"
+            "Tag" = "8:"
+            "Folder" = "8:_427C8201D1DC436CAAB9F46F53D0E5EE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_96B4AD7124A34B98A16EEFFFD1B931DC"
             {
             "SourcePath" = "8:..\\Asys\\assets\\Asys_small_fileICO_256x256.ico"
@@ -280,7 +306,7 @@
             "IconIndex" = "3:0"
                 "Command"
                 {
-                "Command" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
+                "Command" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
                 }
                 "Verbs"
                 {
@@ -303,7 +329,7 @@
             "IconIndex" = "3:0"
                 "Command"
                 {
-                "Command" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
+                "Command" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
                 }
                 "Verbs"
                 {
@@ -339,22 +365,22 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_E8250001664A464EAEE3C74B161D6DB3"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_B0E7CA5F3A19475BAAA7C6AC31030714"
                     {
                     "Name" = "8:Criticaldiamonds"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
-                    "Property" = "8:_3B79091B0A8B47F5965770D8F3B3E946"
+                    "Property" = "8:_052C7246AFF94D0AAE1CC7FFEF14B452"
                         "Folders"
                         {
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_1CE6315219C14453B0FE5E234254623D"
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_36E5A552AC774048815B78DA9828AA3C"
                             {
                             "Name" = "8:Asys"
                             "AlwaysCreate" = "11:FALSE"
                             "Condition" = "8:"
                             "Transitive" = "11:FALSE"
-                            "Property" = "8:_9CA73B91BB9749229850A423F2560196"
+                            "Property" = "8:_E2D5045A96AE4E5290C67942C0ADFF58"
                                 "Folders"
                                 {
                                 }
@@ -413,15 +439,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Asys"
-        "ProductCode" = "8:{EBEC9C5F-059B-415F-A63D-461B32DED9E0}"
-        "PackageCode" = "8:{51A82447-D292-4C7E-8F49-899762B6656A}"
+        "ProductCode" = "8:{503373AC-B9CD-4320-945E-8DC4058D1193}"
+        "PackageCode" = "8:{1AFA59DB-1DDA-4952-A500-6D667B60B57E}"
         "UpgradeCode" = "8:{0B18DBE6-243D-43F9-85FC-9118C440B6BA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.2.5"
+        "ProductVersion" = "8:1.2.6"
         "Manufacturer" = "8:Criticaldiamonds"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -514,6 +540,78 @@
             {
                 "Keys"
                 {
+                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_B3624CCCD9984A9D981890300F867A06"
+                    {
+                    "Name" = "8:*"
+                    "Condition" = "8:"
+                    "AlwaysCreate" = "11:FALSE"
+                    "DeleteAtUninstall" = "11:FALSE"
+                    "Transitive" = "11:FALSE"
+                        "Keys"
+                        {
+                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_778C03853B6C4537990703328718E446"
+                            {
+                            "Name" = "8:Shell"
+                            "Condition" = "8:"
+                            "AlwaysCreate" = "11:FALSE"
+                            "DeleteAtUninstall" = "11:FALSE"
+                            "Transitive" = "11:FALSE"
+                                "Keys"
+                                {
+                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_E83FC968756C40D7994314E33AEE88F3"
+                                    {
+                                    "Name" = "8:Edit with Asys"
+                                    "Condition" = "8:"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "DeleteAtUninstall" = "11:TRUE"
+                                    "Transitive" = "11:FALSE"
+                                        "Keys"
+                                        {
+                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_9DABD54B819D4165984958FB27E4C6A7"
+                                            {
+                                            "Name" = "8:Command"
+                                            "Condition" = "8:"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "DeleteAtUninstall" = "11:TRUE"
+                                            "Transitive" = "11:FALSE"
+                                                "Keys"
+                                                {
+                                                }
+                                                "Values"
+                                                {
+                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_8D4321556EA244B9A1BC6839F7D367B1"
+                                                    {
+                                                    "Name" = "8:"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "ValueTypes" = "3:1"
+                                                    "Value" = "8:[TARGETDIR]Asys.exe \"%1\""
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        "Values"
+                                        {
+                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_B76AF05EEA8046D89822260E3178E15A"
+                                            {
+                                            "Name" = "8:Icon"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "ValueTypes" = "3:1"
+                                            "Value" = "8:[TARGETDIR]Asys.exe"
+                                            }
+                                        }
+                                    }
+                                }
+                                "Values"
+                                {
+                                }
+                            }
+                        }
+                        "Values"
+                        {
+                        }
+                    }
                 }
             }
             "HKU"
@@ -537,13 +635,13 @@
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1F316599E2364050A5635DF54CE23238"
             {
             "Name" = "8:Uninstall Asys"
-            "Arguments" = "8:/x {EBEC9C5F-059B-415F-A63D-461B32DED9E0}"
+            "Arguments" = "8:/x {503373AC-B9CD-4320-945E-8DC4058D1193}"
             "Description" = "8:Removes Asys from your computer"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_7922734165044AA29F6484C4817C32A8"
-            "Folder" = "8:_1CE6315219C14453B0FE5E234254623D"
+            "Folder" = "8:_36E5A552AC774048815B78DA9828AA3C"
             "WorkingFolder" = "8:_9ADD70AA38014B10803FDC0B911D6F4B"
             "Icon" = "8:_B8EC0DD1C8E34A49862027EC8C747619"
             "Feature" = "8:"
@@ -556,7 +654,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
+            "Target" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
             "Folder" = "8:_D1E6190B25644E6797C6DFDC75D44F1A"
             "WorkingFolder" = "8:"
             "Icon" = "8:_8CF359C7DA0D49909C8569B8F6432217"
@@ -570,8 +668,8 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_07D8A211A5E946ACAAFBE0CF11617713"
-            "Folder" = "8:_1CE6315219C14453B0FE5E234254623D"
+            "Target" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
+            "Folder" = "8:_36E5A552AC774048815B78DA9828AA3C"
             "WorkingFolder" = "8:"
             "Icon" = "8:_B8EC0DD1C8E34A49862027EC8C747619"
             "Feature" = "8:"
@@ -975,7 +1073,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_07D8A211A5E946ACAAFBE0CF11617713"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FDF4A8B60999483BB36AB7BC92BF917E"
             {
             "SourcePath" = "8:..\\Asys\\obj\\Debug\\Asys.exe"
             "TargetName" = "8:"

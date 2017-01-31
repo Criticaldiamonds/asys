@@ -37,9 +37,9 @@ namespace Asys
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public string ParseString(string key)
+        public string GetKey(string key)
         {
-            if (str == String.Empty) Asys.console.Append(Asys.GetTime() + "[ERROR]: AsysExternalStringParser.ParseString: String Empty!");
+            if (str == String.Empty) Asys.console.Append(Asys.GetTime() + "[ERROR]: AsysExternalStringParser.GetKey: String Empty!");
             if (str == String.Empty) return "error";
 
             string[] substrings = str.Split('=');

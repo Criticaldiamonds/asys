@@ -16,10 +16,9 @@ namespace Asys
 #region Variables
 
         private FileInteraction fileInteraction;
+        private AsysUpdater updater;
         public static AsysConsole console;
-
-        private string a_prefs_url = "https://dl.dropboxusercontent.com/u/276558657/Asys/asys.a_prefs";
-
+        
         private int tabCount = 0;
         private int checkPrint;
 
@@ -61,6 +60,8 @@ namespace Asys
             fileInteraction = new FileInteraction();
             fileInteraction.Init(console);
 
+            updater = new AsysUpdater();
+
             sidebarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowSidebar;
             toolStrip1.Visible = Properties.Settings.Default.prefShowSidebar;
             toolbarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowToolbar;
@@ -96,14 +97,7 @@ namespace Asys
             }
 
             // Start the updater
-            console.Append(GetTime() + "Checking for update");
-            AsysExternalStringParser aesp = new AsysExternalStringParser();
-            aesp.Load(a_prefs_url);
-            string newver = aesp.ParseString("VERSION");
-            if (!(newver == ""))
-            {
-                ProcessVersion(newver);
-            }
+            updater.Start(AsysAbout.VERSION);
 
             // Load stuff
             TabGenerator();
@@ -136,7 +130,7 @@ namespace Asys
 
 #region Tabs
 
-        private void AddTab()
+        public void AddTab()
         {
             RichTextBoxPrintCtrl.RichTextBoxPrintCtrl body = new RichTextBoxPrintCtrl.RichTextBoxPrintCtrl();
             body.Name = "Body";
@@ -859,39 +853,6 @@ namespace Asys
         }
 
 #endregion Drag and Frop Events
-
-#region Updater
-
-        /// <summary>
-        /// Process the version numbers to determine if an update is avaliable
-        /// </summary>
-        /// <param name="newver"></param>
-        void ProcessVersion(string newver)
-        {
-            string[] curVersion = AsysAbout.VERSION.Split('.');
-            string[] newVersion = newver.Split('.');
-
-            int[] o = curVersion.Select(int.Parse).ToArray();
-            int[] n = newVersion.Select(int.Parse).ToArray();
-
-            bool update = false;
-            for (int i = 0; i < o.Length; i++)
-            {
-                if (n[i] > o[i])
-                {
-                    console.Append(GetTime() + "Update Found! Showing update dialog");
-                    update = true;
-                    new AsysNewVerAvaliable(AsysAbout.VERSION, newver).ShowDialog();
-                    break;
-                }
-            }
-            if (!update)
-            {
-                console.Append(GetTime() + "No update found");
-            }
-        }
-
-#endregion Updater
 
 #region GUI Visibility Button Events
 

@@ -16,7 +16,7 @@ namespace Asys
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Asys());
+            Application.Run(new Asys());
         }
     }
 }
