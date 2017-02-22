@@ -356,7 +356,7 @@
             // closeTabToolStripButton
             // 
             this.closeTabToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.closeTabToolStripButton.Image = global::Asys.Properties.Resources.close;
+            this.closeTabToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("closeTabToolStripButton.Image")));
             this.closeTabToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.closeTabToolStripButton.Name = "closeTabToolStripButton";
             this.closeTabToolStripButton.Size = new System.Drawing.Size(38, 24);
@@ -854,7 +854,7 @@
             this.leftAlignToolStripButton.Checked = true;
             this.leftAlignToolStripButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.leftAlignToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.leftAlignToolStripButton.Image = global::Asys.Properties.Resources.align_left;
+            this.leftAlignToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("leftAlignToolStripButton.Image")));
             this.leftAlignToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.leftAlignToolStripButton.Name = "leftAlignToolStripButton";
             this.leftAlignToolStripButton.Size = new System.Drawing.Size(24, 25);
@@ -864,7 +864,7 @@
             // centerAlignToolStripButton
             // 
             this.centerAlignToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.centerAlignToolStripButton.Image = global::Asys.Properties.Resources.align_center;
+            this.centerAlignToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("centerAlignToolStripButton.Image")));
             this.centerAlignToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.centerAlignToolStripButton.Name = "centerAlignToolStripButton";
             this.centerAlignToolStripButton.Size = new System.Drawing.Size(24, 25);
@@ -874,7 +874,7 @@
             // rightAlignToolStripButton
             // 
             this.rightAlignToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.rightAlignToolStripButton.Image = global::Asys.Properties.Resources.align_right;
+            this.rightAlignToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("rightAlignToolStripButton.Image")));
             this.rightAlignToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.rightAlignToolStripButton.Name = "rightAlignToolStripButton";
             this.rightAlignToolStripButton.Size = new System.Drawing.Size(24, 25);
@@ -889,7 +889,7 @@
             // bulletListToolStripButton
             // 
             this.bulletListToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bulletListToolStripButton.Image = global::Asys.Properties.Resources.bullet_list1;
+            this.bulletListToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("bulletListToolStripButton.Image")));
             this.bulletListToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.bulletListToolStripButton.Name = "bulletListToolStripButton";
             this.bulletListToolStripButton.Size = new System.Drawing.Size(24, 25);
@@ -904,7 +904,7 @@
             // superscriptToolStripButton
             // 
             this.superscriptToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.superscriptToolStripButton.Image = global::Asys.Properties.Resources.superscript;
+            this.superscriptToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("superscriptToolStripButton.Image")));
             this.superscriptToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.superscriptToolStripButton.Name = "superscriptToolStripButton";
             this.superscriptToolStripButton.Size = new System.Drawing.Size(24, 25);
@@ -914,7 +914,7 @@
             // subscriptToolStripButton
             // 
             this.subscriptToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.subscriptToolStripButton.Image = global::Asys.Properties.Resources.subscript;
+            this.subscriptToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("subscriptToolStripButton.Image")));
             this.subscriptToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.subscriptToolStripButton.Name = "subscriptToolStripButton";
             this.subscriptToolStripButton.Size = new System.Drawing.Size(24, 25);

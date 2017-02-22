@@ -10,20 +10,35 @@ using System.Reflection;
 using RichTextBoxPrintCtrl;
 namespace Asys
 {
+    /// <summary>
+    /// Representation of the Asys window.</summary>
+    /// <remarks>
+    /// The Asys form is the main source of interaction the end user has with the program.<br>
+    /// The form contains the menu and toolstrips, along with the tab-control hosting the documents
+    /// </remarks>
     public partial class Asys : Form
     {
 
-#region Variables
+        #region Variables
 
+        /// <summary>Implementation of the FileInteraction class used by the form</summary>
         private FileInteraction fileInteraction;
+        /// <summary>Implementation of the Asys Updater system</summary>
         private AsysUpdater updater;
+        /// <summary>Implementation of the console window</summary>
         public static AsysConsole console;
-        
+
+        /// <summary>Represents the number of tabs currently open</summary>
         private int tabCount = 0;
+        /// <summary>Used as part of the printing system</summary>
         private int checkPrint;
 
+        /// <summary>Used to determine whether the form is to close when form.Close() is called.<br>
+        /// Set to true if "close" is selected in the CloseHandler or SingleTabClose Handler</summary>
         public static bool shouldClose = false;
 
+        /// <summary>Gets the currently selected document in context</summary>
+        /// <value>Returns the RichTextBoxPrintCtrl object currently in use</value>
         private RichTextBoxPrintCtrl.RichTextBoxPrintCtrl GetCurrentDocument
         {
             get
@@ -32,22 +47,28 @@ namespace Asys
             }
         }
 
-#endregion
+        #endregion
 
-#region Startup
+        #region Startup
 
+        /// <summary>Main entry point for the form</summary>
         public Asys()
         {
             Init();
         }
 
+        /// <summary>Main entry print for the form when an associated file is opened by Windows Explorer</summary>
+        /// <param name="filePath">The direct file path to the file being opened</param>
         public Asys(String filePath)
         {
             Init();
             AddTab();
+            // Open the file and set the tab's text to the filename
             string fileName = fileInteraction.silentOpen(GetCurrentDocument, filePath);
             documentTab.SelectedTab.Text = filePath;
         }
+
+        /// <summary>Initializes crucial components and variables used by the Asys form</summary>
         private void Init()
         {
             InitializeComponent();
@@ -62,6 +83,7 @@ namespace Asys
 
             updater = new AsysUpdater();
 
+            // Display toolars based on user preferences
             sidebarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowSidebar;
             toolStrip1.Visible = Properties.Settings.Default.prefShowSidebar;
             toolbarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowToolbar;
@@ -71,6 +93,9 @@ namespace Asys
             console.Append(GetTime() + "Initialization complete");
         }
 
+        /// <summary>Handles the initial form loading event</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Asys_Load(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Form Loading");
@@ -82,7 +107,7 @@ namespace Asys
                 this.Size = Properties.Settings.Default.sysWinSize;
             }
 
-            // Delete previous installers
+            // Delete previous installers to prevent confusion
             if (File.Exists(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi"))
             {
                 console.Append(GetTime() + "Deleting previous installer");
@@ -126,12 +151,14 @@ namespace Asys
         }
 
 
-#endregion Startup
+        #endregion Startup
 
-#region Tabs
+        #region Tabs
 
+        /// <summary>Adds a new tab to the tab-control, along with necessary controls contained withen the tab</summary>
         public void AddTab()
         {
+            // Create a new RichTextBox
             RichTextBoxPrintCtrl.RichTextBoxPrintCtrl body = new RichTextBoxPrintCtrl.RichTextBoxPrintCtrl();
             body.Name = "Body";
             body.Dock = DockStyle.Fill;
@@ -139,6 +166,7 @@ namespace Asys
             body.AcceptsTab = true;
             body.SelectionChanged += body_SelectionChanged;
 
+            // Create the tab
             TabPage t = new TabPage();
             tabCount += 1;
 
@@ -147,15 +175,18 @@ namespace Asys
             t.Text = DocText;
             t.Controls.Add(body);
 
+            // Add the tab to the tab-control
             documentTab.TabPages.Add(t);
             documentTab.SelectedIndex = documentTab.TabPages.Count - 1;
             console.Append(GetTime() + "Tab successfully added");
         }
 
+        /// <summary>Removes the current tab from the tab-control</summary>
         public void RemoveTab()
         {
             if (documentTab.TabPages.Count != 1)
             {
+                // Remove the tab from the file map
                 fileInteraction.RemoveFileFromMap(documentTab.SelectedTab.Name);
                 documentTab.TabPages.Remove(documentTab.SelectedTab);
                 tabCount -= 1;
@@ -164,6 +195,7 @@ namespace Asys
             }
             else
             {
+                // Remove the tab from the file map and create a new tab
                 fileInteraction.RemoveFileFromMap(documentTab.SelectedTab.Name);
                 documentTab.TabPages.Remove(documentTab.SelectedTab);
                 tabCount -= 1;
@@ -172,6 +204,7 @@ namespace Asys
             }
         }
 
+        /// <summary>Removes all tabs from the tab-control</summary>
         private void RemoveAllTabs()
         {
             foreach (TabPage p in documentTab.TabPages)
@@ -182,6 +215,7 @@ namespace Asys
             AddTab();
         }
 
+        /// <summary>Removes all tabs, excluding the currently selected tab, from the tab-control</summary>
         private void RemoveAllTabsExceptThis()
         {
             foreach (TabPage p in documentTab.TabPages)
@@ -194,10 +228,8 @@ namespace Asys
             }
         }
 
-        /// <summary>
-        /// Determines which tabs need to be created on startup.
-        /// (Blank, Welcome, Changelog, etc)
-        /// </summary>
+        /// <summary>Determines which tabs need to be created on startup.<br>
+        /// (Blank, Welcome, Changelog, etc)</summary>
         private void TabGenerator()
         {
             // Check whether to show the Welcome file
@@ -207,7 +239,7 @@ namespace Asys
                 string rtf = Properties.Resources.Welcome;
                 GetCurrentDocument.Rtf = rtf;
                 documentTab.SelectedTab.Text = "Welcome.rtf";
-                documentTab.SelectedTab.Name = "Welcome.rtf";
+                documentTab.SelectedTab.Name = "asysdefault_Welcome.rtf";
                 console.Append(GetTime() + "Displaying Welcome.rtf");
             }
 
@@ -218,7 +250,7 @@ namespace Asys
                 string rtf = Properties.Resources.Changelog;
                 GetCurrentDocument.Rtf = rtf;
                 documentTab.SelectedTab.Text = "Changelog.rtf";
-                documentTab.SelectedTab.Name = "Changelog.rtf";
+                documentTab.SelectedTab.Name = "asysdefault_Changelog.rtf";
                 console.Append(GetTime() + "Displaying Changelog.rtf");
             }
 
@@ -229,43 +261,49 @@ namespace Asys
             }
         }
 
-#endregion Tabs
+        #endregion Tabs
 
-#region Document Modifiers
+        #region Document Modifiers
 
+        /// <summary>Undoes the previous action in the currently selected document</summary>
         private void Undo()
         {
             GetCurrentDocument.Undo();
         }
 
+        /// <summary>Redoes a previously undone action in the currently selected document</summary>
         private void Redo()
         {
             GetCurrentDocument.Redo();
         }
 
+        /// <summary>Cuts the currently selected text</summary>
         private void Cut()
         {
             GetCurrentDocument.Cut();
         }
 
+        /// <summary>Copies the currently selected text</summary>
         private void Copy()
         {
             GetCurrentDocument.Copy();
         }
 
+        /// <summary>Pastes the contents of the Clipboard</summary>
         private void Paste()
         {
             GetCurrentDocument.Paste();
         }
 
+        /// <summary>Selects all the text in the current document </summary>
         private void SelectAll()
         {
             GetCurrentDocument.SelectAll();
         }
 
-#endregion Document Modifiers
+        #endregion Document Modifiers
 
-#region Printing
+        #region Printing
 
         private void Print()
         {
@@ -314,7 +352,7 @@ namespace Asys
                 e.HasMorePages = false;
         }
 
-#region Printing Button Events
+        #region Printing Button Events
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -331,12 +369,13 @@ namespace Asys
             PageSetup();
         }
 
-#endregion Printing Button Events
+        #endregion Printing Button Events
 
-#endregion Printing
+        #endregion Printing
 
-#region Font Management
+        #region Font Management
 
+        /// <summary>Gets a list of all fonts currently installed on the user's system</summary>
         private void GetFontCollection()
         {
             try
@@ -365,6 +404,7 @@ namespace Asys
             }
         }
 
+        /// <summary>Generates a list of font sizes from 1 - 75</summary>
         private void SetFontSizes()
         {
             try
@@ -381,6 +421,9 @@ namespace Asys
             }
         }
 
+        /// <summary>Changes the font of the current document to the one selected by the user</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (GetCurrentDocument.SelectionFont != null)
@@ -398,6 +441,9 @@ namespace Asys
 
         }
 
+        /// <summary>Changes the font size of the current document to the one selected by the user</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             float px;
@@ -407,9 +453,9 @@ namespace Asys
             GetCurrentDocument.SelectionFont = nf;
         }
 
-#endregion Font Management
+        #endregion Font Management
 
-#region Text Modifier Button Events
+        #region Text Modifier Button Events
 
         // Bold
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -538,7 +584,7 @@ namespace Asys
                 reg = new Font(GetCurrentDocument.SelectionFont.FontFamily, GetCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular | FontStyle.Bold | FontStyle.Underline | FontStyle.Strikeout);
             else
                 reg = new Font(GetCurrentDocument.SelectionFont.FontFamily, GetCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular);
-            
+
             if (GetCurrentDocument.SelectionFont.Underline) { GetCurrentDocument.SelectionFont = reg; }
             else { GetCurrentDocument.SelectionFont = under; }
         }
@@ -582,7 +628,7 @@ namespace Asys
                 reg = new Font(GetCurrentDocument.SelectionFont.FontFamily, GetCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular | FontStyle.Bold | FontStyle.Underline | FontStyle.Italic);
             else
                 reg = new Font(GetCurrentDocument.SelectionFont.FontFamily, GetCurrentDocument.SelectionFont.SizeInPoints, FontStyle.Regular);
-            
+
             if (GetCurrentDocument.SelectionFont.Strikeout) { GetCurrentDocument.SelectionFont = reg; }
             else { GetCurrentDocument.SelectionFont = strike; }
         }
@@ -626,7 +672,7 @@ namespace Asys
             }
         }
 
-#region Highlighting
+        #region Highlighting
 
         private void HighlightGreen_Click(object sender, EventArgs e)
         {
@@ -653,184 +699,287 @@ namespace Asys
             GetCurrentDocument.SelectionBackColor = Color.Black;
         }
 
-#endregion Highlighting
+        #endregion Highlighting
 
-#endregion Text Modifier Button Events
+        #endregion Text Modifier Button Events
 
-#region Document Modifier Button Events
+        #region Document Modifier Button Events
 
+        // TODO: THIS IS A MESS, CLEAN UP
+
+        /// <summary>Called when the 'Undo' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Undo();
         }
 
+        /// <summary>Called when the 'Redo' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Redo();
         }
 
+        /// <summary>Called when the 'Cut' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cut();
         }
 
+        /// <summary>Called when the 'Copy' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Copy();
         }
 
+        /// <summary>Called when the 'Paste' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Paste();
         }
 
+        /// <summary>Called when the 'Select All' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SelectAll();
         }
 
+        /// <summary>Called when the 'New' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddTab();
         }
 
         // Context Menu
+        /// <summary>Called when the 'New' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
             AddTab();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Cut' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cutToolStripButton_Click(object sender, EventArgs e)
         {
             Cut();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Copy' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void copyToolStripButton_Click(object sender, EventArgs e)
         {
             Copy();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Paste' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pasteToolStripButton_Click(object sender, EventArgs e)
         {
             Paste();
         }
 
+        /// <summary>Called when the 'Remove Tab' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
             RemoveTab();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Undo' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void undoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Undo();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Redo' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void redoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Redo();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Cut' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Cut();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Copy' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Copy();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Paste' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Paste();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Close' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RemoveTab();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Close All' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RemoveAllTabs();
         }
 
         // Context Menu
+        /// <summary>Called when the 'Close All But This' button is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void closeAllButThisToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RemoveAllTabsExceptThis();
         }
 
-#endregion Document Modifier Button Events
+        #endregion Document Modifier Button Events
 
-#region Filesystem Button Events
+        #region Filesystem Button Events
 
+        /// <summary>Called when the 'Open' menu item is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing to open a file");
             if (GetCurrentDocument.Text != String.Empty) AddTab();
             string fileName = fileInteraction.open(GetCurrentDocument);
 
+            // Set the tab name and text to the filename
             documentTab.SelectedTab.Text = fileName;
             documentTab.SelectedTab.Name = fileName;
         }
 
+        /// <summary>Called when the 'Save' menu item is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            console.Append(GetTime() + "Preparing to save a file");
-            string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
-            documentTab.SelectedTab.Text = fileName;
+            // If the file is NOT the Changelog or Welcome files
+            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
+            {
+                console.Append(GetTime() + "Preparing to save a file");
+                string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
+                // Set the tab text to the filename
+                documentTab.SelectedTab.Text = fileName;
+            }
         }
 
+        /// <summary>Called when the 'Save As' menu item is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing to save a file");
             string fileName = Path.GetFileName(fileInteraction.saveAs(GetCurrentDocument, documentTab.SelectedTab.Name));
+
+            // Set the tab name and text to the filename
             documentTab.SelectedTab.Name = fileName;
             documentTab.SelectedTab.Text = fileName;
         }
 
         // Context Menu
+        /// <summary>Called when the 'Save' menu item is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            console.Append(GetTime() + "Preparing to save a file");
-            string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
-            documentTab.SelectedTab.Text = fileName;
+            // If the file is NOT the Changelog or Welcome files
+            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
+            {
+                console.Append(GetTime() + "Preparing to save a file");
+                string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
+                // Set the tab text to the filename
+                documentTab.SelectedTab.Text = fileName;
+            }
         }
 
         // Sidebar
+        /// <summary>Called when the 'Open' menu item is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing to open a file");
             if (GetCurrentDocument.Text != String.Empty) AddTab();
             string fileName = fileInteraction.open(GetCurrentDocument);
 
+            // Set the tab name and text to the filename
             documentTab.SelectedTab.Text = fileName;
             documentTab.SelectedTab.Name = fileName;
         }
 
         // Sidebar
+        /// <summary>Called when the 'Open' menu item is pressed</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
-            console.Append(GetTime() + "Preparing to save a file");
-            string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
-            documentTab.SelectedTab.Text = fileName;
+            // If the file is NOT the Changelog or Welcome files
+            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
+            {
+                console.Append(GetTime() + "Preparing to save a file");
+                string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
+
+                // Set the tab text to the filename
+                documentTab.SelectedTab.Text = fileName;
+            }
         }
 
-#endregion Filesystem Button Events
+        #endregion Filesystem Button Events
 
-#region Drag and Drop Events
+        #region Drag and Drop Events
 
+        /// <summary>Called when the user attemps to drag and drop a file into the form</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Handeler_DragEnter(object sender, DragEventArgs e)
         {
             console.Append(GetTime() + "Preparing to recieve object from Drag");
@@ -840,6 +989,9 @@ namespace Asys
             }
         }
 
+        /// <summary>Called when the user completes the drag and drop process</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Handeler_DragDrop(object sender, DragEventArgs e)
         {
             console.Append(GetTime() + "Loading object from Drag");
@@ -852,10 +1004,13 @@ namespace Asys
             }
         }
 
-#endregion Drag and Frop Events
+        #endregion Drag and Frop Events
 
-#region GUI Visibility Button Events
+        #region GUI Visibility Button Events
 
+        /// <summary>Toggles the visibility of the Sidebar, and updates the preferences to reflect on this action</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void sidebarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Updating visability preferences");
@@ -872,6 +1027,9 @@ namespace Asys
             Properties.Settings.Default.Save();
         }
 
+        /// <summary>Toggles the visibility of the Toolbar, and updates the preferences to reflect on this action</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Updating visability preferences");
@@ -888,6 +1046,9 @@ namespace Asys
             Properties.Settings.Default.Save();
         }
 
+        /// <summary>Toggles the visibility of the Status bar, and updates the preferences to reflect on this action</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void statusbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Updating visability preferences");
@@ -904,15 +1065,19 @@ namespace Asys
             Properties.Settings.Default.prefShowSidebar = false;
         }
 
-#endregion GUI Visibility Button Events     
+        #endregion GUI Visibility Button Events
 
-#region Insert Button Events
+        #region Insert Button Events
 
+        /// <summary>Called when the user clicks on the 'Insert -> Image' button</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void imageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing to load image");
             openFileDialog1.Filter = "All Files|*.*";
             openFileDialog1.Multiselect = true;
+            // Get the data currently in the Clipboard
             var clipdata = Clipboard.GetDataObject();
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -924,45 +1089,52 @@ namespace Asys
                     GetCurrentDocument.Paste();
                 }
             }
+            // Set the Clipboard back to its initial state
             Clipboard.SetDataObject(clipdata);
         }
 
-        // !unused
-        // private void drawingToolStripMenuItem_Click(object sender, EventArgs e)
-        // {
-        //     console.Append(GetTime() + "Loading Graphics Editor");
-        //     new AsysGraphicEditor().ShowDialog();
-        // }
+        #endregion Insert Button Events
 
-#endregion Insert Button Events
+        #region Extra Events
 
-#region Extra (Button) Events
-
-#region Buttons
+        #region Buttons
+        /// <summary>Called when the user clicks the 'About' button</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Launching About dialog");
             new AsysAbout().ShowDialog();
         }
+
+        /// <summary>Called when the user clicks the 'Help' button</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Updating visability preferences");
             new AsysHelpDialog().Show();
         }
 
+        /// <summary>Called when the user clicks the 'Preferences' button</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Loading Preferences dialog");
             new AsysPrefs().ShowDialog();
         }
 
+        /// <summary>Called when the user clicks the 'Open Console' button (Hidden, but uses CTRL+M shortcut)</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openConsoleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Opening Console");
             console.Show();
         }
 
-#endregion Buttons
+        #endregion Buttons
 
         private void Asys_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
@@ -971,6 +1143,9 @@ namespace Asys
         }
 
         // Update text properties, etc.
+        /// <summary>Called when the text in the document changes</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void body_SelectionChanged(object sender, EventArgs e)
         {
             /////////////////////
@@ -1001,6 +1176,7 @@ namespace Asys
             {
                 toolStripStatusLabel1.Text = "0";
             }
+
             // Word count
             char[] delims = new char[] { ' ', '\r', '\n' };
             toolStripStatusLabel3.Text = GetCurrentDocument.Text.Split(delims, StringSplitOptions.RemoveEmptyEntries).Length.ToString();
@@ -1025,6 +1201,8 @@ namespace Asys
                 }
 
                 fontSizeToolStripComboBox.SelectedIndex = (int)theFont.SizeInPoints;
+
+                // Update styling buttons
 
                 if (theFont.Bold)
                     boldToolStripButton.Checked = true;
@@ -1064,14 +1242,18 @@ namespace Asys
             catch (Exception) { ; }
         }
 
+        /// <summary>
+        /// Gets the current time
+        /// </summary>
+        /// <returns>The current time in h:mm:ss tt format</returns>
         public static string GetTime()
         {
             return "[" + DateTime.Now.ToString("h:mm:ss tt" + "] ");
         }
 
-#endregion Extra (Button) Events
+        #endregion Extra (Button) Events
 
-#region Text Alignment & List Button Events
+        #region Text Alignment & List Button Events
 
         private void toolStripButton13_Click(object sender, EventArgs e)
         {
@@ -1110,9 +1292,9 @@ namespace Asys
                 bulletListToolStripButton.Checked = true;
             }
         }
-#endregion Text Alignment & List Button Events
+        #endregion Text Alignment & List Button Events
 
-#region Super/Subscript Button Events
+        #region Super/Subscript Button Events
 
         private void toolStripButton15_Click(object sender, EventArgs e)
         {
@@ -1152,29 +1334,43 @@ namespace Asys
             }
         }
 
-#endregion Super/Subscript Button Events       
+        #endregion Super/Subscript Button Events
 
-#region Shutdown
+        #region Shutdown
 
+        /// <summary>Sets the ShouldClose flag</summary>
+        /// <param name="flag"></param>
         public static void SetShouldClose(bool flag)
         {
             shouldClose = flag;
         }
 
+        /// <summary>
+        /// Called when the 'Exit' button is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Closing");
             Application.Exit();
         }
 
+        /// <summary>
+        /// When the form is closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Asys_FormClosing(object sender, FormClosingEventArgs e)
         {
             console.Append(GetTime() + "Close event invoked!");
             if (Properties.Settings.Default.prefSaveLoc)
             {
                 console.Append(GetTime() + "Saving preferences");
-                Properties.Settings.Default.sysWinLoc = this.Location;
 
+                // Window location
+                Properties.Settings.Default.sysWinLoc = this.Location;
+                                // Window size
                 if (this.WindowState == FormWindowState.Normal)
                 {
                     Properties.Settings.Default.sysWinSize = this.Size;
@@ -1191,20 +1387,26 @@ namespace Asys
             {
                 if (!shouldClose)
                 {
+                    // Display the Close-Handler if there is more than one tab open, and ShouldClose == FALSE
                     e.Cancel = true;
                     console.Append(GetTime() + "Canceling CloseEvent, showing dialog");
                     new AsysCloseHandler(tabCount, this).ShowDialog();
                 }
                 else
                 {
+                    // ShouldClose == TRUE; continue closing
                     e.Cancel = false;
                     console.Append(GetTime() + "Bye");
                 }
             }
             else
             {
+                // Only one tab
                 if (!shouldClose)
                 {
+                    // Sisplay the Single tab close-handler if ShouldClose == FALSE
+
+                    // If there is nothing in the document, close
                     if (GetCurrentDocument.Text == String.Empty)
                     {
                         e.Cancel = false;
@@ -1214,6 +1416,7 @@ namespace Asys
                     }
                     else
                     {
+                        // There is something in the document, ask for conformation
                         e.Cancel = true;
                         console.Append(GetTime() + "Canceling CloseEvent, showing dialog");
                         new AsysSingleTabCloseHandler().ShowDialog();
@@ -1221,12 +1424,13 @@ namespace Asys
                 }
                 else
                 {
+                    // ShouldClose == TRUE; continue closing
                     e.Cancel = false;
                     console.Append(GetTime() + "Bye");
                 }
             }
         }
 
-#endregion Shutdown
+        #endregion Shutdown
     }
 }

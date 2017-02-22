@@ -124,26 +124,11 @@
   <data name="Asys_full_151x259" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Asys_full_151x259.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bullet_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\buttons\bullet_list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="doc_sidebar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Documentation\doc_sidebar.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="align_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\buttons\align_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Asys_small_81x105" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Asys_small_81x105.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bullet_list1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\buttons\bullet_list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="align_center" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\buttons\align_center.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="superscript" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\buttons\superscript.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\buttons\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,14 +136,8 @@
   <data name="close_tab" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\buttons\close_tab.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="subscript" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\buttons\subscript.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Asys_small_fileICO_256x256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Asys_small_fileICO_256x256.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="align_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\buttons\align_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Asys_full_259x151" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Asys_full_259x151.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,70 +148,34 @@
   <data name="doc_menu_strip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Documentation\doc_menu_strip.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="apply" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\apply.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="brush" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\brush.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="colorp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\colorp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="drawellip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\drawellip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="drawrect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\drawrect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="myimage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\myimage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="new" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="open" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\pencil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="polygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\polygon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="print prev" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\print prev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="print" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rectsel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\rectsel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shad" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\shad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="testflood" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\testflood.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="text" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\text.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\gfx_editor\wheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Changelog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\rtf\Changelog.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="Welcome" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\rtf\Welcome.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="align_center" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\buttons\align_center.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="align_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\buttons\align_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="align_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\buttons\align_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bullet_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\buttons\bullet_list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="close1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\buttons\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="close_tab1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\buttons\close_tab.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="subscript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\buttons\subscript.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="superscript" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\buttons\superscript.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

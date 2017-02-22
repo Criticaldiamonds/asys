@@ -63,16 +63,6 @@ namespace Asys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _new {
-            get {
-                object obj = ResourceManager.GetObject("new", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap align_center {
             get {
                 object obj = ResourceManager.GetObject("align_center", resourceCulture);
@@ -96,16 +86,6 @@ namespace Asys.Properties {
         internal static System.Drawing.Bitmap align_right {
             get {
                 object obj = ResourceManager.GetObject("align_right", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap apply {
-            get {
-                object obj = ResourceManager.GetObject("apply", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,16 +143,6 @@ namespace Asys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap brush {
-            get {
-                object obj = ResourceManager.GetObject("brush", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap bullet_list {
             get {
                 object obj = ResourceManager.GetObject("bullet_list", resourceCulture);
@@ -181,21 +151,11 @@ namespace Asys.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap bullet_list1 {
-            get {
-                object obj = ResourceManager.GetObject("bullet_list1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fnil\fcharset0 Calibri Light;}{\f2\fnil Calibri Light;}{\f3\fnil\fcharset2 Symbol;}}
-        ///\viewkind4\uc1\pard\f0\fs17{\pict\wmetafile8\picw2142\pich2777\picwgoal1214\pichgoal1574 
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Microsoft Sans Serif;}{\f1\fswiss\fprq2\fcharset0 Calibri Light;}{\f2\fnil Calibri Light;}{\f3\fnil\fcharset2 Symbol;}}
+        ///\viewkind4\uc1\pard\nowidctlpar\f0\fs17{\pict\wmetafile8\picw2142\pich2777\picwgoal1214\pichgoal1574 
         ///0100090000034232000000002c3200000000050000000b0200000000050000000c02d90a5e082c
         ///320000430f2000cc0000006900510000000000d90a5e0800000000280000005100000069000000
-        ///010018000000000014640000c40e0000c40e00000000000000000000d3d3d3d3d3d3d3d3d3d3d3 [rest of string was truncated]&quot;;.
+        ///010018000000000014640000c40e0000c40e [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Changelog {
             get {
@@ -226,9 +186,19 @@ namespace Asys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap colorp {
+        internal static System.Drawing.Bitmap close_tab1 {
             get {
-                object obj = ResourceManager.GetObject("colorp", resourceCulture);
+                object obj = ResourceManager.GetObject("close_tab1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close1 {
+            get {
+                object obj = ResourceManager.GetObject("close1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,136 +236,6 @@ namespace Asys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap drawellip {
-            get {
-                object obj = ResourceManager.GetObject("drawellip", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap drawrect {
-            get {
-                object obj = ResourceManager.GetObject("drawrect", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap fill {
-            get {
-                object obj = ResourceManager.GetObject("fill", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap line {
-            get {
-                object obj = ResourceManager.GetObject("line", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap myimage {
-            get {
-                object obj = ResourceManager.GetObject("myimage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap open {
-            get {
-                object obj = ResourceManager.GetObject("open", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pencil {
-            get {
-                object obj = ResourceManager.GetObject("pencil", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap polygon {
-            get {
-                object obj = ResourceManager.GetObject("polygon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap print {
-            get {
-                object obj = ResourceManager.GetObject("print", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap print_prev {
-            get {
-                object obj = ResourceManager.GetObject("print prev", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rectsel {
-            get {
-                object obj = ResourceManager.GetObject("rectsel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save {
-            get {
-                object obj = ResourceManager.GetObject("save", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap shad {
-            get {
-                object obj = ResourceManager.GetObject("shad", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap subscript {
             get {
                 object obj = ResourceManager.GetObject("subscript", resourceCulture);
@@ -414,26 +254,6 @@ namespace Asys.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap testflood {
-            get {
-                object obj = ResourceManager.GetObject("testflood", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap text {
-            get {
-                object obj = ResourceManager.GetObject("text", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri Light;}{\f1\fnil\fcharset0 Microsoft Sans Serif;}}
         ///\viewkind4\uc1\pard\f0\fs28\par
         ///{\pict\wmetafile8\picw6853\pich3995\picwgoal3885\pichgoal2265 
@@ -445,16 +265,6 @@ namespace Asys.Properties {
         internal static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap wheel {
-            get {
-                object obj = ResourceManager.GetObject("wheel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
