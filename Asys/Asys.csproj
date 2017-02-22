@@ -55,7 +55,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>asys_small_ICO_256x256.ico</ApplicationIcon>
+    <ApplicationIcon>assets\asys_small_ICO_256x256.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -84,7 +84,7 @@
     </Win32Resource>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationManifest>Supplementary Files\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -101,88 +101,82 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsysAbout.cs">
+    <Compile Include="Forms\AsysAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsysAbout.Designer.cs">
+    <Compile Include="Forms\AsysAbout.Designer.cs">
       <DependentUpon>AsysAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="AsysConsole.cs">
+    <Compile Include="Forms\AsysConsole.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsysConsole.Designer.cs">
+    <Compile Include="Forms\AsysConsole.Designer.cs">
       <DependentUpon>AsysConsole.cs</DependentUpon>
     </Compile>
-    <Compile Include="AsysExternalStringParser.cs" />
-    <Compile Include="AsysNewVerAvaliable.cs">
+    <Compile Include="Classes\AsysExternalStringParser.cs" />
+    <Compile Include="Forms\AsysNewVerAvaliable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsysNewVerAvaliable.Designer.cs">
+    <Compile Include="Forms\AsysNewVerAvaliable.Designer.cs">
       <DependentUpon>AsysNewVerAvaliable.cs</DependentUpon>
     </Compile>
-    <Compile Include="AsysPrefs.cs">
+    <Compile Include="Forms\AsysPrefs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsysPrefs.Designer.cs">
+    <Compile Include="Forms\AsysPrefs.Designer.cs">
       <DependentUpon>AsysPrefs.cs</DependentUpon>
     </Compile>
-    <Compile Include="AsysSingleTabCloseHandler.cs">
+    <Compile Include="Forms\AsysSingleTabCloseHandler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsysSingleTabCloseHandler.Designer.cs">
+    <Compile Include="Forms\AsysSingleTabCloseHandler.Designer.cs">
       <DependentUpon>AsysSingleTabCloseHandler.cs</DependentUpon>
     </Compile>
-    <Compile Include="AsysCloseHandler.cs">
+    <Compile Include="Forms\AsysCloseHandler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsysCloseHandler.Designer.cs">
+    <Compile Include="Forms\AsysCloseHandler.Designer.cs">
       <DependentUpon>AsysCloseHandler.cs</DependentUpon>
     </Compile>
-    <Compile Include="AsysHelpDialog.cs">
+    <Compile Include="Forms\AsysHelpDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsysHelpDialog.Designer.cs">
+    <Compile Include="Forms\AsysHelpDialog.Designer.cs">
       <DependentUpon>AsysHelpDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Asys.cs">
+    <Compile Include="Forms\Asys.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Asys.Designer.cs">
+    <Compile Include="Forms\Asys.Designer.cs">
       <DependentUpon>Asys.cs</DependentUpon>
     </Compile>
-    <Compile Include="AsysUpdater.cs" />
-    <Compile Include="FileInteraction.cs" />
-    <Compile Include="KnownFolders.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Classes\AsysUpdater.cs" />
+    <Compile Include="Classes\FileInteraction.cs" />
+    <Compile Include="Classes\KnownFolders.cs" />
+    <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="AsysAbout.resx">
+    <EmbeddedResource Include="Forms\AsysAbout.resx">
       <DependentUpon>AsysAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AsysConsole.resx">
+    <EmbeddedResource Include="Forms\AsysConsole.resx">
       <DependentUpon>AsysConsole.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AsysNewVerAvaliable.resx">
+    <EmbeddedResource Include="Forms\AsysNewVerAvaliable.resx">
       <DependentUpon>AsysNewVerAvaliable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AsysPrefs.resx">
+    <EmbeddedResource Include="Forms\AsysPrefs.resx">
       <DependentUpon>AsysPrefs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AsysSingleTabCloseHandler.resx">
+    <EmbeddedResource Include="Forms\AsysSingleTabCloseHandler.resx">
       <DependentUpon>AsysSingleTabCloseHandler.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AsysCloseHandler.resx">
+    <EmbeddedResource Include="Forms\AsysCloseHandler.resx">
       <DependentUpon>AsysCloseHandler.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AsysHelpDialog.resx">
+    <EmbeddedResource Include="Forms\AsysHelpDialog.resx">
       <DependentUpon>AsysHelpDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Asys.resx">
+    <EmbeddedResource Include="Forms\Asys.resx">
       <DependentUpon>Asys.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -191,12 +185,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="test.resx">
-      <DependentUpon>test.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="app.manifest" />
+    <None Include="Supplementary Files\app.manifest" />
     <None Include="assets\buttons\bullet_list.png" />
-    <None Include="Asys_TemporaryKey.pfx" />
     <EmbeddedResource Include="assets\rtf\Changelog.rtf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -215,7 +205,7 @@
     <EmbeddedResource Include="assets\rtf\Welcome.rtf" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Supplementary Files\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Asys_full_151x259.png" />
@@ -241,28 +231,7 @@
     <None Include="assets\buttons\superscript.png" />
     <None Include="assets\buttons\close_tab.png" />
     <None Include="assets\buttons\close.png" />
-    <Content Include="assets\gfx_editor\apply.png" />
-    <Content Include="assets\gfx_editor\brush.png" />
-    <Content Include="assets\gfx_editor\colorp.png" />
-    <Content Include="assets\gfx_editor\drawellip.png" />
-    <Content Include="assets\gfx_editor\drawrect.png" />
-    <Content Include="assets\gfx_editor\fill.png" />
-    <Content Include="assets\gfx_editor\line.png" />
-    <Content Include="assets\gfx_editor\myimage.jpg" />
-    <Content Include="assets\gfx_editor\new.png" />
-    <Content Include="assets\gfx_editor\open.png" />
-    <Content Include="assets\gfx_editor\pencil.png" />
-    <Content Include="assets\gfx_editor\polygon.png" />
-    <Content Include="assets\gfx_editor\print prev.png" />
-    <Content Include="assets\gfx_editor\print.png" />
-    <Content Include="assets\gfx_editor\rectsel.png" />
-    <Content Include="assets\gfx_editor\save.png" />
-    <Content Include="assets\gfx_editor\shad.png" />
-    <Content Include="assets\gfx_editor\testflood.png" />
-    <Content Include="assets\gfx_editor\text.png" />
-    <Content Include="assets\gfx_editor\wheel.png" />
-    <Content Include="asys_small_ICO_256x256.ico" />
-    <Content Include="Asys_small_ICO_81x105.ico" />
+    <Content Include="assets\asys_small_ICO_256x256.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
