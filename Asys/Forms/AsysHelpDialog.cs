@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Asys
+namespace AsysEditor.Forms
 {
     public partial class AsysHelpDialog : Form
     {

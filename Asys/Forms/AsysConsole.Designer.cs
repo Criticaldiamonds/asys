@@ -1,4 +1,4 @@
-﻿namespace Asys
+﻿namespace AsysEditor.Forms
 {
     partial class AsysConsole
     {

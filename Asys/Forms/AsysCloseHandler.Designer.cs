@@ -1,4 +1,4 @@
-﻿namespace Asys
+﻿namespace AsysEditor.Forms
 {
     partial class AsysCloseHandler
     {
@@ -51,7 +51,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Asys.Properties.Resources.close_tab;
+            this.pictureBox1.Image = global::AsysEditor.Properties.Resources.close_tab;
             this.pictureBox1.Location = new System.Drawing.Point(13, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(111, 111);

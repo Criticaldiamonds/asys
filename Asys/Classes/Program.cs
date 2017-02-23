@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Asys
+using AsysEditor.Forms;
+
+namespace AsysEditor.Classes
 {
     static class Program
     {

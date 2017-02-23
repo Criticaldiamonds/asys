@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Asys
+namespace AsysEditor.Classes
 {
     public static class KnownFolders
     {

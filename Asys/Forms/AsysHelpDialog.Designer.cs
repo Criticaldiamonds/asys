@@ -1,4 +1,4 @@
-﻿namespace Asys
+﻿namespace AsysEditor.Forms
 {
     partial class AsysHelpDialog
     {
@@ -72,7 +72,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Asys.Properties.Resources.Asys_full_259x151;
+            this.pictureBox1.Image = global::AsysEditor.Properties.Resources.Asys_full_259x151;
             this.pictureBox1.Location = new System.Drawing.Point(16, 15);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
@@ -272,7 +272,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::Asys.Properties.Resources.doc_sidebar;
+            this.pictureBox4.Image = global::AsysEditor.Properties.Resources.doc_sidebar;
             this.pictureBox4.Location = new System.Drawing.Point(75, 154);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
@@ -282,7 +282,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Asys.Properties.Resources.doc_toolbar;
+            this.pictureBox3.Image = global::AsysEditor.Properties.Resources.doc_toolbar;
             this.pictureBox3.Location = new System.Drawing.Point(13, 110);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
@@ -293,7 +293,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Asys.Properties.Resources.doc_menu_strip;
+            this.pictureBox2.Image = global::AsysEditor.Properties.Resources.doc_menu_strip;
             this.pictureBox2.Location = new System.Drawing.Point(13, 30);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";

@@ -7,14 +7,14 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Asys
+namespace AsysEditor.Forms
 {
     partial class AsysAbout : Form
     { 
         string                  NAME = "Asys";
         public static string    VERSION = "1.2.6";
-        string                  COPYRIGHT = "Copyright (c) 2017 Giovanni M.";
-        string                  COMPANY = "Criticaldiamonds";
+        string                  COPYRIGHT = "Copyright (c) 2017 Giovanni Melchionne";
+        string                  COMPANY = "Waterleap";
 
         public AsysAbout()
         {

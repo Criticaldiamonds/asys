@@ -1,4 +1,4 @@
-﻿namespace Asys
+﻿namespace AsysEditor.Forms
 {
     partial class AsysAbout
     {
@@ -69,7 +69,7 @@
             // logoPictureBox
             // 
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoPictureBox.Image = global::Asys.Properties.Resources.Asys_full_151x259;
+            this.logoPictureBox.Image = global::AsysEditor.Properties.Resources.Asys_full_151x259;
             this.logoPictureBox.Location = new System.Drawing.Point(5, 5);
             this.logoPictureBox.Margin = new System.Windows.Forms.Padding(5);
             this.logoPictureBox.Name = "logoPictureBox";
@@ -112,7 +112,7 @@
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(361, 21);
             this.labelCopyright.TabIndex = 21;
-            this.labelCopyright.Text = "Copyright (c) 2016 Criticaldiamonds (Giovanni M.)";
+            this.labelCopyright.Text = "Copyright (c) 2016 Giovanni Melchionne";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCompanyName
@@ -124,7 +124,7 @@
             this.labelCompanyName.Name = "labelCompanyName";
             this.labelCompanyName.Size = new System.Drawing.Size(361, 21);
             this.labelCompanyName.TabIndex = 22;
-            this.labelCompanyName.Text = "Criticaldiamonds";
+            this.labelCompanyName.Text = "Waterleap";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxDescription

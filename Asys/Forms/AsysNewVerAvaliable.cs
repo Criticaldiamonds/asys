@@ -11,7 +11,9 @@ using System.Windows.Forms;
 using System.Net;
 using System.Diagnostics;
 
-namespace Asys
+using AsysEditor.Classes;
+
+namespace AsysEditor.Forms
 {
     public partial class AsysNewVerAvaliable : Form
     {

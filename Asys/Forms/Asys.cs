@@ -8,7 +8,10 @@ using System.IO;
 using System.Reflection;
 
 using RichTextBoxPrintCtrl;
-namespace Asys
+
+using AsysEditor.Classes;
+
+namespace AsysEditor.Forms
 {
     /// <summary>
     /// Representation of the Asys window.</summary>
@@ -23,6 +26,8 @@ namespace Asys
 
         /// <summary>Implementation of the FileInteraction class used by the form</summary>
         private FileInteraction fileInteraction;
+        /// <summary>Implementation of the DocumentInteraction class used by the form</summary>
+        private DocumentInteraction documentInteraction;
         /// <summary>Implementation of the Asys Updater system</summary>
         private AsysUpdater updater;
         /// <summary>Implementation of the console window</summary>
@@ -80,16 +85,17 @@ namespace Asys
 
             fileInteraction = new FileInteraction();
             fileInteraction.Init(console);
+            documentInteraction = new DocumentInteraction();
 
             updater = new AsysUpdater();
 
             // Display toolars based on user preferences
             sidebarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowSidebar;
-            toolStrip1.Visible = Properties.Settings.Default.prefShowSidebar;
+            sidebarToolStrip.Visible = Properties.Settings.Default.prefShowSidebar;
             toolbarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowToolbar;
-            toolStrip2.Visible = Properties.Settings.Default.prefShowToolbar;
+            toolbarToolStrip.Visible = Properties.Settings.Default.prefShowToolbar;
             statusbarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowStatusbar;
-            statusStrip1.Visible = Properties.Settings.Default.prefShowStatusbar;
+            statusBar.Visible = Properties.Settings.Default.prefShowStatusbar;
             console.Append(GetTime() + "Initialization complete");
         }
 
@@ -128,9 +134,6 @@ namespace Asys
             TabGenerator();
             GetFontCollection();
             SetFontSizes();
-
-            openFileDialog1.RestoreDirectory = true;
-            saveFileDialog1.RestoreDirectory = true;
 
             // Check if there is a file waiting to be opened (via double-click)
             var args = System.Environment.GetCommandLineArgs();
@@ -262,46 +265,6 @@ namespace Asys
         }
 
         #endregion Tabs
-
-        #region Document Modifiers
-
-        /// <summary>Undoes the previous action in the currently selected document</summary>
-        private void Undo()
-        {
-            GetCurrentDocument.Undo();
-        }
-
-        /// <summary>Redoes a previously undone action in the currently selected document</summary>
-        private void Redo()
-        {
-            GetCurrentDocument.Redo();
-        }
-
-        /// <summary>Cuts the currently selected text</summary>
-        private void Cut()
-        {
-            GetCurrentDocument.Cut();
-        }
-
-        /// <summary>Copies the currently selected text</summary>
-        private void Copy()
-        {
-            GetCurrentDocument.Copy();
-        }
-
-        /// <summary>Pastes the contents of the Clipboard</summary>
-        private void Paste()
-        {
-            GetCurrentDocument.Paste();
-        }
-
-        /// <summary>Selects all the text in the current document </summary>
-        private void SelectAll()
-        {
-            GetCurrentDocument.SelectAll();
-        }
-
-        #endregion Document Modifiers
 
         #region Printing
 
@@ -455,10 +418,70 @@ namespace Asys
 
         #endregion Font Management
 
+        #region Generic Button Events
+
+        /// <summary>Handles the creation of tabs for all 'New' buttons</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void new_ButtonClickEvent(object sender, EventArgs e)
+        {
+            AddTab();
+        }
+
+        /// <summary>Handles the 'Cut' event for all applicable buttons</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cut_ButtonClickEvent(object sender, EventArgs e)
+        {
+            documentInteraction.Cut(GetCurrentDocument);
+        }
+
+        /// <summary>Handles the 'Copy' event for all applicable buttons</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void copy_ButtonClickEvent(object sender, EventArgs e)
+        {
+            documentInteraction.Copy(GetCurrentDocument);
+        }
+
+        /// <summary>Handles the 'Paste' event for all applicable buttons</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void paste_ButtonClickEvent(object sender, EventArgs e)
+        {
+            documentInteraction.Paste(GetCurrentDocument);
+        }
+
+        /// <summary>Handles the 'Undo' event for all applicable buttons</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void undo_ButtonClickEvent(object sender, EventArgs e)
+        {
+            documentInteraction.Undo(GetCurrentDocument);
+        }
+
+        /// <summary>Handles the 'Redo' event for all applicable buttons</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void redo_ButtonClickEvent(object sender, EventArgs e)
+        {
+            documentInteraction.Redo(GetCurrentDocument);
+        }
+
+        /// <summary>Handles the 'Select All' event for all applicable buttons</summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void selectAll_ButtonClickEvent(object sender, EventArgs e)
+        {
+            documentInteraction.SelectAll(GetCurrentDocument);
+        }
+
+        #endregion
+
         #region Text Modifier Button Events
 
         // Bold
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void boldToolStripButton_Click(object sender, EventArgs e)
         {
             Font original = GetCurrentDocument.SelectionFont;
             Font bold = null;
@@ -502,7 +525,7 @@ namespace Asys
         }
 
         // Italic
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void italicToolStripButton_Click(object sender, EventArgs e)
         {
             Font original = GetCurrentDocument.SelectionFont;
             Font italic = null;
@@ -546,7 +569,7 @@ namespace Asys
         }
 
         // Underline
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void underlineToolStripButton_Click(object sender, EventArgs e)
         {
             Font original = GetCurrentDocument.SelectionFont;
             Font under = null;
@@ -590,7 +613,7 @@ namespace Asys
         }
 
         // Strikeout
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void strikeoutToolStripButton_Click(object sender, EventArgs e)
         {
             Font original = GetCurrentDocument.SelectionFont;
             Font strike = null;
@@ -634,19 +657,19 @@ namespace Asys
         }
 
         // UPPERCASE
-        private void toolStripButton5_Click(object sender, EventArgs e)
+        private void uppercaseToolStripButton_Click(object sender, EventArgs e)
         {
             GetCurrentDocument.SelectedText = GetCurrentDocument.SelectedText.ToUpper();
         }
 
         // lowercase
-        private void toolStripButton6_Click(object sender, EventArgs e)
+        private void lowercaseToolStripButton_Click(object sender, EventArgs e)
         {
             GetCurrentDocument.SelectedText = GetCurrentDocument.SelectedText.ToLower();
         }
 
         // Size Up
-        private void toolStripButton7_Click(object sender, EventArgs e)
+        private void sizeUpToolStripButton_Click(object sender, EventArgs e)
         {
             float px = GetCurrentDocument.SelectionFont.SizeInPoints + 2;
             Font nf = new Font(GetCurrentDocument.SelectionFont.Name, px, GetCurrentDocument.SelectionFont.Style);
@@ -655,7 +678,7 @@ namespace Asys
         }
 
         // Size Down
-        private void toolStripButton8_Click(object sender, EventArgs e)
+        private void sizeDownToolStripButton_Click(object sender, EventArgs e)
         {
             float px = GetCurrentDocument.SelectionFont.SizeInPoints - 2;
             Font nf = new Font(GetCurrentDocument.SelectionFont.Name, px, GetCurrentDocument.SelectionFont.Style);
@@ -664,7 +687,7 @@ namespace Asys
         }
 
         // Text Color
-        private void toolStripButton9_Click(object sender, EventArgs e)
+        private void forecolorToolStripButton_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -702,184 +725,6 @@ namespace Asys
         #endregion Highlighting
 
         #endregion Text Modifier Button Events
-
-        #region Document Modifier Button Events
-
-        // TODO: THIS IS A MESS, CLEAN UP
-
-        /// <summary>Called when the 'Undo' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Undo();
-        }
-
-        /// <summary>Called when the 'Redo' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Redo();
-        }
-
-        /// <summary>Called when the 'Cut' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Cut();
-        }
-
-        /// <summary>Called when the 'Copy' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Copy();
-        }
-
-        /// <summary>Called when the 'Paste' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Paste();
-        }
-
-        /// <summary>Called when the 'Select All' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SelectAll();
-        }
-
-        /// <summary>Called when the 'New' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddTab();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'New' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void newToolStripButton_Click(object sender, EventArgs e)
-        {
-            AddTab();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Cut' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cutToolStripButton_Click(object sender, EventArgs e)
-        {
-            Cut();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Copy' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void copyToolStripButton_Click(object sender, EventArgs e)
-        {
-            Copy();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Paste' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pasteToolStripButton_Click(object sender, EventArgs e)
-        {
-            Paste();
-        }
-
-        /// <summary>Called when the 'Remove Tab' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripButton10_Click(object sender, EventArgs e)
-        {
-            RemoveTab();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Undo' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void undoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Undo();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Redo' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void redoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Redo();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Cut' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cutToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Cut();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Copy' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Copy();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Paste' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Paste();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Close' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RemoveTab();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Close All' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RemoveAllTabs();
-        }
-
-        // Context Menu
-        /// <summary>Called when the 'Close All But This' button is pressed</summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void closeAllButThisToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RemoveAllTabsExceptThis();
-        }
-
-        #endregion Document Modifier Button Events
 
         #region Filesystem Button Events
 
@@ -1016,12 +861,12 @@ namespace Asys
             console.Append(GetTime() + "Updating visability preferences");
             if (sidebarToolStripMenuItem.Checked)
             {
-                toolStrip1.Visible = true;
+                sidebarToolStrip.Visible = true;
                 Properties.Settings.Default.prefShowSidebar = true;
             }
             else
             {
-                toolStrip1.Visible = false;
+                sidebarToolStrip.Visible = false;
                 Properties.Settings.Default.prefShowSidebar = false;
             }
             Properties.Settings.Default.Save();
@@ -1035,12 +880,12 @@ namespace Asys
             console.Append(GetTime() + "Updating visability preferences");
             if (toolbarToolStripMenuItem.Checked)
             {
-                toolStrip2.Visible = true;
+                toolbarToolStrip.Visible = true;
                 Properties.Settings.Default.prefShowToolbar = true;
             }
             else
             {
-                toolStrip2.Visible = false;
+                toolbarToolStrip.Visible = false;
                 Properties.Settings.Default.prefShowToolbar = false;
             }
             Properties.Settings.Default.Save();
@@ -1054,12 +899,12 @@ namespace Asys
             console.Append(GetTime() + "Updating visability preferences");
             if (statusbarToolStripMenuItem.Checked)
             {
-                statusStrip1.Visible = true;
+                statusBar.Visible = true;
                 Properties.Settings.Default.prefShowStatusbar = true;
             }
             else
             {
-                statusStrip1.Visible = false;
+                statusBar.Visible = false;
                 Properties.Settings.Default.prefShowStatusbar = false;
             }
             Properties.Settings.Default.prefShowSidebar = false;
@@ -1075,14 +920,15 @@ namespace Asys
         private void imageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing to load image");
-            openFileDialog1.Filter = "All Files|*.*";
-            openFileDialog1.Multiselect = true;
+            OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.Filter = "All Files|*.*";
+            openDialog.Multiselect = true;
             // Get the data currently in the Clipboard
             var clipdata = Clipboard.GetDataObject();
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openDialog.ShowDialog() == DialogResult.OK)
             {
-                foreach (string fname in openFileDialog1.FileNames)
+                foreach (string fname in openDialog.FileNames)
                 {
                     var img = Image.FromFile(fname);
                     Clipboard.SetImage(img);
@@ -1255,7 +1101,7 @@ namespace Asys
 
         #region Text Alignment & List Button Events
 
-        private void toolStripButton13_Click(object sender, EventArgs e)
+        private void leftAlignToolStripButton_Click(object sender, EventArgs e)
         {
             GetCurrentDocument.SelectionAlignment = HorizontalAlignment.Left;
             rightAlignToolStripButton.Checked = false;
@@ -1263,7 +1109,7 @@ namespace Asys
             leftAlignToolStripButton.Checked = true;
         }
 
-        private void toolStripButton12_Click(object sender, EventArgs e)
+        private void centerAlignToolStripButton_Click(object sender, EventArgs e)
         {
             GetCurrentDocument.SelectionAlignment = HorizontalAlignment.Center;
             rightAlignToolStripButton.Checked = false;
@@ -1271,7 +1117,7 @@ namespace Asys
             leftAlignToolStripButton.Checked = false;
         }
 
-        private void toolStripButton11_Click(object sender, EventArgs e)
+        private void rightAlignToolStripButton_Click(object sender, EventArgs e)
         {
             GetCurrentDocument.SelectionAlignment = HorizontalAlignment.Right;
             rightAlignToolStripButton.Checked = true;
@@ -1279,7 +1125,7 @@ namespace Asys
             leftAlignToolStripButton.Checked = false;
         }
 
-        private void toolStripButton14_Click(object sender, EventArgs e)
+        private void bulletListToolStripButton_Click(object sender, EventArgs e)
         {
             if (GetCurrentDocument.SelectionBullet)
             {
@@ -1296,7 +1142,7 @@ namespace Asys
 
         #region Super/Subscript Button Events
 
-        private void toolStripButton15_Click(object sender, EventArgs e)
+        private void superscriptToolStripButton_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing for input");
             string input = Microsoft.VisualBasic.Interaction.InputBox("Input Text:", "Input", "", -1, -1);
@@ -1315,7 +1161,7 @@ namespace Asys
             }
         }
 
-        private void toolStripButton16_Click(object sender, EventArgs e)
+        private void subscriptToolStripButton_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing for input");
             string input = Microsoft.VisualBasic.Interaction.InputBox("Input Text:", "Input", "", -1, -1);
@@ -1335,6 +1181,25 @@ namespace Asys
         }
 
         #endregion Super/Subscript Button Events
+
+        #region Tab Close Button Events
+
+        private void close_ButtonClickEvent(object sender, EventArgs e)
+        {
+            RemoveTab();
+        }
+
+        private void closeAll_ButtonClickEvent(object sender, EventArgs e)
+        {
+            RemoveAllTabs();
+        }
+
+        private void closeAllButThis_ButtonClickEvent(object sender, EventArgs e)
+        {
+            RemoveAllTabsExceptThis();
+        }
+
+        #endregion
 
         #region Shutdown
 
@@ -1432,5 +1297,6 @@ namespace Asys
         }
 
         #endregion Shutdown
+
     }
 }

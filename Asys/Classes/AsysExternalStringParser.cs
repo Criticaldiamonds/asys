@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 using System.Net;
 
-namespace Asys
+using AsysEditor.Forms;
+
+namespace AsysEditor.Classes
 {
     class AsysExternalStringParser
     {

@@ -9,7 +9,9 @@ using System.IO;
 
 using RichTextBoxPrintCtrl;
 
-namespace Asys
+using AsysEditor.Forms;
+
+namespace AsysEditor.Classes
 {
     class FileInteraction
     {
