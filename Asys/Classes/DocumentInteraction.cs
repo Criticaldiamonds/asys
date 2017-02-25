@@ -8,37 +8,39 @@ using System.Windows.Forms;
 
 using AsysEditor.Forms;
 
+using AsysControls;
+
 namespace AsysEditor.Classes
 {
     class DocumentInteraction
     {
 
-        public void Undo(RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtbIn)
+        public void Undo(RichTextBoxPrintCtrl rtbIn)
         {
             rtbIn.Undo();
         }
 
-        public void Redo(RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtbIn)
+        public void Redo(RichTextBoxPrintCtrl rtbIn)
         {
             rtbIn.Redo();
         }
 
-        public void Cut(RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtbIn)
+        public void Cut(RichTextBoxPrintCtrl rtbIn)
         {
             rtbIn.Cut();
         }
 
-        public void Copy(RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtbIn)
+        public void Copy(RichTextBoxPrintCtrl rtbIn)
         {
             rtbIn.Copy();
         }
 
-        public void Paste(RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtbIn)
+        public void Paste(RichTextBoxPrintCtrl rtbIn)
         {
             rtbIn.Paste();
         }
 
-        public void SelectAll(RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtbIn)
+        public void SelectAll(RichTextBoxPrintCtrl rtbIn)
         {
             rtbIn.SelectAll();
         }

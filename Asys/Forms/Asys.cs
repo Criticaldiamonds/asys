@@ -7,7 +7,7 @@ using System.IO;
 
 using System.Reflection;
 
-using RichTextBoxPrintCtrl;
+using AsysControls;
 
 using AsysEditor.Classes;
 
@@ -44,11 +44,11 @@ namespace AsysEditor.Forms
 
         /// <summary>Gets the currently selected document in context</summary>
         /// <value>Returns the RichTextBoxPrintCtrl object currently in use</value>
-        private RichTextBoxPrintCtrl.RichTextBoxPrintCtrl GetCurrentDocument
+        private RichTextBoxPrintCtrl GetCurrentDocument
         {
             get
             {
-                return (RichTextBoxPrintCtrl.RichTextBoxPrintCtrl)documentTab.SelectedTab.Controls["Body"];
+                return (RichTextBoxPrintCtrl)documentTab.SelectedTab.Controls["Body"];
             }
         }
 
@@ -167,7 +167,7 @@ namespace AsysEditor.Forms
         public void AddTab()
         {
             // Create a new RichTextBox
-            RichTextBoxPrintCtrl.RichTextBoxPrintCtrl body = new RichTextBoxPrintCtrl.RichTextBoxPrintCtrl();
+            RichTextBoxPrintCtrl body = new RichTextBoxPrintCtrl();
             body.Name = "Body";
             body.Dock = DockStyle.Fill;
             body.ContextMenuStrip = contextMenuStrip1;
@@ -1304,7 +1304,7 @@ namespace AsysEditor.Forms
 
         #endregion Super/Subscript Button Events
 
-        #region Tab Close Button Events
+        #region Tab Close Events
 
         private void close_ButtonClickEvent(object sender, EventArgs e)
         {

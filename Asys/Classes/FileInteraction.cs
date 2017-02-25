@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-using RichTextBoxPrintCtrl;
+using AsysControls;
 
 using AsysEditor.Forms;
 
@@ -51,7 +51,7 @@ namespace AsysEditor.Classes
         /// <param name="rtbIn"></param>
         /// <param name="ucid"></param>
         /// <returns>The filename returned by the OpenFileDialog</returns>
-        public DocumentInfo open(RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtbIn, int ucid)
+        public DocumentInfo open(RichTextBoxPrintCtrl rtbIn, int ucid)
         {
             DocumentInfo result = new DocumentInfo();
             result.ID = ucid;
@@ -97,7 +97,7 @@ namespace AsysEditor.Classes
         /// <param name="rtbIn"></param>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public DocumentInfo silentOpen(RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtbIn, string filePath, int ucid)
+        public DocumentInfo silentOpen(RichTextBoxPrintCtrl rtbIn, string filePath, int ucid)
         {
             DocumentInfo result = new DocumentInfo();
             result.ID = ucid;
@@ -133,7 +133,7 @@ namespace AsysEditor.Classes
         /// </summary>
         /// <param name="rtbIn"></param>
         /// <param name="ucid">Unique identifier of the document</param>
-        public DocumentInfo save(RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtbIn, int ucid)
+        public DocumentInfo save(RichTextBoxPrintCtrl rtbIn, int ucid)
         {
             DocumentInfo result = new DocumentInfo();
             result.ID = ucid;
@@ -186,7 +186,7 @@ namespace AsysEditor.Classes
         /// <param name="rtbIn"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public DocumentInfo saveAs(RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtbIn, string _fileName, int ucid)
+        public DocumentInfo saveAs(RichTextBoxPrintCtrl rtbIn, string _fileName, int ucid)
         {
             DocumentInfo result = new DocumentInfo();
             result.ID = ucid;
