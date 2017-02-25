@@ -11,10 +11,10 @@ namespace AsysEditor.Forms
 {
     partial class AsysAbout : Form
     { 
-        string                  NAME = "Asys";
-        public static string    VERSION = "1.2.6";
-        string                  COPYRIGHT = "Copyright (c) 2017 Giovanni Melchionne";
-        string                  COMPANY = "Waterleap";
+        string                  NAME        = "Asys";
+        static string           VERSION     = "1.2.6";
+        string                  COPYRIGHT   = "Copyright (c) 2017 Giovanni M.";
+        string                  COMPANY     = "Waterleap";
 
         public AsysAbout()
         {
@@ -106,6 +106,14 @@ namespace AsysEditor.Forms
             }
         }
         #endregion
+
+        public static string AsysVersion
+        {
+            get
+            {
+                return VERSION;
+            }
+        }
 
         private void okButton_Click(object sender, EventArgs e)
         {

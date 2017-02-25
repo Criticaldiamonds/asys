@@ -78,11 +78,12 @@ namespace AsysEditor.Classes
                             result.FileType = EFileType.OTHER;
                     }
 
-                    addFileToMap(ucid, fileName);
+                    // Add file information to dictionaries
+                    AddFile(ucid, fileName, result.FileType);
+
                     result.FileName = Path.GetFileName(fileName);
-
                     console.Append(Asys.GetTime() + "Opening file");
-
+                    
                     return result;
                 }
                 else { return result; }
@@ -119,7 +120,8 @@ namespace AsysEditor.Classes
                     result.FileType = EFileType.OTHER;
             }
 
-            addFileToMap(ucid, filePath);
+            // Add file information to dictionaries
+            AddFile(ucid, filePath, result.FileType);
             console.Append(Asys.GetTime() + "Opening file (SilentOpen)");
 
             return result;
@@ -138,11 +140,11 @@ namespace AsysEditor.Classes
 
             string fileName = "";
 
-            if (getFileFromMap(ucid) != "")
+            if (GetFilePath(ucid) != "")
             {
                 // The file already exists in the Map so save it
                 console.Append(Asys.GetTime() + "Instance exists in Map, saving");
-                fileName = getFileFromMap(ucid);
+                fileName = GetFilePath(ucid);
 
                 if (fileName.EndsWith(".rtf"))
                 {
@@ -217,8 +219,8 @@ namespace AsysEditor.Classes
                             result.FileType = EFileType.OTHER;
                     }
 
-                    // Finish saving process
-                    addFileToMap(ucid, newName);
+                    // Add file information to dictionaries
+                    AddFile(ucid, newName, result.FileType);
 
                     console.Append(Asys.GetTime() + "Save Complete");
 
@@ -230,22 +232,24 @@ namespace AsysEditor.Classes
         }
 
         /// <summary>
-        /// Adds a document to the Map for use in silent saving.
+        /// Adds a filepath and FileType to the Maps for use in silent saving.
         /// </summary>
-        /// <param name="rtbIn"></param>
-        /// <param name="fileName"></param>
-        public void addFileToMap(int UCID, string fileName)
+        /// <param name="UCID">The UCID associated with the document</param>
+        /// <param name="fileName">The path of the file</param>
+        /// <param name="fileType">The type of file</param>
+        public void AddFile(int UCID, string fileName, EFileType fileType)
         {
             try
             {
-                console.Append(Asys.GetTime() + "Adding " + UCID + " to Map");
+                console.Append(Asys.GetTime() + "Adding " + UCID + " to Maps");
                 fileNames.Add(UCID, fileName);
+                fileTypes.Add(UCID, fileType);
             }
             catch (Exception)
             {
                 // Assuming that it needs to be replaced due to 'Save As'
-                console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.addFileToMap: Instance already exists! Retrying...");
-                RemoveFileFromMap(UCID);
+                console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.AddFilePath: Instance already exists! Retrying...");
+                RemoveFile(UCID);
                 try
                 {
                     console.Append(Asys.GetTime() + "Adding " + UCID + " to Map");
@@ -254,18 +258,35 @@ namespace AsysEditor.Classes
                 catch (Exception ex2)
                 {
                     // If we get here there's clearly something wrong
-                    console.Append(Asys.GetTime() + "[ERROR][FATAL]: FileInteraction.addFileToMap: Could not add to Map!");
-                    MessageBox.Show("Error in FileInteraction.addFileToMap:\n" + ex2.Message);
+                    console.Append(Asys.GetTime() + "[ERROR][FATAL]: FileInteraction.AddFilePath: Could not add to Map!");
+                    MessageBox.Show("Error in FileInteraction.AddFilePath:\n" + ex2.Message);
                 }
             }
         }
 
-        /// <summary>
-        /// Returns the filename associated with a given richtextbox.
-        /// </summary>
-        /// <param name="rtbIn"></param>
+        /// <summary>Removes the specified document from the Maps</summary>
+        /// <param name="ucid">The UCID associated with the document</param>
+        public void RemoveFile(int ucid)
+        {
+            try
+            {
+                console.Append(Asys.GetTime() + "Removing " + ucid + " from Map");
+                fileNames.Remove(ucid);
+                fileTypes.Remove(ucid);
+
+                UCID.RemoveUCID(ucid);
+            }
+            catch (Exception ex)
+            {
+                console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.RemoveFile: Could not remove from Maps!");
+                MessageBox.Show("Error in FileInteraction.RemoveFile:\n" + ex.Message);
+            }
+        }
+
+        /// <summary>Returns the file-path associated with a given UCID.</summary>
+        /// <param name="UCID">The UCID associated with the document</param>
         /// <returns></returns>
-        public string getFileFromMap(int UCID)
+        public string GetFilePath(int UCID)
         {
             string value = "";
             try
@@ -281,35 +302,15 @@ namespace AsysEditor.Classes
             }
             catch (Exception ex)
             {
-                console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.getFileFromMap: Could not find instance!");
-                MessageBox.Show("Error in FileInteraction.getFileFromMap:\n" + ex.Message);
+                console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.GetFileFromMap: Could not find instance!");
+                MessageBox.Show("Error in FileInteraction.GetFileFromMap:\n" + ex.Message);
                 return "";
             }
-            
+
         }
 
-        /// <summary>
-        /// Removes the specified document from the Map
-        /// </summary>
-        /// <param name="UCID"></param>
-        public void RemoveFileFromMap(int UCID)
-        {
-            try
-            {
-                console.Append(Asys.GetTime() + "Removing " + UCID + " from Map");
-                fileNames.Remove(UCID);
-            }
-            catch (Exception ex)
-            {
-                console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.removeFileFromMap: Could not remove from Map!");
-                MessageBox.Show("Error in FileInteraction.removeFileFromMap:\n" + ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Returns the file type associated with a given richtextbox.
-        /// </summary>
-        /// <param name="rtbIn"></param>
+        /// <summary>Returns the file type associated with a given UCID.</summary>
+        /// <param name="UCID">The UCID associated with the document</param>
         /// <returns></returns>
         public EFileType GetFileType(int UCID)
         {

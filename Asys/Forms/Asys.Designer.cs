@@ -93,8 +93,8 @@
             this.uppercaseToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.lowercaseToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.fontLargerToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.fontSmallerToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.sizeUpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.sizeDownToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.textColorToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.highlightColorToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
@@ -257,6 +257,7 @@
             this.documentTab.Size = new System.Drawing.Size(1069, 569);
             this.documentTab.TabIndex = 0;
             this.documentTab.TabStop = false;
+            this.documentTab.SelectedIndexChanged += new System.EventHandler(this.documentTab_SelectedIndexChanged);
             this.documentTab.DragDrop += new System.Windows.Forms.DragEventHandler(this.Handeler_DragDrop);
             this.documentTab.DragEnter += new System.Windows.Forms.DragEventHandler(this.Handeler_DragEnter);
             // 
@@ -657,8 +658,8 @@
             this.uppercaseToolStripButton,
             this.lowercaseToolStripButton,
             this.toolStripSeparator4,
-            this.fontLargerToolStripButton,
-            this.fontSmallerToolStripButton,
+            this.sizeUpToolStripButton,
+            this.sizeDownToolStripButton,
             this.toolStripSeparator7,
             this.textColorToolStripButton,
             this.highlightColorToolStripDropDownButton,
@@ -676,7 +677,7 @@
             this.fontSizeToolStripComboBox});
             this.toolbarToolStrip.Location = new System.Drawing.Point(3, 28);
             this.toolbarToolStrip.Name = "toolbarToolStrip";
-            this.toolbarToolStrip.Size = new System.Drawing.Size(764, 28);
+            this.toolbarToolStrip.Size = new System.Drawing.Size(805, 28);
             this.toolbarToolStrip.TabIndex = 1;
             // 
             // boldToolStripButton
@@ -753,25 +754,25 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
             // 
-            // fontLargerToolStripButton
+            // sizeUpToolStripButton
             // 
-            this.fontLargerToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fontLargerToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.fontLargerToolStripButton.Name = "fontLargerToolStripButton";
-            this.fontLargerToolStripButton.Size = new System.Drawing.Size(33, 25);
-            this.fontLargerToolStripButton.Text = "A+";
-            this.fontLargerToolStripButton.ToolTipText = "Font Size Larger";
-            this.fontLargerToolStripButton.Click += new System.EventHandler(this.sizeUpToolStripButton_Click);
+            this.sizeUpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.sizeUpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.sizeUpToolStripButton.Name = "sizeUpToolStripButton";
+            this.sizeUpToolStripButton.Size = new System.Drawing.Size(33, 25);
+            this.sizeUpToolStripButton.Text = "A+";
+            this.sizeUpToolStripButton.ToolTipText = "Font Size Larger";
+            this.sizeUpToolStripButton.Click += new System.EventHandler(this.sizeUpToolStripButton_Click);
             // 
-            // fontSmallerToolStripButton
+            // sizeDownToolStripButton
             // 
-            this.fontSmallerToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fontSmallerToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.fontSmallerToolStripButton.Name = "fontSmallerToolStripButton";
-            this.fontSmallerToolStripButton.Size = new System.Drawing.Size(29, 25);
-            this.fontSmallerToolStripButton.Text = "A-";
-            this.fontSmallerToolStripButton.ToolTipText = "Font Size Smaller";
-            this.fontSmallerToolStripButton.Click += new System.EventHandler(this.sizeDownToolStripButton_Click);
+            this.sizeDownToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.sizeDownToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.sizeDownToolStripButton.Name = "sizeDownToolStripButton";
+            this.sizeDownToolStripButton.Size = new System.Drawing.Size(29, 25);
+            this.sizeDownToolStripButton.Text = "A-";
+            this.sizeDownToolStripButton.ToolTipText = "Font Size Smaller";
+            this.sizeDownToolStripButton.Click += new System.EventHandler(this.sizeDownToolStripButton_Click);
             // 
             // toolStripSeparator7
             // 
@@ -1121,8 +1122,8 @@
         private System.Windows.Forms.ToolStripButton uppercaseToolStripButton;
         private System.Windows.Forms.ToolStripButton lowercaseToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton fontLargerToolStripButton;
-        private System.Windows.Forms.ToolStripButton fontSmallerToolStripButton;
+        private System.Windows.Forms.ToolStripButton sizeUpToolStripButton;
+        private System.Windows.Forms.ToolStripButton sizeDownToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton textColorToolStripButton;
         private System.Windows.Forms.ToolStripDropDownButton highlightColorToolStripDropDownButton;

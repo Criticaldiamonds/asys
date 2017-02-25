@@ -130,7 +130,7 @@ namespace AsysEditor.Forms
             }
 
             // Start the updater
-            updater.Start(AsysAbout.VERSION);
+            updater.Start(AsysAbout.AsysVersion);
 
             // Load stuff
             TabGenerator();
@@ -192,7 +192,7 @@ namespace AsysEditor.Forms
             if (documentTab.TabPages.Count != 1)
             {
                 // Remove the tab from the file map
-                fileInteraction.RemoveFileFromMap(Int16.Parse(documentTab.SelectedTab.Name));
+                fileInteraction.RemoveFile(Int16.Parse(documentTab.SelectedTab.Name));
                 documentTab.TabPages.Remove(documentTab.SelectedTab);
                 tabCount -= 1;
                 documentTab.SelectedIndex = documentTab.TabPages.Count - 1;
@@ -201,7 +201,7 @@ namespace AsysEditor.Forms
             else
             {
                 // Remove the tab from the file map and create a new tab
-                fileInteraction.RemoveFileFromMap(Int16.Parse(documentTab.SelectedTab.Name));
+                fileInteraction.RemoveFile(Int16.Parse(documentTab.SelectedTab.Name));
                 documentTab.TabPages.Remove(documentTab.SelectedTab);
                 tabCount -= 1;
                 console.Append(GetTime() + "Tab successfully removed");
@@ -1000,6 +1000,107 @@ namespace AsysEditor.Forms
 
         #endregion Buttons
 
+        // TODO: NOT WORKING
+        private void documentTab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (!documentTab.SelectedTab.Name.StartsWith(""))
+            //{
+            //    int id = Int16.Parse(documentTab.SelectedTab.Name);
+
+            //    switch (fileInteraction.GetFileType(id))
+            //    {
+            //        case EFileType.RICH_TEXT:
+            //            {
+            //                // Enable text formatting tools
+            //                boldToolStripButton.Enabled = true;
+            //                italicToolStripButton.Enabled = true;
+            //                underlineToolStripButton.Enabled = true;
+            //                strikeoutToolStripButton.Enabled = true;
+            //                sizeUpToolStripButton.Enabled = true;
+            //                sizeDownToolStripButton.Enabled = true;
+            //                textColorToolStripButton.Enabled = true;
+            //                highlightColorToolStripDropDownButton.Enabled = true;
+            //                leftAlignToolStripButton.Enabled = true;
+            //                centerAlignToolStripButton.Enabled = true;
+            //                rightAlignToolStripButton.Enabled = true;
+            //                bulletListToolStripButton.Enabled = true;
+            //                superscriptToolStripButton.Enabled = true;
+            //                subscriptToolStripButton.Enabled = true;
+            //                fontToolStripComboBox.Enabled = true;
+            //                fontSizeToolStripComboBox.Enabled = true;
+
+            //                break;
+            //            }
+            //        case EFileType.PLAIN_TEXT:
+            //            {
+            //                // Disable text formatting tools
+            //                boldToolStripButton.Enabled = false;
+            //                italicToolStripButton.Enabled = false;
+            //                underlineToolStripButton.Enabled = false;
+            //                strikeoutToolStripButton.Enabled = false;
+            //                sizeUpToolStripButton.Enabled = false;
+            //                sizeDownToolStripButton.Enabled = false;
+            //                textColorToolStripButton.Enabled = false;
+            //                highlightColorToolStripDropDownButton.Enabled = false;
+            //                leftAlignToolStripButton.Enabled = false;
+            //                centerAlignToolStripButton.Enabled = false;
+            //                rightAlignToolStripButton.Enabled = false;
+            //                bulletListToolStripButton.Enabled = false;
+            //                superscriptToolStripButton.Enabled = false;
+            //                subscriptToolStripButton.Enabled = false;
+            //                fontToolStripComboBox.Enabled = false;
+            //                fontSizeToolStripComboBox.Enabled = false;
+
+            //                break;
+            //            }
+            //        case EFileType.OTHER:
+            //            {
+            //                // Enable text formatting tools
+            //                boldToolStripButton.Enabled = true;
+            //                italicToolStripButton.Enabled = true;
+            //                underlineToolStripButton.Enabled = true;
+            //                strikeoutToolStripButton.Enabled = true;
+            //                sizeUpToolStripButton.Enabled = true;
+            //                sizeDownToolStripButton.Enabled = true;
+            //                textColorToolStripButton.Enabled = true;
+            //                highlightColorToolStripDropDownButton.Enabled = true;
+            //                leftAlignToolStripButton.Enabled = true;
+            //                centerAlignToolStripButton.Enabled = true;
+            //                rightAlignToolStripButton.Enabled = true;
+            //                bulletListToolStripButton.Enabled = true;
+            //                superscriptToolStripButton.Enabled = true;
+            //                subscriptToolStripButton.Enabled = true;
+            //                fontToolStripComboBox.Enabled = true;
+            //                fontSizeToolStripComboBox.Enabled = true;
+
+            //                break;
+            //            }
+            //        default:
+            //            {
+            //                // Enable text formatting tools
+            //                boldToolStripButton.Enabled = true;
+            //                italicToolStripButton.Enabled = true;
+            //                underlineToolStripButton.Enabled = true;
+            //                strikeoutToolStripButton.Enabled = true;
+            //                sizeUpToolStripButton.Enabled = true;
+            //                sizeDownToolStripButton.Enabled = true;
+            //                textColorToolStripButton.Enabled = true;
+            //                highlightColorToolStripDropDownButton.Enabled = true;
+            //                leftAlignToolStripButton.Enabled = true;
+            //                centerAlignToolStripButton.Enabled = true;
+            //                rightAlignToolStripButton.Enabled = true;
+            //                bulletListToolStripButton.Enabled = true;
+            //                superscriptToolStripButton.Enabled = true;
+            //                subscriptToolStripButton.Enabled = true;
+            //                fontToolStripComboBox.Enabled = true;
+            //                fontSizeToolStripComboBox.Enabled = true;
+
+            //                break;
+            //            }
+            //    }
+            //}
+        }
+
         private void Asys_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             console.Append(GetTime() + "Launching Help dialog");
@@ -1236,6 +1337,7 @@ namespace AsysEditor.Forms
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Closing");
+            this.Close();
             Application.Exit();
         }
 
@@ -1315,6 +1417,6 @@ namespace AsysEditor.Forms
         }
 
         #endregion Shutdown
-
+        
     }
 }
