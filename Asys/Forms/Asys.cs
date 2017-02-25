@@ -116,18 +116,21 @@ namespace AsysEditor.Forms
             }
 
             // Delete previous installers to prevent confusion
-            if (File.Exists(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi"))
-            {
-                console.Append(GetTime() + "Deleting previous installer");
+            string searchPattern = "AsysInstaller*.*";
+            DirectoryInfo dirInfo = new DirectoryInfo(KnownFolders.GetPath(KnownFolder.Downloads));
+            FileInfo[] files = dirInfo.GetFiles(searchPattern);
+
                 try
                 {
+                    foreach (FileInfo file in files) {
+                        File.Delete(file.FullName);
+                    }
                     File.Delete(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi");
                 }
                 catch (Exception)
                 {
                     console.Append(GetTime() + "[ERROR]: Asys.Asys_Load: Could not delete previous installer!");
                 }
-            }
 
             // Start the updater
             updater.Start(AsysAbout.AsysVersion);
