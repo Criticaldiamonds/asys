@@ -101,7 +101,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DocumentInfo.cs" />
     <Compile Include="Classes\DocumentInteraction.cs" />
+    <Compile Include="Classes\EFileType.cs" />
+    <Compile Include="Classes\UCID.cs" />
     <Compile Include="Forms\AsysAbout.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -69,8 +69,10 @@ namespace AsysEditor.Forms
             Init();
             AddTab();
             // Open the file and set the tab's text to the filename
-            string fileName = fileInteraction.silentOpen(GetCurrentDocument, filePath);
-            documentTab.SelectedTab.Text = filePath;
+            DocumentInfo info = fileInteraction.silentOpen(GetCurrentDocument, filePath, Int16.Parse(documentTab.SelectedTab.Name));
+
+            documentTab.SelectedTab.Text = info.FileName;
+            documentTab.SelectedTab.Name = info.ID + "";
         }
 
         /// <summary>Initializes crucial components and variables used by the Asys form</summary>
@@ -174,8 +176,8 @@ namespace AsysEditor.Forms
             tabCount += 1;
 
             String DocText = "Document " + tabCount;
-            t.Name = DocText;
             t.Text = DocText;
+            t.Name = UCID.GenerateUCID() + "";
             t.Controls.Add(body);
 
             // Add the tab to the tab-control
@@ -190,7 +192,7 @@ namespace AsysEditor.Forms
             if (documentTab.TabPages.Count != 1)
             {
                 // Remove the tab from the file map
-                fileInteraction.RemoveFileFromMap(documentTab.SelectedTab.Name);
+                fileInteraction.RemoveFileFromMap(Int16.Parse(documentTab.SelectedTab.Name));
                 documentTab.TabPages.Remove(documentTab.SelectedTab);
                 tabCount -= 1;
                 documentTab.SelectedIndex = documentTab.TabPages.Count - 1;
@@ -199,7 +201,7 @@ namespace AsysEditor.Forms
             else
             {
                 // Remove the tab from the file map and create a new tab
-                fileInteraction.RemoveFileFromMap(documentTab.SelectedTab.Name);
+                fileInteraction.RemoveFileFromMap(Int16.Parse(documentTab.SelectedTab.Name));
                 documentTab.TabPages.Remove(documentTab.SelectedTab);
                 tabCount -= 1;
                 console.Append(GetTime() + "Tab successfully removed");
@@ -734,12 +736,14 @@ namespace AsysEditor.Forms
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing to open a file");
-            if (GetCurrentDocument.Text != String.Empty) AddTab();
-            string fileName = fileInteraction.open(GetCurrentDocument);
+
+            if (tabCount > 1) AddTab();
+
+            DocumentInfo info = fileInteraction.open(GetCurrentDocument, Int16.Parse(documentTab.SelectedTab.Name));
 
             // Set the tab name and text to the filename
-            documentTab.SelectedTab.Text = fileName;
-            documentTab.SelectedTab.Name = fileName;
+            documentTab.SelectedTab.Text = info.FileName;
+            documentTab.SelectedTab.Name = info.ID + ""; 
         }
 
         /// <summary>Called when the 'Save' menu item is pressed</summary>
@@ -751,9 +755,12 @@ namespace AsysEditor.Forms
             if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
             {
                 console.Append(GetTime() + "Preparing to save a file");
-                string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
+
+                DocumentInfo info = fileInteraction.save(GetCurrentDocument, Int16.Parse(documentTab.SelectedTab.Name));
+
                 // Set the tab text to the filename
-                documentTab.SelectedTab.Text = fileName;
+                documentTab.SelectedTab.Text = info.FileName;
+                documentTab.SelectedTab.Name = info.ID +"";
             }
         }
 
@@ -763,11 +770,12 @@ namespace AsysEditor.Forms
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing to save a file");
-            string fileName = Path.GetFileName(fileInteraction.saveAs(GetCurrentDocument, documentTab.SelectedTab.Name));
 
+            DocumentInfo info = fileInteraction.saveAs(GetCurrentDocument, documentTab.SelectedTab.Text, Int16.Parse(documentTab.SelectedTab.Name));
+            
             // Set the tab name and text to the filename
-            documentTab.SelectedTab.Name = fileName;
-            documentTab.SelectedTab.Text = fileName;
+            documentTab.SelectedTab.Text = info.FileName;
+            documentTab.SelectedTab.Name = info.ID + "";
         }
 
         // Context Menu
@@ -780,9 +788,12 @@ namespace AsysEditor.Forms
             if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
             {
                 console.Append(GetTime() + "Preparing to save a file");
-                string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
+
+                DocumentInfo info = fileInteraction.save(GetCurrentDocument, Int16.Parse(documentTab.SelectedTab.Name));
+
                 // Set the tab text to the filename
-                documentTab.SelectedTab.Text = fileName;
+                documentTab.SelectedTab.Text = info.FileName;
+                documentTab.SelectedTab.Name = info.ID + "";
             }
         }
 
@@ -793,12 +804,14 @@ namespace AsysEditor.Forms
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Preparing to open a file");
-            if (GetCurrentDocument.Text != String.Empty) AddTab();
-            string fileName = fileInteraction.open(GetCurrentDocument);
+
+            if (tabCount > 1) AddTab();
+
+            DocumentInfo info = fileInteraction.open(GetCurrentDocument, Int16.Parse(documentTab.SelectedTab.Name));
 
             // Set the tab name and text to the filename
-            documentTab.SelectedTab.Text = fileName;
-            documentTab.SelectedTab.Name = fileName;
+            documentTab.SelectedTab.Text = info.FileName;
+            documentTab.SelectedTab.Name = info.ID + ""; 
         }
 
         // Sidebar
@@ -811,10 +824,12 @@ namespace AsysEditor.Forms
             if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
             {
                 console.Append(GetTime() + "Preparing to save a file");
-                string fileName = Path.GetFileName(fileInteraction.save(GetCurrentDocument, documentTab.SelectedTab.Name));
+
+                DocumentInfo info = fileInteraction.save(GetCurrentDocument, Int16.Parse(documentTab.SelectedTab.Name));
 
                 // Set the tab text to the filename
-                documentTab.SelectedTab.Text = fileName;
+                documentTab.SelectedTab.Text = info.FileName;
+                documentTab.SelectedTab.Name = info.ID + "";
             }
         }
 
@@ -845,7 +860,10 @@ namespace AsysEditor.Forms
             {
                 if (GetCurrentDocument.Text != String.Empty) AddTab();
 
-                documentTab.SelectedTab.Text = Path.GetFileName(fileInteraction.silentOpen(GetCurrentDocument, file));
+                DocumentInfo info = fileInteraction.silentOpen(GetCurrentDocument, file, Int16.Parse(documentTab.SelectedTab.Name));
+
+                documentTab.SelectedTab.Text = info.FileName;
+                documentTab.SelectedTab.Name = info.ID + "";
             }
         }
 
