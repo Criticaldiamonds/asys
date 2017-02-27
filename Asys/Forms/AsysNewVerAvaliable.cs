@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 using System.Net;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 
 using AsysEditor.Classes;
 
@@ -78,9 +80,31 @@ namespace AsysEditor.Forms
             if (!alreadyRunningInstaller)
             {
                 alreadyRunningInstaller = true;
-                Process.Start(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi");
+                // Process.Start(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi");
                 Asys.SetShouldClose(true);
                 Asys.console.SetShouldClose();
+                
+                var assembly = Assembly.GetExecutingAssembly();
+
+                using (Stream input = assembly.GetManifestResourceStream("AsysEditor.Supplementary_Files._install.bat"))
+                using (Stream output = File.Create(KnownFolders.GetPath(KnownFolder.Downloads) + @"\____.bat"))
+                {
+                    CopyStream(input, output);
+                }
+
+                var process = new Process
+                {
+                    StartInfo =
+                    {
+                        Arguments = "\"" + KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi" + "\""
+                    }
+                };
+                process.StartInfo.FileName = (KnownFolders.GetPath(KnownFolder.Downloads) + @"\____.bat");
+
+                bool b = process.Start();
+
+                // string[] assembelies = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
+
                 Application.Exit();
             }
         }
@@ -88,6 +112,23 @@ namespace AsysEditor.Forms
         private void btnWait_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new AsysChangelogViewer("https://dl.dropboxusercontent.com/u/276558657/Asys/changelog.rtf").Show();
+        }
+
+        public static void CopyStream(Stream input, Stream output)
+        {
+            // Insert null checking here for production
+            byte[] buffer = new byte[8192];
+
+            int bytesRead;
+            while ((bytesRead = input.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                output.Write(buffer, 0, bytesRead);
+            }
         }
     }
 }

@@ -26,29 +26,37 @@ namespace AsysEditor.Classes
 
         private void ProcessVersion(string curVer, string newVer)
         {
-            string[] curVersion = curVer.Split('.');
-            string[] newVersion = newVer.Split('.');
+            newVer = "10.0.0";
 
-            int[] curv = curVersion.Select(int.Parse).ToArray();
-            int[] newv = newVersion.Select(int.Parse).ToArray();
-
-            bool update = false;
-
-            for (int i = 0; i < curv.Length; i++)
+            if (newVer == "error")
             {
-                if (newv[i] > curv[i])
+                System.Windows.Forms.MessageBox.Show("Unable to connect to update site", "Asys Updater");
+            }
+            else
+            {
+                string[] curVersion = curVer.Split('.');
+                string[] newVersion = newVer.Split('.');
+
+                int[] curv = curVersion.Select(int.Parse).ToArray();
+                int[] newv = newVersion.Select(int.Parse).ToArray();
+
+                bool update = false;
+
+                for (int i = 0; i < curv.Length; i++)
                 {
-                    Asys.console.Append(Asys.GetTime() + "Update Found! Showing update dialog");
-                    update = true;
-                    new AsysNewVerAvaliable(curVer, newVer).ShowDialog();
-                    break;
+                    if (newv[i] > curv[i])
+                    {
+                        Asys.console.Append(Asys.GetTime() + "Update Found! Showing update dialog");
+                        update = true;
+                        new AsysNewVerAvaliable(curVer, newVer).ShowDialog();
+                        break;
+                    }
+                }
+                if (!update)
+                {
+                    Asys.console.Append(Asys.GetTime() + "No Update Found");
                 }
             }
-            if (!update)
-            {
-                Asys.console.Append(Asys.GetTime() + "No Update Found");
-            }
-
         }
 
     }

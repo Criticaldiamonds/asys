@@ -791,13 +791,16 @@ namespace AsysEditor.Forms
         /// <param name="e"></param>
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            console.Append(GetTime() + "Preparing to save a file");
+            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
+            {
+                console.Append(GetTime() + "Preparing to save a file");
 
-            DocumentInfo info = fileInteraction.saveAs(GetCurrentDocument, documentTab.SelectedTab.Text, Int16.Parse(documentTab.SelectedTab.Name));
-            
-            // Set the tab name and text to the filename
-            documentTab.SelectedTab.Text = info.FileName;
-            documentTab.SelectedTab.Name = info.ID + "";
+                DocumentInfo info = fileInteraction.saveAs(GetCurrentDocument, documentTab.SelectedTab.Text, Int16.Parse(documentTab.SelectedTab.Name));
+
+                // Set the tab name and text to the filename
+                documentTab.SelectedTab.Text = info.FileName;
+                documentTab.SelectedTab.Name = info.ID + "";
+            }
         }
 
         // Context Menu

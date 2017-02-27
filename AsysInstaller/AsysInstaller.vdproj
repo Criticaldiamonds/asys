@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_85B19A7D3D9947AF844D54CCB932A1E9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8CF359C7DA0D49909C8569B8F6432217"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -35,12 +41,6 @@
         {
         "MsmKey" = "8:_96B4AD7124A34B98A16EEFFFD1B931DC"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AE94F148A76BE8631953776A16C27392"
-        "OwnerKey" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,7 +64,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AE94F148A76BE8631953776A16C27392"
+        "OwnerKey" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_85B19A7D3D9947AF844D54CCB932A1E9"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -182,6 +188,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_85B19A7D3D9947AF844D54CCB932A1E9"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:RichTextBoxPrintCtrl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_85B19A7D3D9947AF844D54CCB932A1E9"
+                    {
+                    "Name" = "8:RichTextBoxPrintCtrl.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\RichTextBoxPrintCtrl\\bin\\Debug\\RichTextBoxPrintCtrl.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_FAA3AD7E853E4DE2A27A03EC26633AE4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8CF359C7DA0D49909C8569B8F6432217"
             {
             "SourcePath" = "8:..\\Asys\\assets\\Asys_small_ICO_81x105.ico"
@@ -240,37 +277,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AE94F148A76BE8631953776A16C27392"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RichTextBoxPrintCtrl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_AE94F148A76BE8631953776A16C27392"
-                    {
-                    "Name" = "8:RichTextBoxPrintCtrl.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:RichTextBoxPrintCtrl.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_FAA3AD7E853E4DE2A27A03EC26633AE4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B8EC0DD1C8E34A49862027EC8C747619"
@@ -440,7 +446,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Asys"
         "ProductCode" = "8:{B38615FC-7F74-4F9D-A334-7DC4F1D8272B}"
-        "PackageCode" = "8:{D9D4FB32-F603-4082-8F0D-16F59771E57B}"
+        "PackageCode" = "8:{9B5551E4-06B4-4A5D-83B5-01783756BBCC}"
         "UpgradeCode" = "8:{0B18DBE6-243D-43F9-85FC-9118C440B6BA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -448,7 +454,7 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.2.7"
-        "Manufacturer" = "8:Criticaldiamonds"
+        "Manufacturer" = "8:Waterleap"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Asys"

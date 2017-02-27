@@ -61,6 +61,21 @@ namespace AsysEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @echo off
+        ///set arg1=%1
+        ///shift
+        ///taskkill /im asys.exe
+        ///REM msiexec /i %arg1% /quiet
+        ///echo %1%
+        ///pause.
+        /// </summary>
+        internal static string _install {
+            get {
+                return ResourceManager.GetString("_install", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap align_center {
@@ -141,27 +156,6 @@ namespace AsysEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Project Gutenberg EBook of The Adventures of Sherlock Holmes
-        ///by Sir Arthur Conan Doyle
-        ///(#15 in our series by Sir Arthur Conan Doyle)
-        ///
-        ///Copyright laws are changing all over the world. Be sure to check the
-        ///copyright laws for your country before downloading or redistributing
-        ///this or any other Project Gutenberg eBook.
-        ///
-        ///This header should be the first thing seen when viewing this Project
-        ///Gutenberg file.  Please do not remove it.  Do not change or edit the
-        ///header without written permission.
-        ///
-        ///Please [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string big {
-            get {
-                return ResourceManager.GetString("big", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap bullet_list {
@@ -172,11 +166,10 @@ namespace AsysEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Microsoft Sans Serif;}{\f1\fswiss\fprq2\fcharset0 Calibri Light;}{\f2\fnil Calibri Light;}{\f3\fnil\fcharset2 Symbol;}}
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fswiss\fprq2\fcharset0 Microsoft Sans Serif;}{\f2\fswiss\fprq2\fcharset0 Calibri Light;}{\f3\fnil\fcharset0 Calibri Light;}{\f4\fnil Calibri Light;}{\f5\fnil\fcharset2 Symbol;}}
         ///\viewkind4\uc1\pard\nowidctlpar\f0\fs17{\pict\wmetafile8\picw2142\pich2777\picwgoal1214\pichgoal1574 
         ///0100090000034232000000002c3200000000050000000b0200000000050000000c02d90a5e082c
-        ///320000430f2000cc0000006900510000000000d90a5e0800000000280000005100000069000000
-        ///010018000000000014640000c40e0000c40e [rest of string was truncated]&quot;;.
+        ///320000430f2000cc0000006900510000000000d [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Changelog {
             get {

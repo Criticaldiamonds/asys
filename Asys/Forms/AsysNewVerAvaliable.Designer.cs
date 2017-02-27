@@ -37,6 +37,7 @@
             this.btnWait = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -82,7 +83,7 @@
             // 
             this.lnkDownloadNow.AutoSize = true;
             this.lnkDownloadNow.LinkColor = System.Drawing.Color.Blue;
-            this.lnkDownloadNow.Location = new System.Drawing.Point(12, 154);
+            this.lnkDownloadNow.Location = new System.Drawing.Point(9, 176);
             this.lnkDownloadNow.Name = "lnkDownloadNow";
             this.lnkDownloadNow.Size = new System.Drawing.Size(101, 17);
             this.lnkDownloadNow.TabIndex = 4;
@@ -93,7 +94,7 @@
             // 
             // btnWait
             // 
-            this.btnWait.Location = new System.Drawing.Point(313, 154);
+            this.btnWait.Location = new System.Drawing.Point(309, 176);
             this.btnWait.Name = "btnWait";
             this.btnWait.Size = new System.Drawing.Size(98, 42);
             this.btnWait.TabIndex = 5;
@@ -103,7 +104,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(16, 175);
+            this.progressBar1.Location = new System.Drawing.Point(12, 197);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(295, 21);
             this.progressBar1.TabIndex = 6;
@@ -114,18 +115,30 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(119, 154);
+            this.checkBox1.Location = new System.Drawing.Point(116, 176);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(184, 21);
             this.checkBox1.TabIndex = 7;
             this.checkBox1.Text = "Run Installer when Done";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(12, 154);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(133, 17);
+            this.linkLabel1.TabIndex = 8;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "View the Changelog";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // AsysNewVerAvaliable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 210);
+            this.ClientSize = new System.Drawing.Size(423, 226);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnWait);
@@ -155,5 +168,6 @@
         private System.Windows.Forms.Button btnWait;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

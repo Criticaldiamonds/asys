@@ -52,20 +52,48 @@ namespace AsysEditor.Forms
         {
             string currentWord = String.Empty;
             string correction = String.Empty;
-            
+                        
             while (correction.Equals(currentWord, StringComparison.InvariantCultureIgnoreCase))
             {
                 if (queue.Count <= 0) break;
 
                 currentWord = queue.Dequeue();
-                currentWord = Regex.Replace(currentWord.ToLower(), @"[\W_]", string.Empty);
+                currentWord = Clean(currentWord);
+
                 correction = spellCheck.Correct(currentWord);
             }
 
-            txtMisspelledWord.Text = currentWord;
+            txtMisspelledWord.Text = Clean(currentWord);
             txtCorrection.Text = correction;
 
             if (txtMisspelledWord.Text == String.Empty) MessageBox.Show("Finished scanning the document");
+        }
+
+        /// <summary>
+        /// Removes excess characters from the input string
+        /// </summary>
+        /// <param name="?"></param>
+        private string Clean(string input)
+        {
+            input = input.Trim();
+            string cleanedString;
+                                                            // Remove these characters
+            cleanedString = Regex.Replace(input.ToLower(), "[_0123456789\"\'<>|\\/@#$%^&*()\\[\\]\\{\\}+=]", string.Empty);
+
+            // Remove punctuation
+            if (cleanedString.EndsWith(".") || cleanedString.EndsWith(",") || cleanedString.EndsWith(":") || cleanedString.EndsWith(";") ||
+                cleanedString.EndsWith("!") || cleanedString.EndsWith("?") || cleanedString.EndsWith("\"") || cleanedString.EndsWith("\'"))
+            {
+                cleanedString = cleanedString.Substring(0, cleanedString.Length - 1);
+            }
+
+            // Remove prefixes
+            if (cleanedString.StartsWith("\"") || cleanedString.StartsWith("\'"))
+            {
+                cleanedString = cleanedString.Substring(1);
+            }
+
+            return cleanedString;
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
