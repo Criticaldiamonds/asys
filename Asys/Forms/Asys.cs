@@ -32,7 +32,7 @@ namespace AsysEditor.Forms
         private AsysUpdater updater;
         /// <summary>Implementation of the console window</summary>
         public static AsysConsole console;
-
+        
         /// <summary>Represents the number of tabs currently open</summary>
         private int tabCount = 0;
         /// <summary>Used as part of the printing system</summary>
@@ -192,23 +192,42 @@ namespace AsysEditor.Forms
         /// <summary>Removes the current tab from the tab-control</summary>
         public void RemoveTab()
         {
-            if (documentTab.TabPages.Count != 1)
+            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
             {
-                // Remove the tab from the file map
-                fileInteraction.RemoveFile(Int16.Parse(documentTab.SelectedTab.Name));
-                documentTab.TabPages.Remove(documentTab.SelectedTab);
-                tabCount -= 1;
-                documentTab.SelectedIndex = documentTab.TabPages.Count - 1;
-                console.Append(GetTime() + "Tab successfully removed");
+
+                if (documentTab.TabPages.Count != 1)
+                {
+                    // Remove the tab from the file map
+                    fileInteraction.RemoveFile(Int16.Parse(documentTab.SelectedTab.Name));
+                    documentTab.TabPages.Remove(documentTab.SelectedTab);
+                    tabCount -= 1;
+                    documentTab.SelectedIndex = documentTab.TabPages.Count - 1;
+                    console.Append(GetTime() + "Tab successfully removed");
+                }
+                else
+                {
+                    // Remove the tab from the file map and create a new tab
+                    fileInteraction.RemoveFile(Int16.Parse(documentTab.SelectedTab.Name));
+                    documentTab.TabPages.Remove(documentTab.SelectedTab);
+                    tabCount -= 1;
+                    console.Append(GetTime() + "Tab successfully removed");
+                    AddTab();
+                }
             }
             else
             {
-                // Remove the tab from the file map and create a new tab
-                fileInteraction.RemoveFile(Int16.Parse(documentTab.SelectedTab.Name));
-                documentTab.TabPages.Remove(documentTab.SelectedTab);
-                tabCount -= 1;
-                console.Append(GetTime() + "Tab successfully removed");
-                AddTab();
+                if (documentTab.TabPages.Count != 1)
+                {
+                    documentTab.TabPages.Remove(documentTab.SelectedTab);
+                    tabCount -= 1;
+                    documentTab.SelectedIndex = documentTab.TabPages.Count - 1;
+                }
+                else
+                {
+                    tabCount -= 1;
+                    console.Append(GetTime() + "Tab successfully removed");
+                    AddTab();
+                }
             }
         }
 
@@ -1420,6 +1439,11 @@ namespace AsysEditor.Forms
         }
 
         #endregion Shutdown
-        
+
+        private void spellCheckerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AsysSpellCheck spellcheck = new AsysSpellCheck(GetCurrentDocument);
+            spellcheck.Show();
+        }
     }
 }

@@ -58,13 +58,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AE94F148A76BE8631953776A16C27392"
+        "OwnerKey" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FDF4A8B60999483BB36AB7BC92BF917E"
+        "OwnerKey" = "8:_AE94F148A76BE8631953776A16C27392"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -439,15 +439,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Asys"
-        "ProductCode" = "8:{503373AC-B9CD-4320-945E-8DC4058D1193}"
-        "PackageCode" = "8:{1AFA59DB-1DDA-4952-A500-6D667B60B57E}"
+        "ProductCode" = "8:{B38615FC-7F74-4F9D-A334-7DC4F1D8272B}"
+        "PackageCode" = "8:{D9D4FB32-F603-4082-8F0D-16F59771E57B}"
         "UpgradeCode" = "8:{0B18DBE6-243D-43F9-85FC-9118C440B6BA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.2.6"
+        "ProductVersion" = "8:1.2.7"
         "Manufacturer" = "8:Criticaldiamonds"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -635,7 +635,7 @@
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1F316599E2364050A5635DF54CE23238"
             {
             "Name" = "8:Uninstall Asys"
-            "Arguments" = "8:/x {503373AC-B9CD-4320-945E-8DC4058D1193}"
+            "Arguments" = "8:/x {B38615FC-7F74-4F9D-A334-7DC4F1D8272B}"
             "Description" = "8:Removes Asys from your computer"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"

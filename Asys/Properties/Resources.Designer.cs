@@ -141,6 +141,27 @@ namespace AsysEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Project Gutenberg EBook of The Adventures of Sherlock Holmes
+        ///by Sir Arthur Conan Doyle
+        ///(#15 in our series by Sir Arthur Conan Doyle)
+        ///
+        ///Copyright laws are changing all over the world. Be sure to check the
+        ///copyright laws for your country before downloading or redistributing
+        ///this or any other Project Gutenberg eBook.
+        ///
+        ///This header should be the first thing seen when viewing this Project
+        ///Gutenberg file.  Please do not remove it.  Do not change or edit the
+        ///header without written permission.
+        ///
+        ///Please [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string big {
+            get {
+                return ResourceManager.GetString("big", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap bullet_list {
@@ -230,6 +251,91 @@ namespace AsysEditor.Properties {
             get {
                 object obj = ResourceManager.GetObject("doc_toolbar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;c
+        ///&apos;d
+        ///&apos;em
+        ///&apos;ll
+        ///&apos;m
+        ///&apos;mid
+        ///&apos;midst
+        ///&apos;mongst
+        ///&apos;prentice
+        ///&apos;re
+        ///&apos;s
+        ///&apos;sblood
+        ///&apos;sbodikins
+        ///&apos;sdeath
+        ///&apos;sfoot
+        ///&apos;sheart
+        ///&apos;shun
+        ///&apos;slid
+        ///&apos;slife
+        ///&apos;slight
+        ///&apos;snails
+        ///&apos;strewth
+        ///&apos;t
+        ///&apos;til
+        ///&apos;tis
+        ///&apos;twas
+        ///&apos;tween
+        ///&apos;twere
+        ///&apos;twill
+        ///&apos;twixt
+        ///&apos;twould
+        ///&apos;un
+        ///&apos;ve
+        ///1080
+        ///10th
+        ///1st
+        ///2
+        ///2nd
+        ///3rd
+        ///4th
+        ///5th
+        ///6th
+        ///7th
+        ///8th
+        ///9th
+        ///a
+        ///a&apos;
+        ///a&apos;s
+        ///a/c
+        ///a1
+        ///aa
+        ///aaa
+        ///aah
+        ///aahed
+        ///aahing
+        ///aahs
+        ///aal
+        ///aalii
+        ///aaliis
+        ///aals
+        ///aam
+        ///aardvark
+        ///aardvarks
+        ///aardwolf
+        ///aardwolves
+        ///aargh
+        ///aaron
+        ///aaronic
+        ///aarrgh
+        ///aarrghh
+        ///aas
+        ///aasvogel
+        ///aasvogels
+        ///ab
+        ///aba
+        ///abac
+        ///abaca [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string smaller {
+            get {
+                return ResourceManager.GetString("smaller", resourceCulture);
             }
         }
         

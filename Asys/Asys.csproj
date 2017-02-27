@@ -28,7 +28,7 @@
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.2.6.0</ApplicationVersion>
+    <ApplicationVersion>1.2.7.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -104,6 +104,7 @@
     <Compile Include="Classes\DocumentInfo.cs" />
     <Compile Include="Classes\DocumentInteraction.cs" />
     <Compile Include="Classes\EFileType.cs" />
+    <Compile Include="Classes\SpellCheck.cs" />
     <Compile Include="Classes\UCID.cs" />
     <Compile Include="Forms\AsysAbout.cs">
       <SubType>Form</SubType>
@@ -158,6 +159,12 @@
     <Compile Include="Classes\FileInteraction.cs" />
     <Compile Include="Classes\KnownFolders.cs" />
     <Compile Include="Classes\Program.cs" />
+    <Compile Include="Forms\AsysSpellCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AsysSpellCheck.Designer.cs">
+      <DependentUpon>AsysSpellCheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AsysAbout.resx">
       <DependentUpon>AsysAbout.cs</DependentUpon>
@@ -183,6 +190,9 @@
     <EmbeddedResource Include="Forms\Asys.resx">
       <DependentUpon>Asys.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AsysSpellCheck.resx">
+      <DependentUpon>AsysSpellCheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -225,6 +235,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\Asys_small_fileICO_256x256.ico" />
+    <EmbeddedResource Include="Resources\smaller.txt" />
+    <EmbeddedResource Include="Resources\big.txt" />
     <None Include="assets\Documentation\doc_menu_strip.PNG" />
     <None Include="assets\Documentation\doc_sidebar.PNG" />
     <None Include="assets\Documentation\doc_toolbar.PNG" />
