@@ -104,6 +104,7 @@
     <Compile Include="Classes\DocumentInfo.cs" />
     <Compile Include="Classes\DocumentInteraction.cs" />
     <Compile Include="Classes\EFileType.cs" />
+    <Compile Include="Classes\EStrings.cs" />
     <Compile Include="Classes\SpellCheck.cs" />
     <Compile Include="Classes\UCID.cs" />
     <Compile Include="Forms\AsysAbout.cs">
@@ -124,7 +125,13 @@
     <Compile Include="Forms\AsysConsole.Designer.cs">
       <DependentUpon>AsysConsole.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\AsysExternalStringParser.cs" />
+    <Compile Include="Classes\ExternalStringParser.cs" />
+    <Compile Include="Forms\AsysDevMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AsysDevMsg.Designer.cs">
+      <DependentUpon>AsysDevMsg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AsysNewVerAvaliable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,7 +168,7 @@
     <Compile Include="Forms\Asys.Designer.cs">
       <DependentUpon>Asys.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\AsysUpdater.cs" />
+    <Compile Include="Classes\Updater.cs" />
     <Compile Include="Classes\FileInteraction.cs" />
     <Compile Include="Classes\KnownFolders.cs" />
     <Compile Include="Classes\Program.cs" />
@@ -180,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AsysConsole.resx">
       <DependentUpon>AsysConsole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AsysDevMsg.resx">
+      <DependentUpon>AsysDevMsg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AsysNewVerAvaliable.resx">
       <DependentUpon>AsysNewVerAvaliable.cs</DependentUpon>
@@ -208,6 +218,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Supplementary Files\app.manifest" />
     <None Include="assets\buttons\bullet_list.png" />
     <EmbeddedResource Include="assets\rtf\Changelog.rtf" />
@@ -244,8 +255,12 @@
     <None Include="assets\Asys_small_ICO_81x105.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="assets\help\asys.html" />
+    <EmbeddedResource Include="assets\help\index.html" />
+    <EmbeddedResource Include="assets\help\rtf.html" />
+    <None Include="assets\Asys_small_256x256.png" />
     <Content Include="assets\Asys_small_fileICO_256x256.ico" />
-    <EmbeddedResource Include="Resources\smaller.txt" />
+    <EmbeddedResource Include="assets\txt\smaller.txt" />
     <None Include="assets\Documentation\doc_menu_strip.PNG" />
     <None Include="assets\Documentation\doc_sidebar.PNG" />
     <None Include="assets\Documentation\doc_toolbar.PNG" />
@@ -289,6 +304,7 @@
       <Name>RichTextBoxPrintCtrl</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

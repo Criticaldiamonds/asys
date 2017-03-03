@@ -6,6 +6,7 @@ using System.Drawing.Text;
 using System.IO;
 
 using System.Reflection;
+using System.Diagnostics;
 
 using AsysControls;
 
@@ -29,7 +30,7 @@ namespace AsysEditor.Forms
         /// <summary>Implementation of the DocumentInteraction class used by the form</summary>
         private DocumentInteraction documentInteraction;
         /// <summary>Implementation of the Asys Updater system</summary>
-        private AsysUpdater updater;
+        private Updater updater;
         /// <summary>Implementation of the console window</summary>
         public static AsysConsole console;
         
@@ -89,7 +90,7 @@ namespace AsysEditor.Forms
             fileInteraction.Init(console);
             documentInteraction = new DocumentInteraction();
 
-            updater = new AsysUpdater();
+            updater = new Updater();
 
             // Display toolars based on user preferences
             sidebarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowSidebar;
@@ -134,6 +135,24 @@ namespace AsysEditor.Forms
 
             // Start the updater
             updater.Start(AsysAbout.AsysVersion);
+
+            // Show developer message
+            AsysDevMsg devmsg = new AsysDevMsg();
+            string curMessage = devmsg.CurrentMessage;
+            if (curMessage.Equals(Properties.Settings.Default.sysPreviousDevMsg))
+            {
+                if (Properties.Settings.Default.prefShowDevMsg)
+                {
+                    devmsg.Show();
+                }
+            }
+            else
+            {
+                Properties.Settings.Default.prefShowDevMsg = true;
+                Properties.Settings.Default.sysPreviousDevMsg = curMessage;
+                Properties.Settings.Default.Save();
+                devmsg.Show();
+            }
 
             // Load stuff
             TabGenerator();
@@ -1001,8 +1020,8 @@ namespace AsysEditor.Forms
         /// <param name="e"></param>
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            console.Append(GetTime() + "Updating visability preferences");
-            new AsysHelpDialog().Show();
+            console.Append(GetTime() + "Launching Help dialog");
+            // new AsysHelpDialog().Show(); 
         }
 
         /// <summary>Called when the user clicks the 'Preferences' button</summary>

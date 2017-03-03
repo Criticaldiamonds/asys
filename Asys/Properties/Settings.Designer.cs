@@ -118,5 +118,29 @@ namespace AsysEditor.Properties {
                 this["sysWinSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool prefShowDevMsg {
+            get {
+                return ((bool)(this["prefShowDevMsg"]));
+            }
+            set {
+                this["prefShowDevMsg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string sysPreviousDevMsg {
+            get {
+                return ((string)(this["sysPreviousDevMsg"]));
+            }
+            set {
+                this["sysPreviousDevMsg"] = value;
+            }
+        }
     }
 }

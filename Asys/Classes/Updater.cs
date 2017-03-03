@@ -8,17 +8,15 @@ using AsysEditor.Forms;
 
 namespace AsysEditor.Classes
 {
-    class AsysUpdater
+    class Updater
     {
-        private string a_prefs_url = "https://dl.dropboxusercontent.com/u/276558657/Asys/asys.a_prefs";
-
         public void Start(string curv)
         {
-            AsysExternalStringParser aesp = new AsysExternalStringParser();
-            aesp.Load(a_prefs_url);
-            string newv = aesp.GetKey("VERSION");
+            ExternalStringParser esp = new ExternalStringParser();
+            esp.Load(EStrings.AsysPrefs_NEW.ToString());
+            string newv = esp.ParseKey("version");
 
-            if (!(newv == ""))
+            if (!newv.Equals(string.Empty))
             {
                 ProcessVersion(curv, newv);
             }
@@ -26,9 +24,9 @@ namespace AsysEditor.Classes
 
         private void ProcessVersion(string curVer, string newVer)
         {
-            newVer = "10.0.0";
+            // For testing only newVer = "10.0.0";
 
-            if (newVer == "error")
+            if (newVer.Equals("error"))
             {
                 System.Windows.Forms.MessageBox.Show("Unable to connect to update site", "Asys Updater");
             }
