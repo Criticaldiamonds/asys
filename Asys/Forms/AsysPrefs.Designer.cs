@@ -44,7 +44,7 @@
             // 
             this.pictureBox1.Image = global::AsysEditor.Properties.Resources.Asys_small_81x105;
             this.pictureBox1.Location = new System.Drawing.Point(9, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(61, 85);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -66,7 +66,7 @@
             // 
             this.chkWelcome.AutoSize = true;
             this.chkWelcome.Location = new System.Drawing.Point(9, 100);
-            this.chkWelcome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkWelcome.Margin = new System.Windows.Forms.Padding(2);
             this.chkWelcome.Name = "chkWelcome";
             this.chkWelcome.Size = new System.Drawing.Size(151, 17);
             this.chkWelcome.TabIndex = 2;
@@ -77,7 +77,7 @@
             // 
             this.chkChangelog.AutoSize = true;
             this.chkChangelog.Location = new System.Drawing.Point(9, 122);
-            this.chkChangelog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkChangelog.Margin = new System.Windows.Forms.Padding(2);
             this.chkChangelog.Name = "chkChangelog";
             this.chkChangelog.Size = new System.Drawing.Size(157, 17);
             this.chkChangelog.TabIndex = 3;
@@ -87,7 +87,7 @@
             // btnApply
             // 
             this.btnApply.Location = new System.Drawing.Point(189, 184);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(2);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(61, 23);
             this.btnApply.TabIndex = 4;
@@ -99,7 +99,7 @@
             // 
             this.chkWinSizeLoc.AutoSize = true;
             this.chkWinSizeLoc.Location = new System.Drawing.Point(10, 145);
-            this.chkWinSizeLoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkWinSizeLoc.Margin = new System.Windows.Forms.Padding(2);
             this.chkWinSizeLoc.Name = "chkWinSizeLoc";
             this.chkWinSizeLoc.Size = new System.Drawing.Size(178, 17);
             this.chkWinSizeLoc.TabIndex = 5;
@@ -125,6 +125,7 @@
             this.linkLabel1.TabIndex = 7;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Check for Updates";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // AsysPrefs
             // 
@@ -141,7 +142,7 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AsysPrefs";

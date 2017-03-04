@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asys", "Asys\Asys.csproj", "{54850A73-FC43-4553-8961-C3F7CFEB43F8}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AsysInstaller", "AsysInstaller\AsysInstaller.vdproj", "{12866F1F-981C-4592-ACDF-7E39B6348687}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichTextBoxPrintCtrl", "RichTextBoxPrintCtrl\RichTextBoxPrintCtrl.csproj", "{3326496C-9C7E-4ED7-9E59-222DF0D05CAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateAsys_", "Updater\UpdateAsys_.csproj", "{BBFA21A9-BD88-4EB9-9C53-F4EC6EF84EF5}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AsysInstaller", "AsysInstaller\AsysInstaller.vdproj", "{589630DB-63D7-43A8-A3A3-EF0089D94FE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +21,18 @@ Global
 		{54850A73-FC43-4553-8961-C3F7CFEB43F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54850A73-FC43-4553-8961-C3F7CFEB43F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54850A73-FC43-4553-8961-C3F7CFEB43F8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12866F1F-981C-4592-ACDF-7E39B6348687}.Debug|Any CPU.ActiveCfg = Debug
-		{12866F1F-981C-4592-ACDF-7E39B6348687}.Release|Any CPU.ActiveCfg = Release
 		{3326496C-9C7E-4ED7-9E59-222DF0D05CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3326496C-9C7E-4ED7-9E59-222DF0D05CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3326496C-9C7E-4ED7-9E59-222DF0D05CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3326496C-9C7E-4ED7-9E59-222DF0D05CAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBFA21A9-BD88-4EB9-9C53-F4EC6EF84EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBFA21A9-BD88-4EB9-9C53-F4EC6EF84EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBFA21A9-BD88-4EB9-9C53-F4EC6EF84EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBFA21A9-BD88-4EB9-9C53-F4EC6EF84EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{589630DB-63D7-43A8-A3A3-EF0089D94FE4}.Debug|Any CPU.ActiveCfg = Debug
+		{589630DB-63D7-43A8-A3A3-EF0089D94FE4}.Debug|Any CPU.Build.0 = Debug
+		{589630DB-63D7-43A8-A3A3-EF0089D94FE4}.Release|Any CPU.ActiveCfg = Release
+		{589630DB-63D7-43A8-A3A3-EF0089D94FE4}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

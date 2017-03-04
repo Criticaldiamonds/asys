@@ -19,7 +19,7 @@ namespace AsysEditor.Forms
 
         private void AsysPrefs_Load(object sender, EventArgs e)
         {
-            chkWelcome.Checked = Properties.Settings.Default.prefShowWelcome;            
+            chkWelcome.Checked = Properties.Settings.Default.prefShowWelcome;
             chkChangelog.Checked = Properties.Settings.Default.prefShowChangelog;
             chkWinSizeLoc.Checked = Properties.Settings.Default.prefSaveLoc;
             chkDisableUpdater.Checked = Properties.Settings.Default.prefDisableAutoUpdate;
@@ -45,10 +45,15 @@ namespace AsysEditor.Forms
             if (chkDisableUpdater.Checked)
                 Properties.Settings.Default.prefDisableAutoUpdate = true;
             else
-                Properties.Settings.Default.prefDisableAutoUpdate = true;
+                Properties.Settings.Default.prefDisableAutoUpdate = false;
 
             Properties.Settings.Default.Save();
             this.Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Asys.LaunchUpdater(true);
         }
     }
 }

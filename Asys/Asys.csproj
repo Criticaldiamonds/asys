@@ -28,7 +28,7 @@
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.2.7.0</ApplicationVersion>
+    <ApplicationVersion>1.2.8.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -303,6 +303,10 @@
     <ProjectReference Include="..\RichTextBoxPrintCtrl\RichTextBoxPrintCtrl.csproj">
       <Project>{3326496c-9c7e-4ed7-9e59-222df0d05caa}</Project>
       <Name>RichTextBoxPrintCtrl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Updater\UpdateAsys_.csproj">
+      <Project>{bbfa21a9-bd88-4eb9-9c53-f4ec6ef84ef5}</Project>
+      <Name>UpdateAsys_</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

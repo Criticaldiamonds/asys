@@ -30,7 +30,7 @@ namespace AsysEditor.Forms
         /// <summary>Implementation of the DocumentInteraction class used by the form</summary>
         private DocumentInteraction documentInteraction;
         /// <summary>Implementation of the Asys Updater system</summary>
-        private Updater updater;
+        private static Updater updater;
         /// <summary>Implementation of the console window</summary>
         public static AsysConsole console;
         
@@ -90,8 +90,6 @@ namespace AsysEditor.Forms
             fileInteraction.Init(console);
             documentInteraction = new DocumentInteraction();
 
-            updater = new Updater();
-
             // Display toolars based on user preferences
             sidebarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowSidebar;
             sidebarToolStrip.Visible = Properties.Settings.Default.prefShowSidebar;
@@ -135,7 +133,7 @@ namespace AsysEditor.Forms
 
             // Start the updater
             if (!Properties.Settings.Default.prefDisableAutoUpdate)
-                updater.Start(AsysAbout.AsysVersion);
+                LaunchUpdater(false);
 
             // Show developer message
             AsysDevMsg devmsg = new AsysDevMsg();
@@ -144,7 +142,7 @@ namespace AsysEditor.Forms
             {
                 if (Properties.Settings.Default.prefShowDevMsg)
                 {
-                    devmsg.Show();
+                    devmsg.ShowDialog();
                 }
             }
             else
@@ -152,7 +150,7 @@ namespace AsysEditor.Forms
                 Properties.Settings.Default.prefShowDevMsg = true;
                 Properties.Settings.Default.sysPreviousDevMsg = curMessage;
                 Properties.Settings.Default.Save();
-                devmsg.Show();
+                devmsg.ShowDialog();
             }
 
             // Load stuff
@@ -176,6 +174,15 @@ namespace AsysEditor.Forms
             }
 
             console.Append(GetTime() + "Form done loading");
+        }
+
+        /// <summary>
+        /// Initialize and start the updater
+        /// </summary>
+        public static void LaunchUpdater(bool force)
+        {
+            updater = new Updater();
+            updater.Start(AsysAbout.AsysVersion, force);
         }
 
 

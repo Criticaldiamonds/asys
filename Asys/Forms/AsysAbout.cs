@@ -12,7 +12,7 @@ namespace AsysEditor.Forms
     partial class AsysAbout : Form
     { 
         string                  NAME        = "Asys";
-        static string           VERSION     = "1.2.7";
+        static string           VERSION     = "1.2.8";
         string                  COPYRIGHT   = "Copyright (c) 2017 Giovanni M.";
         string                  COMPANY     = "Waterleap";
 

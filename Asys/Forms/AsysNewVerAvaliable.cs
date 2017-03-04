@@ -20,9 +20,7 @@ namespace AsysEditor.Forms
     public partial class AsysNewVerAvaliable : Form
     {
         string oldver, newver;
-
-        bool alreadyRunningInstaller = false;
-
+        
         public AsysNewVerAvaliable(string o, string n)
         {
             InitializeComponent();
@@ -40,23 +38,29 @@ namespace AsysEditor.Forms
 
         private void lnkDownloadNow_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            update_new();
         }
 
         private void update_new()
         {
             // Download the new version
+
+            btnWait.Enabled = false;
+            lnkDownloadNow.Enabled = false;
+            this.ControlBox = false;
+
             using (WebClient wc = new WebClient())
             {
-                string downloadspath = Application.StartupPath;
-
                 wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                wc.DownloadFileAsync(new System.Uri(EStrings.AsusUpdateEXE.ToString()),
-                    downloadspath + @"\update.exe");
+                wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_Completed);
+
+                wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
+                wc.DownloadFileAsync(new Uri("https://dl.dropboxusercontent.com/u/276558657/Asys/update.exe"), KnownFolders.GetPath(KnownFolder.Downloads) + @"\update.exe");
+                
                 progressBar1.Visible = true;
             }
         }
-
+        
         private void update_old()
         {
             //string downloadspath = KnownFolders.GetPath(KnownFolder.Downloads);
@@ -77,35 +81,39 @@ namespace AsysEditor.Forms
         void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
+        }
 
-            if (progressBar1.Value == 100)
-            {
-                progressBar1.Value = 0;
-                Run();
-            }
+        private void wc_Completed(object sender, AsyncCompletedEventArgs e)
+        {
+            Run();
         }
 
         private void Run()
         {
-            if (alreadyRunningInstaller) return;
+            Process updaterProcess = new Process();
+            updaterProcess.StartInfo.FileName = Application.StartupPath + @"\UpdateAsys_.exe";
+            updaterProcess.StartInfo.Arguments = (char)34 + Application.ExecutablePath + (char)34 + " " +
+                                                            Process.GetCurrentProcess().ProcessName + " " +
+                                                 (char)34 + KnownFolders.GetPath(KnownFolder.Downloads) + (char)34;
+            updaterProcess.Start();
+                                                           
 
-            alreadyRunningInstaller = true;
+            //// Rename the Asys exe file
+            //File.Move(Application.ExecutablePath, Application.ExecutablePath + ".bak");
 
-            // Rename the Asys exe file
-            File.Move(Application.ExecutablePath, Application.ExecutablePath + ".bak");
+            //// Create the batch file
+            //StringBuilder batch = new StringBuilder();
+            //batch.AppendLine("@echo off");
+            //batch.AppendLine("taskkill /IM " + Process.GetCurrentProcess().ProcessName + ".exe /F");
+            //batch.AppendLine("ping localhost > nul");
+            //batch.AppendLine("ren " + (char)34 + KnownFolders.GetPath(KnownFolder.Downloads) + @"\update.exe" + (char)34 + " " + (char)34 + Application.ExecutablePath + (char)34); // (char)34 = quotation mark
+            //batch.AppendLine((char)34 + Application.ExecutablePath + (char)34);
+            //batch.AppendLine("del " + (char)34 + Application.ExecutablePath + ".bak" + (char)34);
+            //batch.AppendLine("del %0");     // self-destruct
 
-            // Create the batch file
-            StringBuilder batch = new StringBuilder();
-            batch.AppendLine("@echo off");
-            batch.AppendLine("taskkill /IM " + Process.GetCurrentProcess().ProcessName + ".exe /F");
-            batch.AppendLine("ping localhost > nul");
-            batch.AppendLine("ren " + (char)34 + Application.StartupPath + @"\update.exe" + (char)34 + " " + (char)34 + Application.ExecutablePath + (char)34); // (char)34 = quotation mark
-            batch.AppendLine((char)34 + Application.ExecutablePath + (char)34);     // (char)34 = quotation mark
-            batch.AppendLine("del %0");     // self-destruct
-
-            // Run the batch file
-            File.WriteAllText(Application.StartupPath + @"\update.bat", batch.ToString(), Encoding.Default);
-            Process.Start(Application.StartupPath + @"\update.bat");
+            //// Run the batch file
+            //File.WriteAllText(Application.StartupPath + @"\update.bat", batch.ToString(), Encoding.Default);
+            //Process.Start(Application.StartupPath + @"\update.bat");
         }
 
         void Install()
