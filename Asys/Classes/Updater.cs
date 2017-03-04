@@ -44,10 +44,27 @@ namespace AsysEditor.Classes
                 {
                     if (newv[i] > curv[i])
                     {
-                        Asys.console.Append(Asys.GetTime() + "Update Found! Showing update dialog");
-                        update = true;
-                        new AsysNewVerAvaliable(curVer, newVer).ShowDialog();
-                        break;
+                        // If the user skipped the previous update
+                        if (Properties.Settings.Default.prefSkipUpdate)
+                        {
+                            // If this update isn't the one the user skipped
+                            if (Properties.Settings.Default.sysSkippedVersion != newVer)
+                            {
+
+                                Asys.console.Append(Asys.GetTime() + "Update Found! Showing update dialog");
+                                update = true;
+                                new AsysNewVerAvaliable(curVer, newVer).ShowDialog();
+                                break;
+                            }
+                        }
+                        // The user didn't skip any updates
+                        else
+                        {
+                            Asys.console.Append(Asys.GetTime() + "Update Found! Showing update dialog");
+                            update = true;
+                            new AsysNewVerAvaliable(curVer, newVer).ShowDialog();
+                            break;
+                        }
                     }
                 }
                 if (!update)

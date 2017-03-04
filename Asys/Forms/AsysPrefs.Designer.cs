@@ -33,17 +33,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chkWelcome = new System.Windows.Forms.CheckBox();
             this.chkChangelog = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
             this.chkWinSizeLoc = new System.Windows.Forms.CheckBox();
+            this.chkDisableUpdater = new System.Windows.Forms.CheckBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AsysEditor.Properties.Resources.Asys_small_81x105;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(81, 105);
+            this.pictureBox1.Size = new System.Drawing.Size(61, 85);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -52,18 +55,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(99, 12);
+            this.label1.Location = new System.Drawing.Point(74, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 29);
+            this.label1.Size = new System.Drawing.Size(102, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Preferences";
             // 
             // chkWelcome
             // 
             this.chkWelcome.AutoSize = true;
-            this.chkWelcome.Location = new System.Drawing.Point(12, 123);
+            this.chkWelcome.Location = new System.Drawing.Point(9, 100);
+            this.chkWelcome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkWelcome.Name = "chkWelcome";
-            this.chkWelcome.Size = new System.Drawing.Size(194, 21);
+            this.chkWelcome.Size = new System.Drawing.Size(151, 17);
             this.chkWelcome.TabIndex = 2;
             this.chkWelcome.Text = "Show Welcome on startup";
             this.chkWelcome.UseVisualStyleBackColor = true;
@@ -71,46 +76,72 @@
             // chkChangelog
             // 
             this.chkChangelog.AutoSize = true;
-            this.chkChangelog.Location = new System.Drawing.Point(12, 150);
+            this.chkChangelog.Location = new System.Drawing.Point(9, 122);
+            this.chkChangelog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkChangelog.Name = "chkChangelog";
-            this.chkChangelog.Size = new System.Drawing.Size(204, 21);
+            this.chkChangelog.Size = new System.Drawing.Size(157, 17);
             this.chkChangelog.TabIndex = 3;
             this.chkChangelog.Text = "Show Changelog on startup";
             this.chkChangelog.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnApply
             // 
-            this.button1.Location = new System.Drawing.Point(267, 178);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 28);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Apply";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnApply.Location = new System.Drawing.Point(189, 184);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(61, 23);
+            this.btnApply.TabIndex = 4;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // chkWinSizeLoc
             // 
             this.chkWinSizeLoc.AutoSize = true;
-            this.chkWinSizeLoc.Location = new System.Drawing.Point(13, 178);
+            this.chkWinSizeLoc.Location = new System.Drawing.Point(10, 145);
+            this.chkWinSizeLoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkWinSizeLoc.Name = "chkWinSizeLoc";
-            this.chkWinSizeLoc.Size = new System.Drawing.Size(228, 21);
+            this.chkWinSizeLoc.Size = new System.Drawing.Size(178, 17);
             this.chkWinSizeLoc.TabIndex = 5;
             this.chkWinSizeLoc.Text = "Save window Location and Size";
             this.chkWinSizeLoc.UseVisualStyleBackColor = true;
             // 
+            // chkDisableUpdater
+            // 
+            this.chkDisableUpdater.AutoSize = true;
+            this.chkDisableUpdater.Location = new System.Drawing.Point(9, 168);
+            this.chkDisableUpdater.Name = "chkDisableUpdater";
+            this.chkDisableUpdater.Size = new System.Drawing.Size(139, 17);
+            this.chkDisableUpdater.TabIndex = 6;
+            this.chkDisableUpdater.Text = "Disable update checker";
+            this.chkDisableUpdater.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(154, 169);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(96, 13);
+            this.linkLabel1.TabIndex = 7;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Check for Updates";
+            // 
             // AsysPrefs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 218);
+            this.ClientSize = new System.Drawing.Size(256, 217);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.chkDisableUpdater);
             this.Controls.Add(this.chkWinSizeLoc);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnApply);
             this.Controls.Add(this.chkChangelog);
             this.Controls.Add(this.chkWelcome);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AsysPrefs";
@@ -129,7 +160,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkWelcome;
         private System.Windows.Forms.CheckBox chkChangelog;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.CheckBox chkWinSizeLoc;
+        private System.Windows.Forms.CheckBox chkDisableUpdater;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

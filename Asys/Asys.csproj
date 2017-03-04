@@ -179,6 +179,7 @@
       <DependentUpon>AsysSpellCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Forms\AsysAbout.resx">
       <DependentUpon>AsysAbout.cs</DependentUpon>
     </EmbeddedResource>

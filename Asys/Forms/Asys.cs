@@ -134,7 +134,8 @@ namespace AsysEditor.Forms
                 }
 
             // Start the updater
-            updater.Start(AsysAbout.AsysVersion);
+            if (!Properties.Settings.Default.prefDisableAutoUpdate)
+                updater.Start(AsysAbout.AsysVersion);
 
             // Show developer message
             AsysDevMsg devmsg = new AsysDevMsg();

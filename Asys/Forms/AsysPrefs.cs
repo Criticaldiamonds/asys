@@ -22,9 +22,10 @@ namespace AsysEditor.Forms
             chkWelcome.Checked = Properties.Settings.Default.prefShowWelcome;            
             chkChangelog.Checked = Properties.Settings.Default.prefShowChangelog;
             chkWinSizeLoc.Checked = Properties.Settings.Default.prefSaveLoc;
+            chkDisableUpdater.Checked = Properties.Settings.Default.prefDisableAutoUpdate;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnApply_Click(object sender, EventArgs e)
         {
             if (chkWelcome.Checked)
                 Properties.Settings.Default.prefShowWelcome = true;
@@ -40,6 +41,11 @@ namespace AsysEditor.Forms
                 Properties.Settings.Default.prefSaveLoc = true;
             else
                 Properties.Settings.Default.prefSaveLoc = false;
+
+            if (chkDisableUpdater.Checked)
+                Properties.Settings.Default.prefDisableAutoUpdate = true;
+            else
+                Properties.Settings.Default.prefDisableAutoUpdate = true;
 
             Properties.Settings.Default.Save();
             this.Close();

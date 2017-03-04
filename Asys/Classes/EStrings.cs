@@ -19,5 +19,6 @@ namespace AsysEditor.Classes
 
         public static EStrings AsysPrefs_OLD { get { return new EStrings("https://dl.dropboxusercontent.com/u/276558657/Asys/asys.a_prefs"); } }
         public static EStrings AsysPrefs_NEW { get { return new EStrings("https://dl.dropboxusercontent.com/u/276558657/Asys/asys.txt"); } }
+        public static EStrings AsusUpdateEXE { get { return new EStrings("https://dl.dropboxusercontent.com/u/276558657/Asys/update.exe"); } }
     }
 }
