@@ -19,9 +19,9 @@ namespace AsysEditor.Classes
         OpenFileDialog openDialog;
 
         // All file paths for open documents [UCID, FilePath]
-        Dictionary<int, string>      fileNames;
+        Dictionary<int, string> fileNames;
         // All file types for open documents [UCID, File Type]
-        Dictionary<int, EFileType> fileTypes; // TODO: How to do this with new DocumentInfo class??
+        Dictionary<int, FileType> fileTypes; // TODO: How to do this with new DocumentInfo class??
 
         AsysConsole console;
 
@@ -42,7 +42,7 @@ namespace AsysEditor.Classes
             openDialog.Title = "Open";
 
             fileNames = new Dictionary<int, string>();
-            fileTypes = new Dictionary<int, EFileType>();
+            fileTypes = new Dictionary<int, FileType>();
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace AsysEditor.Classes
                     if (fileName.EndsWith(".rtf"))
                     {
                         rtbIn.LoadFile(fileName, RichTextBoxStreamType.RichText);
-                        result.FileType = EFileType.RICH_TEXT;
+                        result.FileType = FileType.RichText;
                     }
                     else
                     {
@@ -73,9 +73,9 @@ namespace AsysEditor.Classes
 
                         // Set file type
                         if (fileName.EndsWith(".txt"))
-                            result.FileType = EFileType.PLAIN_TEXT;
+                            result.FileType = FileType.PlainText;
                         else
-                            result.FileType = EFileType.OTHER;
+                            result.FileType = FileType.Other;
                     }
 
                     // Add file information to dictionaries
@@ -107,7 +107,7 @@ namespace AsysEditor.Classes
             if (filePath.EndsWith(".rtf"))
             {
                 rtbIn.LoadFile(filePath, RichTextBoxStreamType.RichText);
-                result.FileType = EFileType.RICH_TEXT;
+                result.FileType = FileType.RichText;
             }
             else
             {
@@ -115,9 +115,9 @@ namespace AsysEditor.Classes
 
                 // Set file type
                 if (filePath.EndsWith(".txt"))
-                    result.FileType = EFileType.PLAIN_TEXT;
+                    result.FileType = FileType.PlainText;
                 else
-                    result.FileType = EFileType.OTHER;
+                    result.FileType = FileType.Other;
             }
 
             // Add file information to dictionaries
@@ -149,7 +149,7 @@ namespace AsysEditor.Classes
                 if (fileName.EndsWith(".rtf"))
                 {
                     rtbIn.SaveFile(fileName, RichTextBoxStreamType.RichText);
-                    result.FileType = EFileType.RICH_TEXT;
+                    result.FileType = FileType.RichText;
                 }
                 else
                 {
@@ -157,9 +157,9 @@ namespace AsysEditor.Classes
 
                     // Set file type
                     if (fileName.EndsWith(".txt"))
-                        result.FileType = EFileType.PLAIN_TEXT;
+                        result.FileType = FileType.PlainText;
                     else
-                        result.FileType = EFileType.OTHER;
+                        result.FileType = FileType.Other;
                 }
 
                 console.Append(Asys.GetTime() + "Save Complete (SilentSave)");
@@ -206,7 +206,7 @@ namespace AsysEditor.Classes
                     if (newName.EndsWith(".rtf"))
                     {
                         rtbIn.SaveFile(newName, RichTextBoxStreamType.RichText);
-                        result.FileType = EFileType.RICH_TEXT;
+                        result.FileType = FileType.RichText;
                     }
                     else
                     {
@@ -214,9 +214,9 @@ namespace AsysEditor.Classes
 
                         // Set file type
                         if (newName.EndsWith(".txt"))
-                            result.FileType = EFileType.PLAIN_TEXT;
+                            result.FileType = FileType.PlainText;
                         else
-                            result.FileType = EFileType.OTHER;
+                            result.FileType = FileType.Other;
                     }
 
                     // Add file information to dictionaries
@@ -237,7 +237,7 @@ namespace AsysEditor.Classes
         /// <param name="UCID">The UCID associated with the document</param>
         /// <param name="fileName">The path of the file</param>
         /// <param name="fileType">The type of file</param>
-        public void AddFile(int UCID, string fileName, EFileType fileType)
+        public void AddFile(int UCID, string fileName, FileType fileType)
         {
             try
             {
@@ -312,9 +312,9 @@ namespace AsysEditor.Classes
         /// <summary>Returns the file type associated with a given UCID.</summary>
         /// <param name="UCID">The UCID associated with the document</param>
         /// <returns></returns>
-        public EFileType GetFileType(int UCID)
+        public FileType GetFileType(int UCID)
         {
-            EFileType value = EFileType.OTHER;
+            FileType value = FileType.Other;
 
             try {
                 if (fileTypes.TryGetValue(UCID, out value))
@@ -323,14 +323,14 @@ namespace AsysEditor.Classes
                 }
                 else
                 {
-                    return EFileType.OTHER;
+                    return FileType.Other;
                 }
             }
             catch (Exception ex)
             {
                 console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.GetFileType: Could not find instance!");
                 MessageBox.Show("Error in FileInteraction.GetFileType:\n" + ex.Message);
-                return EFileType.OTHER;
+                return FileType.Other;
             }
         }
 

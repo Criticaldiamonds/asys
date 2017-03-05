@@ -10,16 +10,15 @@ namespace AsysEditor.Classes
 {
     class Updater
     {
-        bool _force;
+        bool force;
 
         public void Start(string curv, bool force)
         {
-            this._force = force;
+            this.force = force;
 
-            ExternalStringParser esp = new ExternalStringParser();
-            esp.Load(EStrings.AsysPrefs_NEW.ToString());
-            string newv = esp.ParseKey("version");
 
+            string newv = XMLParser.Parse(WebString.Load(Strings.AsysPrefs.Value), "version", true, false);
+            
             if (!newv.Equals(string.Empty))
             {
                 ProcessVersion(curv, newv);
@@ -73,7 +72,7 @@ namespace AsysEditor.Classes
                 if (!update)
                 {
                     Asys.console.Append(Asys.GetTime() + "No Update Found");
-                    if (_force) System.Windows.Forms.MessageBox.Show("No Update Found!");
+                    if (force) System.Windows.Forms.MessageBox.Show("No Update Found!");
                 }
             }
         }

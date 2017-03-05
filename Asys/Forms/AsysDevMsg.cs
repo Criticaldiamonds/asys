@@ -31,7 +31,8 @@ namespace AsysEditor.Forms
             string msg = CurrentMessage;
 
             // replace [-n] with a newline
-            msg = Regex.Replace(msg, "\\[-n\\]", "\r\n");
+            // Functionality moved to XMLParser.Parse()
+            // msg = Regex.Replace(msg, "\\[-n\\]", "\r\n");
 
             if (!msg.Equals(string.Empty))
             {
@@ -43,10 +44,7 @@ namespace AsysEditor.Forms
         {
             get
             {
-                ExternalStringParser esp = new ExternalStringParser();
-                esp.Load(EStrings.AsysPrefs_NEW.ToString());
-
-                return esp.ParseKey("devmsg");
+                return XMLParser.Parse(WebString.Load(Strings.AsysPrefs.Value), "devmsg", false, true);
             }
         }
 

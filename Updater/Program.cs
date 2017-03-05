@@ -13,9 +13,9 @@ namespace AsysExecutables
     public class AsysUpdate_
     {
         /// <summary>Gets the path for the executable that started the program, including the file name</summary>
-        private static string ExecutablePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+        private static string _executablePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
         /// <summary>Gets the path for the executable that started the program, not including the file name</summary>
-        private static string StartupPath = System.IO.Path.GetDirectoryName(ExecutablePath);
+        private static string _startupPath = System.IO.Path.GetDirectoryName(_executablePath);
 
         static void Main(string[] args)
         {

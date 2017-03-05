@@ -103,10 +103,11 @@
   <ItemGroup>
     <Compile Include="Classes\DocumentInfo.cs" />
     <Compile Include="Classes\DocumentInteraction.cs" />
-    <Compile Include="Classes\EFileType.cs" />
-    <Compile Include="Classes\EStrings.cs" />
+    <Compile Include="Classes\FileType.cs" />
+    <Compile Include="Classes\Strings.cs" />
     <Compile Include="Classes\SpellCheck.cs" />
     <Compile Include="Classes\UCID.cs" />
+    <Compile Include="Classes\XMLParser.cs" />
     <Compile Include="Forms\AsysAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,7 +126,7 @@
     <Compile Include="Forms\AsysConsole.Designer.cs">
       <DependentUpon>AsysConsole.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\ExternalStringParser.cs" />
+    <Compile Include="Classes\WebString.cs" />
     <Compile Include="Forms\AsysDevMsg.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -13,7 +13,7 @@ namespace AsysEditor.Classes
     {
         private string      fileName;
         private int         UCID;
-        private EFileType   fileType;
+        private FileType   fileType;
 
         /// <summary>
         /// Store information about a document
@@ -21,7 +21,7 @@ namespace AsysEditor.Classes
         /// <param name="name">The name of the file</param>
         /// <param name="id"> The UCID of the object</param>
         /// <param name="type">The type of file</param>
-        public DocumentInfo(string name, int id, EFileType type)
+        public DocumentInfo(string name, int id, FileType type)
         {
             this.fileName = name;
             this.UCID = id;
@@ -31,7 +31,7 @@ namespace AsysEditor.Classes
         /// <summary>
         /// Generates a blank DocumentInfo
         /// </summary>
-        public DocumentInfo() : this("", -1, EFileType.OTHER) { }
+        public DocumentInfo() : this("", -1, FileType.Other) { }
 
         public string FileName
         {
@@ -57,7 +57,7 @@ namespace AsysEditor.Classes
             }
         }
 
-        public EFileType FileType
+        public FileType FileType
         {
             get
             {

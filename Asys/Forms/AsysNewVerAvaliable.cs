@@ -38,10 +38,10 @@ namespace AsysEditor.Forms
 
         private void lnkDownloadNow_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            update_new();
+            DownloadUpdate();
         }
 
-        private void update_new()
+        private void DownloadUpdate()
         {
             // Download the new version
 
@@ -60,23 +60,6 @@ namespace AsysEditor.Forms
                 progressBar1.Visible = true;
             }
         }
-        
-        private void update_old()
-        {
-            //string downloadspath = KnownFolders.GetPath(KnownFolder.Downloads);
-
-            //btnWait.Enabled = false;
-            //lnkDownloadNow.Enabled = false;
-            //this.ControlBox = false;
-
-            //using (WebClient wc = new WebClient())
-            //{
-            //    wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-            //    wc.DownloadFileAsync(new System.Uri("https://github.com/Criticaldiamonds/asys/releases/download/" + newver + "/AsysInstaller.msi"),
-            //        downloadspath + @"\AsysInstaller.msi");
-            //    progressBar1.Visible = true;
-            //}
-        }
 
         void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
@@ -85,10 +68,10 @@ namespace AsysEditor.Forms
 
         private void wc_Completed(object sender, AsyncCompletedEventArgs e)
         {
-            Run();
+            RunUpdater();
         }
 
-        private void Run()
+        private void RunUpdater()
         {
             Process updaterProcess = new Process();
             updaterProcess.StartInfo.FileName = Application.StartupPath + @"\UpdateAsys_.exe";
@@ -96,58 +79,6 @@ namespace AsysEditor.Forms
                                                             Process.GetCurrentProcess().ProcessName + " " +
                                                  (char)34 + KnownFolders.GetPath(KnownFolder.Downloads) + (char)34;
             updaterProcess.Start();
-                                                           
-
-            //// Rename the Asys exe file
-            //File.Move(Application.ExecutablePath, Application.ExecutablePath + ".bak");
-
-            //// Create the batch file
-            //StringBuilder batch = new StringBuilder();
-            //batch.AppendLine("@echo off");
-            //batch.AppendLine("taskkill /IM " + Process.GetCurrentProcess().ProcessName + ".exe /F");
-            //batch.AppendLine("ping localhost > nul");
-            //batch.AppendLine("ren " + (char)34 + KnownFolders.GetPath(KnownFolder.Downloads) + @"\update.exe" + (char)34 + " " + (char)34 + Application.ExecutablePath + (char)34); // (char)34 = quotation mark
-            //batch.AppendLine((char)34 + Application.ExecutablePath + (char)34);
-            //batch.AppendLine("del " + (char)34 + Application.ExecutablePath + ".bak" + (char)34);
-            //batch.AppendLine("del %0");     // self-destruct
-
-            //// Run the batch file
-            //File.WriteAllText(Application.StartupPath + @"\update.bat", batch.ToString(), Encoding.Default);
-            //Process.Start(Application.StartupPath + @"\update.bat");
-        }
-
-        void Install()
-        {
-            //if (!alreadyRunningInstaller)
-            //{
-            //    alreadyRunningInstaller = true;
-            //    // Process.Start(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi");
-            //    Asys.SetShouldClose(true);
-            //    Asys.console.SetShouldClose();
-                
-            //    var assembly = Assembly.GetExecutingAssembly();
-
-            //    using (Stream input = assembly.GetManifestResourceStream("AsysEditor.Supplementary_Files._install.bat"))
-            //    using (Stream output = File.Create(KnownFolders.GetPath(KnownFolder.Downloads) + @"\____.bat"))
-            //    {
-            //        CopyStream(input, output);
-            //    }
-
-            //    var process = new Process
-            //    {
-            //        StartInfo =
-            //        {
-            //            Arguments = "\"" + KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi" + "\""
-            //        }
-            //    };
-            //    process.StartInfo.FileName = (KnownFolders.GetPath(KnownFolder.Downloads) + @"\____.bat");
-
-            //    bool b = process.Start();
-
-            //    // string[] assembelies = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
-
-            //    Application.Exit();
-            //}
         }
 
         private void btnWait_Click(object sender, EventArgs e)
@@ -169,17 +100,6 @@ namespace AsysEditor.Forms
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             new AsysChangelogViewer("https://dl.dropboxusercontent.com/u/276558657/Asys/changelog.rtf").Show();
-        }
-
-        public static void CopyStream(Stream input, Stream output)
-        {
-            byte[] buffer = new byte[8192];
-
-            int bytesRead;
-            while ((bytesRead = input.Read(buffer, 0, buffer.Length)) > 0)
-            {
-                output.Write(buffer, 0, bytesRead);
-            }
         }
     }
 }

@@ -9,12 +9,12 @@ namespace AsysEditor.Classes
     /// <summary>
     /// Represents the file-type of a document
     /// </summary>
-    enum EFileType
+    enum FileType
     {
-        PLAIN_TEXT,           // Plain Text file
-        RICH_TEXT,      // Rich Text file
-        JAVA,           // Java source file
-        CSHARP,         // C# source file
-        OTHER           // Any other file
+        PlainText,     // Plain Text file
+        RichText,      // Rich Text file
+        JavaSrc,       // Java source file
+        CSharpSrc,     // C# source file
+        Other          // Any other file
     };
 }

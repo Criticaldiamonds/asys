@@ -110,7 +110,7 @@ namespace AsysEditor.Forms
         {
             
             spellCheck = new SpellCheck();
-            spellCheck.init();
+            spellCheck.Init();
             lblLoading.Visible = false;
             refresh();
         }

@@ -12,7 +12,7 @@ namespace AsysEditor.Classes
 {
     class SpellCheck
     {
-        private Dictionary<String, int> _dictionary = new Dictionary<string, int>();
+        private Dictionary<String, int> dictionary = new Dictionary<string, int>();
         private static Regex _wordRegex = new Regex("[a-z]+", RegexOptions.Compiled);
 
         public SpellCheck()
@@ -20,7 +20,7 @@ namespace AsysEditor.Classes
             ;
         }
 
-        public void init()
+        public void Init()
         {
             Thread thread = new Thread(delegate()
                 {
@@ -32,10 +32,10 @@ namespace AsysEditor.Classes
                         string trimmedWord = word.Trim().ToLower();
                         if (_wordRegex.IsMatch(trimmedWord))
                         {
-                            if (_dictionary.ContainsKey(trimmedWord))
-                                _dictionary[trimmedWord]++;
+                            if (dictionary.ContainsKey(trimmedWord))
+                                dictionary[trimmedWord]++;
                             else
-                                _dictionary.Add(trimmedWord, 1);
+                                dictionary.Add(trimmedWord, 1);
                         }
                     }
                 });
@@ -49,15 +49,15 @@ namespace AsysEditor.Classes
 
             word = word.ToLower();
 
-            if (_dictionary.ContainsKey(word)) return word;
+            if (dictionary.ContainsKey(word)) return word;
 
             List<string> list = Edits(word);
             Dictionary<string, int> candidates = new Dictionary<string, int>();
 
             foreach (string wordVariation in list)
             {
-                if (_dictionary.ContainsKey(wordVariation) && !candidates.ContainsKey(wordVariation))
-                    candidates.Add(wordVariation, _dictionary[wordVariation]);
+                if (dictionary.ContainsKey(wordVariation) && !candidates.ContainsKey(wordVariation))
+                    candidates.Add(wordVariation, dictionary[wordVariation]);
             }
 
             if (candidates.Count > 0)
@@ -67,8 +67,8 @@ namespace AsysEditor.Classes
             {
                 foreach (string wordVariation in Edits(item))
                 {
-                    if (_dictionary.ContainsKey(wordVariation) && !candidates.ContainsKey(wordVariation))
-                        candidates.Add(wordVariation, _dictionary[wordVariation]);
+                    if (dictionary.ContainsKey(wordVariation) && !candidates.ContainsKey(wordVariation))
+                        candidates.Add(wordVariation, dictionary[wordVariation]);
                 }
             }
 

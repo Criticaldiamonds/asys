@@ -39,9 +39,13 @@ namespace AsysEditor.Forms
         /// <summary>Used as part of the printing system</summary>
         private int checkPrint;
 
+        /// <summary>Used for cmd-args opening</summary>
+        private bool cmdArgsOpen = false;
+        private string cmdArgsPath = String.Empty;
+
         /// <summary>Used to determine whether the form is to close when form.Close() is called.<br>
         /// Set to true if "close" is selected in the CloseHandler or SingleTabClose Handler</summary>
-        public static bool shouldClose = false;
+        public static bool _shouldClose = false;
 
         /// <summary>Gets the currently selected document in context</summary>
         /// <value>Returns the RichTextBoxPrintCtrl object currently in use</value>
@@ -60,24 +64,21 @@ namespace AsysEditor.Forms
         /// <summary>Main entry point for the form</summary>
         public Asys()
         {
-            Init();
+            Init(String.Empty);
         }
 
         /// <summary>Main entry print for the form when an associated file is opened by Windows Explorer</summary>
         /// <param name="filePath">The direct file path to the file being opened</param>
         public Asys(String filePath)
         {
-            Init();
-            AddTab();
-            // Open the file and set the tab's text to the filename
-            DocumentInfo info = fileInteraction.silentOpen(GetCurrentDocument, filePath, Int16.Parse(documentTab.SelectedTab.Name));
+            Init(filePath);
 
-            documentTab.SelectedTab.Text = info.FileName;
-            documentTab.SelectedTab.Name = info.ID + "";
+            cmdArgsPath = filePath;
+            cmdArgsOpen = true;
         }
 
         /// <summary>Initializes crucial components and variables used by the Asys form</summary>
-        private void Init()
+        private void Init(string filePath)
         {
             InitializeComponent();
 
@@ -98,6 +99,25 @@ namespace AsysEditor.Forms
             statusbarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowStatusbar;
             statusBar.Visible = Properties.Settings.Default.prefShowStatusbar;
             console.Append(GetTime() + "Initialization complete");
+
+            TabGenerator();
+            GetFontCollection();
+            SetFontSizes();
+
+
+            var args = System.Environment.GetCommandLineArgs();
+            var argPath = args.Skip(1).FirstOrDefault();
+
+            // MessageBox.Show(argPath);
+
+            if (!string.IsNullOrEmpty(argPath) || !string.IsNullOrWhiteSpace(argPath))
+            {
+                if (GetCurrentDocument.Text != String.Empty) AddTab();
+                
+                DocumentInfo info = fileInteraction.silentOpen(GetCurrentDocument, argPath, Int16.Parse(documentTab.SelectedTab.Name));
+                documentTab.SelectedTab.Text = info.FileName;
+                documentTab.SelectedTab.Name = info.ID + "";    
+            }
         }
 
         /// <summary>Handles the initial form loading event</summary>
@@ -119,17 +139,18 @@ namespace AsysEditor.Forms
             DirectoryInfo dirInfo = new DirectoryInfo(KnownFolders.GetPath(KnownFolder.Downloads));
             FileInfo[] files = dirInfo.GetFiles(searchPattern);
 
-                try
-                {
-                    foreach (FileInfo file in files) {
-                        File.Delete(file.FullName);
-                    }
-                    File.Delete(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi");
+            // Delete installers
+            try
+            {
+                foreach (FileInfo file in files) {
+                    File.Delete(file.FullName);
                 }
-                catch (Exception)
-                {
-                    console.Append(GetTime() + "[ERROR]: Asys.Asys_Load: Could not delete previous installer!");
-                }
+                File.Delete(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi");
+            }
+            catch (Exception)
+            {
+                console.Append(GetTime() + "[ERROR]: Asys.Asys_Load: Could not delete previous installer!");
+            }
 
             // Start the updater
             if (!Properties.Settings.Default.prefDisableAutoUpdate)
@@ -153,27 +174,11 @@ namespace AsysEditor.Forms
                 devmsg.ShowDialog();
             }
 
-            // Load stuff
-            TabGenerator();
-            GetFontCollection();
-            SetFontSizes();
-
-            // Check if there is a file waiting to be opened (via double-click)
-            var args = System.Environment.GetCommandLineArgs();
-            var argPath = args.Skip(1).FirstOrDefault();
-            if (!string.IsNullOrEmpty(argPath))
-            {
-                var fullPath = Path.GetFullPath(argPath);
-
-                if (fullPath.EndsWith(".rtf"))
-                    GetCurrentDocument.LoadFile(fullPath, RichTextBoxStreamType.RichText);
-                else
-                    GetCurrentDocument.LoadFile(fullPath, RichTextBoxStreamType.PlainText);
-
-                documentTab.SelectedTab.Text = Path.GetFileName(fullPath);
-            }
-
             console.Append(GetTime() + "Form done loading");
+
+            // TODO: TEST!!! REMOVE!!!
+            MessageBox.Show(XMLParser.Parse(WebString.Load(Strings.AsysPrefs.Value), "test", false, true));
+            //////////////////////////
         }
 
         /// <summary>
@@ -307,9 +312,9 @@ namespace AsysEditor.Forms
                 documentTab.SelectedTab.Name = "asysdefault_Changelog.rtf";
                 console.Append(GetTime() + "Displaying Changelog.rtf");
             }
-
+            
             // Just show a blank tab
-            if (!(Properties.Settings.Default.prefShowChangelog | Properties.Settings.Default.prefShowWelcome))
+            if (!(Properties.Settings.Default.prefShowChangelog | Properties.Settings.Default.prefShowWelcome | cmdArgsOpen))
             {
                 AddTab();
             }
@@ -809,7 +814,7 @@ namespace AsysEditor.Forms
 
                 // Set the tab text to the filename
                 documentTab.SelectedTab.Text = info.FileName;
-                documentTab.SelectedTab.Name = info.ID +"";
+                documentTab.SelectedTab.Name = info.ID + "";
             }
         }
 
@@ -911,7 +916,6 @@ namespace AsysEditor.Forms
             foreach (string file in files)
             {
                 if (GetCurrentDocument.Text != String.Empty) AddTab();
-
                 DocumentInfo info = fileInteraction.silentOpen(GetCurrentDocument, file, Int16.Parse(documentTab.SelectedTab.Name));
 
                 documentTab.SelectedTab.Text = info.FileName;
@@ -1305,6 +1309,7 @@ namespace AsysEditor.Forms
             }
             else
             {
+                GetCurrentDocument.BulletIndent = 15;
                 GetCurrentDocument.SelectionBullet = true;
                 bulletListToolStripButton.Checked = true;
             }
@@ -1378,7 +1383,7 @@ namespace AsysEditor.Forms
         /// <param name="flag"></param>
         public static void SetShouldClose(bool flag)
         {
-            shouldClose = flag;
+            _shouldClose = flag;
         }
 
         /// <summary>
@@ -1422,7 +1427,7 @@ namespace AsysEditor.Forms
 
             if (tabCount > 1)
             {
-                if (!shouldClose)
+                if (!_shouldClose)
                 {
                     // Display the Close-Handler if there is more than one tab open, and ShouldClose == FALSE
                     e.Cancel = true;
@@ -1439,7 +1444,7 @@ namespace AsysEditor.Forms
             else
             {
                 // Only one tab
-                if (!shouldClose)
+                if (!_shouldClose)
                 {
                     // Sisplay the Single tab close-handler if ShouldClose == FALSE
 
@@ -1448,7 +1453,7 @@ namespace AsysEditor.Forms
                     {
                         e.Cancel = false;
                         console.Append(GetTime() + "Empty document, closing");
-                        shouldClose = true;
+                        _shouldClose = true;
                         Application.Exit();
                     }
                     else

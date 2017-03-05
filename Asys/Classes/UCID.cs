@@ -13,7 +13,7 @@ namespace AsysEditor.Classes
     /// </remarks>
     class UCID
     {
-        private static List<int> existingUCIDs = new List<int>();
+        private static List<int> _existingUCIDs = new List<int>();
 
         /// <summary>
         /// Generate a new UCID</summary>
@@ -23,12 +23,12 @@ namespace AsysEditor.Classes
             int ucid = new Random().Next(0, 9999);
 
             // Prevent duplicates
-            while (existingUCIDs.Contains(ucid))
+            while (_existingUCIDs.Contains(ucid))
             {
                 ucid = new Random().Next(0, 9999);
             }
 
-            existingUCIDs.Add(ucid);
+            _existingUCIDs.Add(ucid);
             return ucid;
         }
 
@@ -38,7 +38,7 @@ namespace AsysEditor.Classes
         /// <param name="id"></param>
         public static void RemoveUCID(int id)
         {
-            existingUCIDs.Remove(id);
+            _existingUCIDs.Remove(id);
         }
     }
 }
