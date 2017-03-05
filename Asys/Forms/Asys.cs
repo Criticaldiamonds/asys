@@ -176,9 +176,6 @@ namespace AsysEditor.Forms
 
             console.Append(GetTime() + "Form done loading");
 
-            // TODO: TEST!!! REMOVE!!!
-            MessageBox.Show(XMLParser.Parse(WebString.Load(Strings.AsysPrefs.Value), "test", false, true));
-            //////////////////////////
         }
 
         /// <summary>

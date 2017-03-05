@@ -18,13 +18,15 @@ namespace AsysEditor.Classes
         /// </remarks>
         /// <param name="xml">The file to parse</param>
         /// <param name="tag">The wanted value</param>
-        /// <param name="clean">Remove whitespace</param>
-        /// <param name="replaceNewLines">Replace "[-n]" with "\n\r"</param>
+        /// Removed Clean and removeNewLines in favor of always taking this step.
         /// <returns></returns>
-        public static string Parse(string xml, string tag, bool clean, bool replaceNewLines)
+        public static string Parse(string xml, string tag)
         {
             if (xml == String.Empty || tag == String.Empty) { return "error"; }
             if (!(xml.Contains("<" + tag + ">"))) { return "error"; }
+
+            // Clean up input
+            xml = xml.Replace("\r", String.Empty).Replace("\n", "[-n]");
 
             // Get all XML tags: <tag>
             string _tag = "\\<(.*?)\\>";
@@ -49,10 +51,11 @@ namespace AsysEditor.Classes
                 
                 string contents = new Regex(head + "(.*?)" + foot).Match(xml).Groups[1].Value;
 
-                // Clean the result if nessesary
-                if (clean) return contents.Trim();
-                else if (replaceNewLines) return contents = Regex.Replace(contents, "\\[-n\\]", "\r\n");
-                else return contents;
+                // Replace [-n] with newline characters and remove whitespace and tab characters
+                // Can override tab replacement by using [-t]
+                contents = Regex.Replace(contents, "\\[-n\\]", "\r\n").Replace("\t", "").Trim();
+                contents = Regex.Replace(contents, "\\[-t\\]", "\t");
+                return contents;
             }
 
             return "error";

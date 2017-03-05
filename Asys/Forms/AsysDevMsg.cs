@@ -44,7 +44,7 @@ namespace AsysEditor.Forms
         {
             get
             {
-                return XMLParser.Parse(WebString.Load(Strings.AsysPrefs.Value), "devmsg", false, true);
+                return XMLParser.Parse(WebString.Load(Strings.AsysPrefs.Value), "devmsg");
             }
         }
 

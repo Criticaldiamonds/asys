@@ -17,7 +17,7 @@ namespace AsysEditor.Classes
             this.force = force;
 
 
-            string newv = XMLParser.Parse(WebString.Load(Strings.AsysPrefs.Value), "version", true, false);
+            string newv = XMLParser.Parse(WebString.Load(Strings.AsysPrefs.Value), "version");
             
             if (!newv.Equals(string.Empty))
             {
