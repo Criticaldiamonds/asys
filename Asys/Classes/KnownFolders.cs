@@ -54,12 +54,10 @@ namespace AsysEditor.Classes
             IntPtr outPath;
             int result = SHGetKnownFolderPath(new Guid(_knownFolderGuids[(int)knownFolder]),
                 (uint)flags, new IntPtr(defaultUser ? -1 : 0), out outPath);
-            if (result >= 0)
-            {
+            if (result >= 0) {
                 return Marshal.PtrToStringUni(outPath);
             }
-            else
-            {
+            else {
                 throw new ExternalException("Unable to retrieve the known folder path. It may not "
                     + "be available on this system.", result);
             }

@@ -16,15 +16,12 @@ namespace AsysEditor.Classes
         /// <param name="path">Path to the string</param>
         public static string Load(string path)
         {
-            try
-            {
-                using (WebClient client = new WebClient())
-                {
+            try {
+                using (WebClient client = new WebClient()) {
                     return client.DownloadString(path);
                 }
             }
-            catch (Exception)
-            {
+            catch (Exception) {
                 Asys.console.Append(Asys.GetTime() + "[ERROR]: ExternalStringParser.Load: Could not load!");
                 return "error";
             }

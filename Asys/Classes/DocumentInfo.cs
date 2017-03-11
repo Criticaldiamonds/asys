@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AsysEditor.Classes
+﻿namespace AsysEditor.Classes
 {
     /// <summary>
     /// Stores vital information about a document.
     /// </summary>
     class DocumentInfo
     {
-        private string      fileName;
-        private int         UCID;
-        private FileType   fileType;
+        private string fileName;
+        private int UCID;
+        private FileType fileType;
 
         /// <summary>
         /// Store information about a document

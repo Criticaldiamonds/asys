@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Text.RegularExpressions;
@@ -34,8 +27,7 @@ namespace AsysEditor.Forms
             // Functionality moved to XMLParser.Parse()
             // msg = Regex.Replace(msg, "\\[-n\\]", "\r\n");
 
-            if (!msg.Equals(string.Empty))
-            {
+            if (!msg.Equals(string.Empty)) {
                 txtMessage.Text = msg;
             }
         }
@@ -44,7 +36,7 @@ namespace AsysEditor.Forms
         {
             get
             {
-                return XMLParser.Parse(WebString.Load(Strings.AsysPrefs.Value), "devmsg");
+                return XMLParser.Parse(WebString.Load(References.AsysPrefs.Value), "devmsg");
             }
         }
 
@@ -61,14 +53,13 @@ namespace AsysEditor.Forms
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (chkDontShow.Checked)
-            {
+            if (chkDontShow.Checked) {
                 Properties.Settings.Default.prefShowDevMsg = false;
                 Properties.Settings.Default.sysPreviousDevMsg = txtMessage.Text;
                 Properties.Settings.Default.Save();
             }
             this.Close();
         }
-        
+
     }
 }

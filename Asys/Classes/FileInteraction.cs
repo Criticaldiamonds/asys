@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using System.Windows.Forms;
 using System.IO;
@@ -56,19 +53,15 @@ namespace AsysEditor.Classes
             DocumentInfo result = new DocumentInfo();
             result.ID = ucid;
 
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                if (openDialog.FileName.Length > 0)
-                {
+            if (openDialog.ShowDialog() == DialogResult.OK) {
+                if (openDialog.FileName.Length > 0) {
                     string fileName = openDialog.FileName;
 
-                    if (fileName.EndsWith(".rtf"))
-                    {
+                    if (fileName.EndsWith(".rtf")) {
                         rtbIn.LoadFile(fileName, RichTextBoxStreamType.RichText);
                         result.FileType = FileType.RichText;
                     }
-                    else
-                    {
+                    else {
                         rtbIn.LoadFile(fileName, RichTextBoxStreamType.PlainText);
 
                         // Set file type
@@ -83,7 +76,7 @@ namespace AsysEditor.Classes
 
                     result.FileName = Path.GetFileName(fileName);
                     console.Append(Asys.GetTime() + "Opening file");
-                    
+
                     return result;
                 }
                 else { return result; }
@@ -104,13 +97,11 @@ namespace AsysEditor.Classes
             result.FileName = Path.GetFileName(filePath);
 
             //getCurrentDocument.AppendText(File.ReadAllText(filePath));
-            if (filePath.EndsWith(".rtf"))
-            {
+            if (filePath.EndsWith(".rtf")) {
                 rtbIn.LoadFile(filePath, RichTextBoxStreamType.RichText);
                 result.FileType = FileType.RichText;
             }
-            else
-            {
+            else {
                 rtbIn.LoadFile(filePath, RichTextBoxStreamType.PlainText);
 
                 // Set file type
@@ -126,7 +117,7 @@ namespace AsysEditor.Classes
 
             return result;
         }
-        
+
         /// <summary>
         /// Saves the current file to the system if it exists in the Map.
         /// If not, passes params to SaveAs()
@@ -140,19 +131,16 @@ namespace AsysEditor.Classes
 
             string fileName = "";
 
-            if (GetFilePath(ucid) != "")
-            {
+            if (GetFilePath(ucid) != "") {
                 // The file already exists in the Map so save it
                 console.Append(Asys.GetTime() + "Instance exists in Map, saving");
                 fileName = GetFilePath(ucid);
 
-                if (fileName.EndsWith(".rtf"))
-                {
+                if (fileName.EndsWith(".rtf")) {
                     rtbIn.SaveFile(fileName, RichTextBoxStreamType.RichText);
                     result.FileType = FileType.RichText;
                 }
-                else
-                {
+                else {
                     rtbIn.SaveFile(fileName, RichTextBoxStreamType.PlainText);
 
                     // Set file type
@@ -168,8 +156,7 @@ namespace AsysEditor.Classes
 
                 return result;
             }
-            else
-            {
+            else {
                 // The file does not exist in the Map so
                 // Send it to SaveAs with the rtb and the initial fileName passed in
                 console.Append(Asys.GetTime() + "Instance does not exist in Map! calling saveAs()");
@@ -196,20 +183,16 @@ namespace AsysEditor.Classes
 
             string newName = String.Empty;
 
-            if (saveDialog.ShowDialog() == DialogResult.OK)
-            {
-                if (saveDialog.FileName.Length > 0)
-                {
+            if (saveDialog.ShowDialog() == DialogResult.OK) {
+                if (saveDialog.FileName.Length > 0) {
                     newName = saveDialog.FileName;
                     result.FileName = Path.GetFileName(newName);
 
-                    if (newName.EndsWith(".rtf"))
-                    {
+                    if (newName.EndsWith(".rtf")) {
                         rtbIn.SaveFile(newName, RichTextBoxStreamType.RichText);
                         result.FileType = FileType.RichText;
                     }
-                    else
-                    {
+                    else {
                         rtbIn.SaveFile(newName, RichTextBoxStreamType.PlainText);
 
                         // Set file type
@@ -239,24 +222,20 @@ namespace AsysEditor.Classes
         /// <param name="fileType">The type of file</param>
         public void AddFile(int UCID, string fileName, FileType fileType)
         {
-            try
-            {
+            try {
                 console.Append(Asys.GetTime() + "Adding " + UCID + " to Maps");
                 fileNames.Add(UCID, fileName);
                 fileTypes.Add(UCID, fileType);
             }
-            catch (Exception)
-            {
+            catch (Exception) {
                 // Assuming that it needs to be replaced due to 'Save As'
                 console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.AddFilePath: Instance already exists! Retrying...");
                 RemoveFile(UCID);
-                try
-                {
+                try {
                     console.Append(Asys.GetTime() + "Adding " + UCID + " to Map");
                     fileNames.Add(UCID, fileName);
                 }
-                catch (Exception ex2)
-                {
+                catch (Exception ex2) {
                     // If we get here there's clearly something wrong
                     console.Append(Asys.GetTime() + "[ERROR][FATAL]: FileInteraction.AddFilePath: Could not add to Map!");
                     MessageBox.Show("Error in FileInteraction.AddFilePath:\n" + ex2.Message);
@@ -268,16 +247,14 @@ namespace AsysEditor.Classes
         /// <param name="ucid">The UCID associated with the document</param>
         public void RemoveFile(int ucid)
         {
-            try
-            {
+            try {
                 console.Append(Asys.GetTime() + "Removing " + ucid + " from Map");
                 fileNames.Remove(ucid);
                 fileTypes.Remove(ucid);
 
                 UCID.RemoveUCID(ucid);
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.RemoveFile: Could not remove from Maps!");
                 MessageBox.Show("Error in FileInteraction.RemoveFile:\n" + ex.Message);
             }
@@ -289,19 +266,15 @@ namespace AsysEditor.Classes
         public string GetFilePath(int UCID)
         {
             string value = "";
-            try
-            {
-                if (fileNames.TryGetValue(UCID, out value))
-                {
+            try {
+                if (fileNames.TryGetValue(UCID, out value)) {
                     return value;
                 }
-                else
-                {
+                else {
                     return "";
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.GetFileFromMap: Could not find instance!");
                 MessageBox.Show("Error in FileInteraction.GetFileFromMap:\n" + ex.Message);
                 return "";
@@ -317,17 +290,14 @@ namespace AsysEditor.Classes
             FileType value = FileType.Other;
 
             try {
-                if (fileTypes.TryGetValue(UCID, out value))
-                {
+                if (fileTypes.TryGetValue(UCID, out value)) {
                     return value;
                 }
-                else
-                {
+                else {
                     return FileType.Other;
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 console.Append(Asys.GetTime() + "[ERROR]: FileInteraction.GetFileType: Could not find instance!");
                 MessageBox.Show("Error in FileInteraction.GetFileType:\n" + ex.Message);
                 return FileType.Other;

@@ -5,11 +5,7 @@ using System.Windows.Forms;
 using System.Drawing.Text;
 using System.IO;
 
-using System.Reflection;
-using System.Diagnostics;
-
 using AsysControls;
-
 using AsysEditor.Classes;
 
 namespace AsysEditor.Forms
@@ -33,7 +29,7 @@ namespace AsysEditor.Forms
         private static Updater updater;
         /// <summary>Implementation of the console window</summary>
         public static AsysConsole console;
-        
+
         /// <summary>Represents the number of tabs currently open</summary>
         private int tabCount = 0;
         /// <summary>Used as part of the printing system</summary>
@@ -110,13 +106,12 @@ namespace AsysEditor.Forms
 
             // MessageBox.Show(argPath);
 
-            if (!string.IsNullOrEmpty(argPath) || !string.IsNullOrWhiteSpace(argPath))
-            {
+            if (!string.IsNullOrEmpty(argPath) || !string.IsNullOrWhiteSpace(argPath)) {
                 if (GetCurrentDocument.Text != String.Empty) AddTab();
-                
+
                 DocumentInfo info = fileInteraction.silentOpen(GetCurrentDocument, argPath, Int16.Parse(documentTab.SelectedTab.Name));
                 documentTab.SelectedTab.Text = info.FileName;
-                documentTab.SelectedTab.Name = info.ID + "";    
+                documentTab.SelectedTab.Name = info.ID + "";
             }
         }
 
@@ -128,8 +123,7 @@ namespace AsysEditor.Forms
             console.Append(GetTime() + "Form Loading");
 
             // Get window preferences
-            if (Properties.Settings.Default.prefSaveLoc)
-            {
+            if (Properties.Settings.Default.prefSaveLoc) {
                 this.Location = Properties.Settings.Default.sysWinLoc;
                 this.Size = Properties.Settings.Default.sysWinSize;
             }
@@ -140,15 +134,13 @@ namespace AsysEditor.Forms
             FileInfo[] files = dirInfo.GetFiles(searchPattern);
 
             // Delete installers
-            try
-            {
+            try {
                 foreach (FileInfo file in files) {
                     File.Delete(file.FullName);
                 }
                 File.Delete(KnownFolders.GetPath(KnownFolder.Downloads) + @"\AsysInstaller.msi");
             }
-            catch (Exception)
-            {
+            catch (Exception) {
                 console.Append(GetTime() + "[ERROR]: Asys.Asys_Load: Could not delete previous installer!");
             }
 
@@ -159,15 +151,12 @@ namespace AsysEditor.Forms
             // Show developer message
             AsysDevMsg devmsg = new AsysDevMsg();
             string curMessage = devmsg.CurrentMessage;
-            if (curMessage.Equals(Properties.Settings.Default.sysPreviousDevMsg))
-            {
-                if (Properties.Settings.Default.prefShowDevMsg)
-                {
+            if (curMessage.Equals(Properties.Settings.Default.sysPreviousDevMsg)) {
+                if (Properties.Settings.Default.prefShowDevMsg) {
                     devmsg.ShowDialog();
                 }
             }
-            else
-            {
+            else {
                 Properties.Settings.Default.prefShowDevMsg = true;
                 Properties.Settings.Default.sysPreviousDevMsg = curMessage;
                 Properties.Settings.Default.Save();
@@ -221,11 +210,9 @@ namespace AsysEditor.Forms
         /// <summary>Removes the current tab from the tab-control</summary>
         public void RemoveTab()
         {
-            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
-            {
+            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_"))) {
 
-                if (documentTab.TabPages.Count != 1)
-                {
+                if (documentTab.TabPages.Count != 1) {
                     // Remove the tab from the file map
                     fileInteraction.RemoveFile(Int16.Parse(documentTab.SelectedTab.Name));
                     documentTab.TabPages.Remove(documentTab.SelectedTab);
@@ -233,8 +220,7 @@ namespace AsysEditor.Forms
                     documentTab.SelectedIndex = documentTab.TabPages.Count - 1;
                     console.Append(GetTime() + "Tab successfully removed");
                 }
-                else
-                {
+                else {
                     // Remove the tab from the file map and create a new tab
                     fileInteraction.RemoveFile(Int16.Parse(documentTab.SelectedTab.Name));
                     documentTab.TabPages.Remove(documentTab.SelectedTab);
@@ -243,16 +229,13 @@ namespace AsysEditor.Forms
                     AddTab();
                 }
             }
-            else
-            {
-                if (documentTab.TabPages.Count != 1)
-                {
+            else {
+                if (documentTab.TabPages.Count != 1) {
                     documentTab.TabPages.Remove(documentTab.SelectedTab);
                     tabCount -= 1;
                     documentTab.SelectedIndex = documentTab.TabPages.Count - 1;
                 }
-                else
-                {
+                else {
                     tabCount -= 1;
                     console.Append(GetTime() + "Tab successfully removed");
                     AddTab();
@@ -263,8 +246,7 @@ namespace AsysEditor.Forms
         /// <summary>Removes all tabs from the tab-control</summary>
         private void RemoveAllTabs()
         {
-            foreach (TabPage p in documentTab.TabPages)
-            {
+            foreach (TabPage p in documentTab.TabPages) {
                 documentTab.TabPages.Remove(p);
                 tabCount -= 1;
             }
@@ -274,10 +256,8 @@ namespace AsysEditor.Forms
         /// <summary>Removes all tabs, excluding the currently selected tab, from the tab-control</summary>
         private void RemoveAllTabsExceptThis()
         {
-            foreach (TabPage p in documentTab.TabPages)
-            {
-                if (p.Name != documentTab.SelectedTab.Name)
-                {
+            foreach (TabPage p in documentTab.TabPages) {
+                if (p.Name != documentTab.SelectedTab.Name) {
                     documentTab.TabPages.Remove(p);
                     tabCount -= 1;
                 }
@@ -289,8 +269,7 @@ namespace AsysEditor.Forms
         private void TabGenerator()
         {
             // Check whether to show the Welcome file
-            if (Properties.Settings.Default.prefShowWelcome)
-            {
+            if (Properties.Settings.Default.prefShowWelcome) {
                 AddTab();
                 string rtf = Properties.Resources.Welcome;
                 GetCurrentDocument.Rtf = rtf;
@@ -300,8 +279,7 @@ namespace AsysEditor.Forms
             }
 
             // Check whether to show the Changelog file
-            if (Properties.Settings.Default.prefShowChangelog)
-            {
+            if (Properties.Settings.Default.prefShowChangelog) {
                 AddTab();
                 string rtf = Properties.Resources.Changelog;
                 GetCurrentDocument.Rtf = rtf;
@@ -309,10 +287,9 @@ namespace AsysEditor.Forms
                 documentTab.SelectedTab.Name = "asysdefault_Changelog.rtf";
                 console.Append(GetTime() + "Displaying Changelog.rtf");
             }
-            
+
             // Just show a blank tab
-            if (!(Properties.Settings.Default.prefShowChangelog | Properties.Settings.Default.prefShowWelcome | cmdArgsOpen))
-            {
+            if (!(Properties.Settings.Default.prefShowChangelog | Properties.Settings.Default.prefShowWelcome | cmdArgsOpen)) {
                 AddTab();
             }
         }
@@ -324,8 +301,7 @@ namespace AsysEditor.Forms
         private void Print()
         {
             // new testv().Show();
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
+            if (printDialog1.ShowDialog() == DialogResult.OK) {
                 printDocument1.Print();
             }
         }
@@ -344,8 +320,7 @@ namespace AsysEditor.Forms
             pageSetupDialog1.ShowNetwork = false;
 
             DialogResult result = pageSetupDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
+            if (result == DialogResult.OK) {
                 printDocument1.DefaultPageSettings = pageSetupDialog1.PageSettings;
                 printDocument1.PrinterSettings = pageSetupDialog1.PrinterSettings;
             }
@@ -394,28 +369,23 @@ namespace AsysEditor.Forms
         /// <summary>Gets a list of all fonts currently installed on the user's system</summary>
         private void GetFontCollection()
         {
-            try
-            {
+            try {
                 InstalledFontCollection ifonts = new InstalledFontCollection();
-                foreach (FontFamily ff in ifonts.Families)
-                {
+                foreach (FontFamily ff in ifonts.Families) {
                     fontToolStripComboBox.Items.Add(ff.Name);
                 }
                 fontToolStripComboBox.SelectedIndex = 0;
                 int i = 0;
-                foreach (var item in fontToolStripComboBox.Items)
-                {
+                foreach (var item in fontToolStripComboBox.Items) {
                     i++;
-                    if (item.ToString().ToUpper().Equals("TIMES NEW ROMAN"))
-                    {
+                    if (item.ToString().ToUpper().Equals("TIMES NEW ROMAN")) {
                         fontToolStripComboBox.SelectedIndex = i - 1;
                         break;
                     }
                 }
                 console.Append(GetTime() + "Successfully loaded FontCollection");
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 console.Append(GetTime() + "[ERROR]: Asys.GetFontCollection: " + ex.Message);
             }
         }
@@ -423,16 +393,13 @@ namespace AsysEditor.Forms
         /// <summary>Generates a list of font sizes from 1 - 75</summary>
         private void SetFontSizes()
         {
-            try
-            {
-                for (int i = 0; i < 75; i++)
-                {
+            try {
+                for (int i = 0; i < 75; i++) {
                     fontSizeToolStripComboBox.Items.Add(i);
                 }
                 fontSizeToolStripComboBox.SelectedIndex = 12; // 12pt
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 console.Append(GetTime() + "[ERROR]: Asys.SetFontSizes: " + ex.Message);
             }
         }
@@ -442,15 +409,13 @@ namespace AsysEditor.Forms
         /// <param name="e"></param>
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (GetCurrentDocument.SelectionFont != null)
-            {
+            if (GetCurrentDocument.SelectionFont != null) {
                 String t = fontToolStripComboBox.ComboBox.GetItemText(fontToolStripComboBox.ComboBox.SelectedItem);
 
                 Font nf = new Font(t, GetCurrentDocument.SelectionFont.Size, GetCurrentDocument.SelectionFont.Style);
                 GetCurrentDocument.SelectionFont = nf;
             }
-            else
-            {
+            else {
                 String t = fontToolStripComboBox.ComboBox.GetItemText(fontToolStripComboBox.ComboBox.SelectedItem);
                 GetCurrentDocument.SelectionFont = new Font(t, Int16.Parse(fontSizeToolStripComboBox.SelectedIndex.ToString()), FontStyle.Regular);
             }
@@ -742,8 +707,7 @@ namespace AsysEditor.Forms
         // Text Color
         private void forecolorToolStripButton_Click(object sender, EventArgs e)
         {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
+            if (colorDialog1.ShowDialog() == DialogResult.OK) {
                 GetCurrentDocument.SelectionColor = colorDialog1.Color;
             }
         }
@@ -794,7 +758,7 @@ namespace AsysEditor.Forms
 
             // Set the tab name and text to the filename
             documentTab.SelectedTab.Text = info.FileName;
-            documentTab.SelectedTab.Name = info.ID + ""; 
+            documentTab.SelectedTab.Name = info.ID + "";
         }
 
         /// <summary>Called when the 'Save' menu item is pressed</summary>
@@ -803,8 +767,7 @@ namespace AsysEditor.Forms
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // If the file is NOT the Changelog or Welcome files
-            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
-            {
+            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_"))) {
                 console.Append(GetTime() + "Preparing to save a file");
 
                 DocumentInfo info = fileInteraction.save(GetCurrentDocument, Int16.Parse(documentTab.SelectedTab.Name));
@@ -820,8 +783,7 @@ namespace AsysEditor.Forms
         /// <param name="e"></param>
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
-            {
+            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_"))) {
                 console.Append(GetTime() + "Preparing to save a file");
 
                 DocumentInfo info = fileInteraction.saveAs(GetCurrentDocument, documentTab.SelectedTab.Text, Int16.Parse(documentTab.SelectedTab.Name));
@@ -839,8 +801,7 @@ namespace AsysEditor.Forms
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             // If the file is NOT the Changelog or Welcome files
-            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
-            {
+            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_"))) {
                 console.Append(GetTime() + "Preparing to save a file");
 
                 DocumentInfo info = fileInteraction.save(GetCurrentDocument, Int16.Parse(documentTab.SelectedTab.Name));
@@ -865,7 +826,7 @@ namespace AsysEditor.Forms
 
             // Set the tab name and text to the filename
             documentTab.SelectedTab.Text = info.FileName;
-            documentTab.SelectedTab.Name = info.ID + ""; 
+            documentTab.SelectedTab.Name = info.ID + "";
         }
 
         // Sidebar
@@ -875,8 +836,7 @@ namespace AsysEditor.Forms
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             // If the file is NOT the Changelog or Welcome files
-            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_")))
-            {
+            if (!(documentTab.SelectedTab.Name.StartsWith("asysdefault_"))) {
                 console.Append(GetTime() + "Preparing to save a file");
 
                 DocumentInfo info = fileInteraction.save(GetCurrentDocument, Int16.Parse(documentTab.SelectedTab.Name));
@@ -897,8 +857,7 @@ namespace AsysEditor.Forms
         private void Handeler_DragEnter(object sender, DragEventArgs e)
         {
             console.Append(GetTime() + "Preparing to recieve object from Drag");
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
-            {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true) {
                 e.Effect = DragDropEffects.All;
             }
         }
@@ -910,8 +869,7 @@ namespace AsysEditor.Forms
         {
             console.Append(GetTime() + "Loading object from Drag");
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            foreach (string file in files)
-            {
+            foreach (string file in files) {
                 if (GetCurrentDocument.Text != String.Empty) AddTab();
                 DocumentInfo info = fileInteraction.silentOpen(GetCurrentDocument, file, Int16.Parse(documentTab.SelectedTab.Name));
 
@@ -930,13 +888,11 @@ namespace AsysEditor.Forms
         private void sidebarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Updating visability preferences");
-            if (sidebarToolStripMenuItem.Checked)
-            {
+            if (sidebarToolStripMenuItem.Checked) {
                 sidebarToolStrip.Visible = true;
                 Properties.Settings.Default.prefShowSidebar = true;
             }
-            else
-            {
+            else {
                 sidebarToolStrip.Visible = false;
                 Properties.Settings.Default.prefShowSidebar = false;
             }
@@ -949,13 +905,11 @@ namespace AsysEditor.Forms
         private void toolbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Updating visability preferences");
-            if (toolbarToolStripMenuItem.Checked)
-            {
+            if (toolbarToolStripMenuItem.Checked) {
                 toolbarToolStrip.Visible = true;
                 Properties.Settings.Default.prefShowToolbar = true;
             }
-            else
-            {
+            else {
                 toolbarToolStrip.Visible = false;
                 Properties.Settings.Default.prefShowToolbar = false;
             }
@@ -968,13 +922,11 @@ namespace AsysEditor.Forms
         private void statusbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Updating visability preferences");
-            if (statusbarToolStripMenuItem.Checked)
-            {
+            if (statusbarToolStripMenuItem.Checked) {
                 statusBar.Visible = true;
                 Properties.Settings.Default.prefShowStatusbar = true;
             }
-            else
-            {
+            else {
                 statusBar.Visible = false;
                 Properties.Settings.Default.prefShowStatusbar = false;
             }
@@ -997,10 +949,8 @@ namespace AsysEditor.Forms
             // Get the data currently in the Clipboard
             var clipdata = Clipboard.GetDataObject();
 
-            if (openDialog.ShowDialog() == DialogResult.OK)
-            {
-                foreach (string fname in openDialog.FileNames)
-                {
+            if (openDialog.ShowDialog() == DialogResult.OK) {
+                foreach (string fname in openDialog.FileNames) {
                     var img = Image.FromFile(fname);
                     Clipboard.SetImage(img);
                     GetCurrentDocument.Paste();
@@ -1030,6 +980,8 @@ namespace AsysEditor.Forms
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             console.Append(GetTime() + "Launching Help dialog");
+            // TODO:
+            MessageBox.Show("Feature not yet implemented.");
             // new AsysHelpDialog().Show(); 
         }
 
@@ -1185,13 +1137,11 @@ namespace AsysEditor.Forms
             // WORD/CHAR MANAGEMENT //
             //////////////////////////
 
-            // Char count
-            if (GetCurrentDocument.Text.Length > 0)
-            {
+            // Character count
+            if (GetCurrentDocument.Text.Length > 0) {
                 toolStripStatusLabel1.Text = GetCurrentDocument.Text.Length.ToString();
             }
-            else
-            {
+            else {
                 toolStripStatusLabel1.Text = "0";
             }
 
@@ -1203,16 +1153,13 @@ namespace AsysEditor.Forms
             // FONT MANAGEMENT //
             /////////////////////
 
-            try
-            {
+            try {
                 Font theFont = GetCurrentDocument.SelectionFont;
 
                 int fontName = 0;
-                foreach (var item in fontToolStripComboBox.Items)
-                {
+                foreach (var item in fontToolStripComboBox.Items) {
                     fontName++;
-                    if (item.ToString().ToUpper().Equals(theFont.Name.ToUpper()))
-                    {
+                    if (item.ToString().ToUpper().Equals(theFont.Name.ToUpper())) {
                         fontToolStripComboBox.SelectedIndex = fontName - 1;
                         break;
                     }
@@ -1257,7 +1204,7 @@ namespace AsysEditor.Forms
                 else
                     bulletListToolStripButton.Checked = false;
             }
-            catch (Exception) { ; }
+            catch (Exception) {; }
         }
 
         /// <summary>
@@ -1299,13 +1246,11 @@ namespace AsysEditor.Forms
 
         private void bulletListToolStripButton_Click(object sender, EventArgs e)
         {
-            if (GetCurrentDocument.SelectionBullet)
-            {
+            if (GetCurrentDocument.SelectionBullet) {
                 GetCurrentDocument.SelectionBullet = false;
                 bulletListToolStripButton.Checked = false;
             }
-            else
-            {
+            else {
                 GetCurrentDocument.BulletIndent = 15;
                 GetCurrentDocument.SelectionBullet = true;
                 bulletListToolStripButton.Checked = true;
@@ -1319,8 +1264,7 @@ namespace AsysEditor.Forms
         {
             console.Append(GetTime() + "Preparing for input");
             string input = Microsoft.VisualBasic.Interaction.InputBox("Input Text:", "Input", "", -1, -1);
-            if (input != "")
-            {
+            if (input != "") {
                 float pixels = GetCurrentDocument.SelectionFont.SizeInPoints;
                 Font nf = new Font(GetCurrentDocument.SelectionFont.Name, pixels - 2, GetCurrentDocument.SelectionFont.Style);
                 GetCurrentDocument.SelectionFont = nf;
@@ -1338,8 +1282,7 @@ namespace AsysEditor.Forms
         {
             console.Append(GetTime() + "Preparing for input");
             string input = Microsoft.VisualBasic.Interaction.InputBox("Input Text:", "Input", "", -1, -1);
-            if (input != "")
-            {
+            if (input != "") {
                 float pixels = GetCurrentDocument.SelectionFont.SizeInPoints;
                 Font nf = new Font(GetCurrentDocument.SelectionFont.Name, pixels - 2, GetCurrentDocument.SelectionFont.Style);
                 GetCurrentDocument.SelectionFont = nf;
@@ -1403,66 +1346,55 @@ namespace AsysEditor.Forms
         private void Asys_FormClosing(object sender, FormClosingEventArgs e)
         {
             console.Append(GetTime() + "Close event invoked!");
-            if (Properties.Settings.Default.prefSaveLoc)
-            {
+            if (Properties.Settings.Default.prefSaveLoc) {
                 console.Append(GetTime() + "Saving preferences");
 
                 // Window location
                 Properties.Settings.Default.sysWinLoc = this.Location;
-                                // Window size
-                if (this.WindowState == FormWindowState.Normal)
-                {
+                // Window size
+                if (this.WindowState == FormWindowState.Normal) {
                     Properties.Settings.Default.sysWinSize = this.Size;
                 }
-                else
-                {
+                else {
                     Properties.Settings.Default.sysWinSize = this.RestoreBounds.Size;
                 }
                 Properties.Settings.Default.Save();
                 console.Append(GetTime() + "Preferences saved!");
             }
 
-            if (tabCount > 1)
-            {
-                if (!_shouldClose)
-                {
+            if (tabCount > 1) {
+                if (!_shouldClose) {
                     // Display the Close-Handler if there is more than one tab open, and ShouldClose == FALSE
                     e.Cancel = true;
                     console.Append(GetTime() + "Canceling CloseEvent, showing dialog");
                     new AsysCloseHandler(tabCount, this).ShowDialog();
                 }
-                else
-                {
+                else {
                     // ShouldClose == TRUE; continue closing
                     e.Cancel = false;
                     console.Append(GetTime() + "Bye");
                 }
             }
-            else
-            {
+            else {
                 // Only one tab
-                if (!_shouldClose)
-                {
+                if (!_shouldClose) {
                     // Sisplay the Single tab close-handler if ShouldClose == FALSE
 
                     // If there is nothing in the document, close
-                    if (GetCurrentDocument.Text == String.Empty)
-                    {
+                    if (GetCurrentDocument.Text == String.Empty) {
                         e.Cancel = false;
                         console.Append(GetTime() + "Empty document, closing");
                         _shouldClose = true;
                         Application.Exit();
                     }
-                    else
-                    {
+                    else {
                         // There is something in the document, ask for conformation
                         e.Cancel = true;
                         console.Append(GetTime() + "Canceling CloseEvent, showing dialog");
                         new AsysSingleTabCloseHandler().ShowDialog();
                     }
                 }
-                else
-                {
+                else {
                     // ShouldClose == TRUE; continue closing
                     e.Cancel = false;
                     console.Append(GetTime() + "Bye");

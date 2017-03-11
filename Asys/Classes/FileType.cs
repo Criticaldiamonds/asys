@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AsysEditor.Classes
+﻿namespace AsysEditor.Classes
 {
     /// <summary>
     /// Represents the file-type of a document

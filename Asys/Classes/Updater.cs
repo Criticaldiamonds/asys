@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 using AsysEditor.Forms;
 
@@ -16,11 +12,9 @@ namespace AsysEditor.Classes
         {
             this.force = force;
 
+            string newv = XMLParser.Parse(WebString.Load(References.AsysPrefs.Value), "version");
 
-            string newv = XMLParser.Parse(WebString.Load(Strings.AsysPrefs.Value), "version");
-            
-            if (!newv.Equals(string.Empty))
-            {
+            if (!newv.Equals(string.Empty)) {
                 ProcessVersion(curv, newv);
             }
         }
@@ -28,12 +22,10 @@ namespace AsysEditor.Classes
         private void ProcessVersion(string curVer, string newVer)
         {
 
-            if (newVer.Equals("error"))
-            {
+            if (newVer.Equals("error")) {
                 System.Windows.Forms.MessageBox.Show("Unable to connect to update site", "Asys Updater");
             }
-            else
-            {
+            else {
                 string[] curVersion = curVer.Split('.');
                 string[] newVersion = newVer.Split('.');
 
@@ -42,16 +34,12 @@ namespace AsysEditor.Classes
 
                 bool update = false;
 
-                for (int i = 0; i < curv.Length; i++)
-                {
-                    if (newv[i] > curv[i])
-                    {
+                for (int i = 0; i < curv.Length; i++) {
+                    if (newv[i] > curv[i]) {
                         // If the user skipped the previous update
-                        if (Properties.Settings.Default.prefSkipUpdate)
-                        {
+                        if (Properties.Settings.Default.prefSkipUpdate) {
                             // If this update isn't the one the user skipped
-                            if (Properties.Settings.Default.sysSkippedVersion != newVer)
-                            {
+                            if (Properties.Settings.Default.sysSkippedVersion != newVer) {
 
                                 Asys.console.Append(Asys.GetTime() + "Update Found! Showing update dialog");
                                 update = true;
@@ -60,8 +48,7 @@ namespace AsysEditor.Classes
                             }
                         }
                         // The user didn't skip any updates
-                        else
-                        {
+                        else {
                             Asys.console.Append(Asys.GetTime() + "Update Found! Showing update dialog");
                             update = true;
                             new AsysNewVerAvaliable(curVer, newVer).ShowDialog();
@@ -69,8 +56,7 @@ namespace AsysEditor.Classes
                         }
                     }
                 }
-                if (!update)
-                {
+                if (!update) {
                     Asys.console.Append(Asys.GetTime() + "No Update Found");
                     if (force) System.Windows.Forms.MessageBox.Show("No Update Found!");
                 }

@@ -94,19 +94,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_49BAF996F539B68A70C50F71FE1CAE6D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AE94F148A76BE8631953776A16C27392"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DEEA2700C7D5461796D05D895F424D13"
+        "OwnerKey" = "8:_2EE90C8EBF10E0BE7BF8A3A944055B59"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -118,7 +106,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2EE90C8EBF10E0BE7BF8A3A944055B59"
+        "OwnerKey" = "8:_DEEA2700C7D5461796D05D895F424D13"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_AE94F148A76BE8631953776A16C27392"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_49BAF996F539B68A70C50F71FE1CAE6D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -283,11 +283,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_2EE90C8EBF10E0BE7BF8A3A944055B59"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -314,11 +309,6 @@
             "AssemblyAsmDisplayName" = "8:UpdateAsys_, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_49BAF996F539B68A70C50F71FE1CAE6D"
-                    {
-                    "Name" = "8:UpdateAsys_.exe"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:UpdateAsys_.exe"
             "TargetName" = "8:"
@@ -405,11 +395,6 @@
             "AssemblyAsmDisplayName" = "8:RichTextBoxPrintCtrl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_AE94F148A76BE8631953776A16C27392"
-                    {
-                    "Name" = "8:RichTextBoxPrintCtrl.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:RichTextBoxPrintCtrl.dll"
             "TargetName" = "8:"
@@ -436,11 +421,6 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.VisualStudio.DebuggerVisualizers, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_DEEA2700C7D5461796D05D895F424D13"
-                    {
-                    "Name" = "8:Microsoft.VisualStudio.DebuggerVisualizers.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Microsoft.VisualStudio.DebuggerVisualizers.dll"
             "TargetName" = "8:"
@@ -606,15 +586,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Asys"
-        "ProductCode" = "8:{E1B61E69-706A-4779-BF7B-98118050BD58}"
-        "PackageCode" = "8:{2A1E83B6-DD61-478D-A09E-2A38B8D0AF66}"
+        "ProductCode" = "8:{87D16819-8FC0-4D99-8047-6911238B0DA2}"
+        "PackageCode" = "8:{83E47C69-01FA-4E8A-9DE4-DBEE11C55184}"
         "UpgradeCode" = "8:{0B18DBE6-243D-43F9-85FC-9118C440B6BA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.2.8"
+        "ProductVersion" = "8:1.2.9"
         "Manufacturer" = "8:Waterleap"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -802,7 +782,7 @@
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_1F316599E2364050A5635DF54CE23238"
             {
             "Name" = "8:Uninstall Asys"
-            "Arguments" = "8:/x {E1B61E69-706A-4779-BF7B-98118050BD58}"
+            "Arguments" = "8:/x {87D16819-8FC0-4D99-8047-6911238B0DA2}"
             "Description" = "8:Removes Asys from your computer"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"

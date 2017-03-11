@@ -35,20 +35,18 @@ namespace AsysEditor.Classes
             List<string> tags = new List<string>();
 
             // Add the tag to a list
-            foreach (Match m in tagMatches)
-            {
+            foreach (Match m in tagMatches) {
                 // Clean the tag and add it to the list
                 tags.Add(m.Groups[1].Value.Replace("<", string.Empty).Replace(">", string.Empty));
             }
 
             // Get the value of the tag
-            foreach (string h in tags)
-            {
+            foreach (string h in tags) {
                 if (!h.Equals(tag)) continue;
 
                 string head = "\\<" + h + "\\>";
                 string foot = "\\</" + h + "\\>";
-                
+
                 string contents = new Regex(head + "(.*?)" + foot).Match(xml).Groups[1].Value;
 
                 // Replace [-n] with newline characters and remove whitespace and tab characters

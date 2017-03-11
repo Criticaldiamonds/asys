@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using System.Text.RegularExpressions;
-using System.IO;
 using System.Threading;
 
 namespace AsysEditor.Classes
@@ -22,16 +19,14 @@ namespace AsysEditor.Classes
 
         public void Init()
         {
-            Thread thread = new Thread(delegate()
+            Thread thread = new Thread(delegate ()
                 {
                     string fileContext = Properties.Resources.smaller;
                     List<string> wordList = fileContext.Split(new string[] { "\n", " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
-                    foreach (var word in wordList)
-                    {
+                    foreach (var word in wordList) {
                         string trimmedWord = word.Trim().ToLower();
-                        if (_wordRegex.IsMatch(trimmedWord))
-                        {
+                        if (_wordRegex.IsMatch(trimmedWord)) {
                             if (dictionary.ContainsKey(trimmedWord))
                                 dictionary[trimmedWord]++;
                             else
@@ -54,8 +49,7 @@ namespace AsysEditor.Classes
             List<string> list = Edits(word);
             Dictionary<string, int> candidates = new Dictionary<string, int>();
 
-            foreach (string wordVariation in list)
-            {
+            foreach (string wordVariation in list) {
                 if (dictionary.ContainsKey(wordVariation) && !candidates.ContainsKey(wordVariation))
                     candidates.Add(wordVariation, dictionary[wordVariation]);
             }
@@ -63,10 +57,8 @@ namespace AsysEditor.Classes
             if (candidates.Count > 0)
                 return candidates.OrderByDescending(x => x.Value).First().Key;
 
-            foreach (string item in list)
-            {
-                foreach (string wordVariation in Edits(item))
-                {
+            foreach (string item in list) {
+                foreach (string wordVariation in Edits(item)) {
                     if (dictionary.ContainsKey(wordVariation) && !candidates.ContainsKey(wordVariation))
                         candidates.Add(wordVariation, dictionary[wordVariation]);
                 }
@@ -84,47 +76,39 @@ namespace AsysEditor.Classes
             var inserts = new List<string>();
 
             // Splits
-            for (int i = 0; i < word.Length; i++)
-            {
+            for (int i = 0; i < word.Length; i++) {
                 var tuple = new Tuple<string, string>(word.Substring(0, i), word.Substring(i));
                 splits.Add(tuple);
             }
 
             // Deletes
-            for (int i = 0; i < splits.Count; i++)
-            {
+            for (int i = 0; i < splits.Count; i++) {
                 string a = splits[i].Item1;
                 string b = splits[i].Item2;
 
-                if (!string.IsNullOrEmpty(b))
-                {
+                if (!string.IsNullOrEmpty(b)) {
                     deletes.Add(a + b.Substring(1));
                 }
             }
 
             // Replaces
-            for (int i = 0; i < splits.Count; i++)
-            {
+            for (int i = 0; i < splits.Count; i++) {
                 string a = splits[i].Item1;
                 string b = splits[i].Item2;
 
-                if (!string.IsNullOrEmpty(b))
-                {
-                    for (char c = 'a'; c <= 'z'; c++)
-                    {
+                if (!string.IsNullOrEmpty(b)) {
+                    for (char c = 'a'; c <= 'z'; c++) {
                         replaces.Add(a + c + b.Substring(1));
                     }
                 }
             }
 
             // Inserts
-            for (int i = 0; i < splits.Count; i++)
-            {
+            for (int i = 0; i < splits.Count; i++) {
                 string a = splits[i].Item1;
                 string b = splits[i].Item2;
 
-                for (char c = 'a'; c <= 'z'; c++)
-                {
+                for (char c = 'a'; c <= 'z'; c++) {
                     inserts.Add(a + c + b);
                 }
             }

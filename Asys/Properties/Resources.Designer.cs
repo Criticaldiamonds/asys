@@ -61,30 +61,6 @@ namespace AsysEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @echo off
-        ///REM
-        ///REM
-        ///REM	If you are reading this, please delete me.
-        ///REM	I am an artifact of the Asys Updater, and am no longer of use to you.
-        ///REM
-        ///REM
-        ///
-        ///set arg1=%1
-        ///shift
-        ///taskkill /f /im asys.exe
-        ///msiexec /i %arg1% /quiet
-        ///echo %arg1%
-        ///pause
-        ///REM Attempt to self-destruct
-        ///(goto) 2&gt;nul &amp; del &quot;%~f0&quot;.
-        /// </summary>
-        internal static string _install {
-            get {
-                return ResourceManager.GetString("_install", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap align_center {
@@ -111,30 +87,6 @@ namespace AsysEditor.Properties {
             get {
                 object obj = ResourceManager.GetObject("align_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
-        ///&lt;html&gt;
-        ///&lt;head&gt;
-        ///	&lt;title&gt;Asys | Asys Help&lt;/title&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///	&lt;img src=&quot;.\..\Asys_full_259x151.png&quot; alt=&quot;Asys Logo&quot; style=&quot;width:259px;height:151px;&quot;&gt;&lt;br&gt;
-        ///	&lt;h2&gt;Help using Asys&lt;/h2&gt;
-        ///	&lt;h4&gt;General FAQ:&lt;/h4&gt;
-        ///	&lt;p&gt;
-        ///	- Q: How do I close tabs? &lt;br&gt;
-        ///	- A: Right-click in the document, and select any of the three &apos;Close&apos; options from the context menu.
-        ///	&lt;p&gt;
-        ///	- Q: How do I add images to my document? &lt;br&gt;
-        ///	- A: Use the Insert-&gt;Image menu item to add images to the current document.&lt;br&gt;
-        ///	&amp;em [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string asys {
-            get {
-                return ResourceManager.GetString("asys", resourceCulture);
             }
         }
         
@@ -287,52 +239,6 @@ namespace AsysEditor.Properties {
             get {
                 object obj = ResourceManager.GetObject("doc_toolbar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
-        ///&lt;html&gt;
-        ///&lt;head&gt;
-        ///	&lt;title&gt;Asys Help&lt;/title&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///	&lt;img src=&quot;.\..\Asys_full_259x151.png&quot; alt=&quot;Asys Logo&quot; style=&quot;width:259px;height:151px;&quot;&gt;&lt;br&gt;
-        ///	
-        ///	&lt;a href=&quot;.\asys.html&quot;&gt;Help using Asys&lt;/a&gt;&lt;br&gt;
-        ///	&lt;a href=&quot;.\rtf.html&quot;&gt;Help using Rich Text Format&lt;/a&gt;
-        ///
-        ///&lt;/body&gt;
-        ///&lt;footer&gt;&lt;hr&gt;// This documentation page is currently a work in progress.&lt;/footer&gt;
-        ///&lt;/html&gt;.
-        /// </summary>
-        internal static string index {
-            get {
-                return ResourceManager.GetString("index", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
-        ///&lt;html&gt;
-        ///&lt;head&gt;
-        ///	&lt;title&gt;Rich Text Format | Asys Help&lt;/title&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///	&lt;img src=&quot;.\..\Asys_full_259x151.png&quot; alt=&quot;Asys Logo&quot; style=&quot;width:259px;height:151px;&quot;&gt;&lt;br&gt;
-        ///	&lt;h2&gt;Help using Rich Text Format&lt;/h2&gt;
-        ///	&lt;h4&gt;FAQ:&lt;/h4&gt;
-        ///	&lt;p&gt;
-        ///	 - Q: My formatting isn&apos;t saving! &lt;br&gt;
-        ///	 - A: Most likely you are not saving as a Rich Text file. In the Save dialog, make sure the file type is Rich Text Files (*.rtf)
-        ///
-        ///	 &lt;br&gt;&lt;a href=&quot;.\index.html&quot;&gt;Home&lt;/a&gt;
-        ///&lt;/body&gt;
-        ///&lt;footer&gt;&lt;hr&gt;// This documentation page [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string rtf {
-            get {
-                return ResourceManager.GetString("rtf", resourceCulture);
             }
         }
         

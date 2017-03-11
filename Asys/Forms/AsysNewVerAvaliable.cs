@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.Net;
 using System.Diagnostics;
-using System.IO;
-using System.Reflection;
 
 using AsysEditor.Classes;
 
@@ -20,7 +11,7 @@ namespace AsysEditor.Forms
     public partial class AsysNewVerAvaliable : Form
     {
         string oldver, newver;
-        
+
         public AsysNewVerAvaliable(string o, string n)
         {
             InitializeComponent();
@@ -49,14 +40,14 @@ namespace AsysEditor.Forms
             lnkDownloadNow.Enabled = false;
             this.ControlBox = false;
 
-            using (WebClient wc = new WebClient())
-            {
+            using (WebClient wc = new WebClient()) {
                 wc.DownloadProgressChanged += wc_DownloadProgressChanged;
                 wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_Completed);
 
                 wc.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
                 wc.DownloadFileAsync(new Uri("https://dl.dropboxusercontent.com/u/276558657/Asys/update.exe"), KnownFolders.GetPath(KnownFolder.Downloads) + @"\update.exe");
-                
+                wc.DownloadFileAsync(new Uri("https://dl.dropboxusercontent.com/u/276558657/Asys/pack.zip"), KnownFolders.GetPath(KnownFolder.Downloads) + @"\pack.zip");
+
                 progressBar1.Visible = true;
             }
         }
@@ -83,13 +74,11 @@ namespace AsysEditor.Forms
 
         private void btnWait_Click(object sender, EventArgs e)
         {
-            if (chkSkip.Checked)
-            {
+            if (chkSkip.Checked) {
                 Properties.Settings.Default.prefSkipUpdate = true;
                 Properties.Settings.Default.sysSkippedVersion = newver;
             }
-            if (chkNever.Checked)
-            {
+            if (chkNever.Checked) {
                 Properties.Settings.Default.prefDisableAutoUpdate = true;
             }
 

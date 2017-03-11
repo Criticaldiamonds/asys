@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AsysEditor.Classes
+﻿namespace AsysEditor.Classes
 {
-    public class Strings
+    public class References
     {
-        private Strings(string value) { Value = value; }
+        private References(string value) { Value = value; }
 
         public string Value { get; set; }
 
@@ -17,7 +11,7 @@ namespace AsysEditor.Classes
             return Value;
         }
 
-        public static Strings AsysPrefs_OLD { get { return new Strings("https://dl.dropboxusercontent.com/u/276558657/Asys/asys.a_prefs"); } }
-        public static Strings AsysPrefs { get { return new Strings("https://dl.dropboxusercontent.com/u/276558657/Asys/asys.txt"); } }
+        public static References AsysPrefs_OLD { get { return new References("https://dl.dropboxusercontent.com/u/276558657/Asys/asys.a_prefs"); } }
+        public static References AsysPrefs { get { return new References("https://dl.dropboxusercontent.com/u/276558657/Asys/asys.txt"); } }
     }
 }

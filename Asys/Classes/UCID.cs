@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AsysEditor.Classes
 {
@@ -23,8 +20,7 @@ namespace AsysEditor.Classes
             int ucid = new Random().Next(0, 9999);
 
             // Prevent duplicates
-            while (_existingUCIDs.Contains(ucid))
-            {
+            while (_existingUCIDs.Contains(ucid)) {
                 ucid = new Random().Next(0, 9999);
             }
 

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace AsysEditor.Forms
 {
@@ -31,8 +23,7 @@ namespace AsysEditor.Forms
 
         private void AsysConsole_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!close)
-            {
+            if (!close) {
                 e.Cancel = true;
                 this.Hide();
             }

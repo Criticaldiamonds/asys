@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Text.RegularExpressions;
@@ -33,15 +27,14 @@ namespace AsysEditor.Forms
 
         private void AsysSpellCheck_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void refresh()
         {
             queue.Clear();
             string input = rtb.Text;
-            foreach (string item in input.Split(' ', '\n'))
-            {
+            foreach (string item in input.Split(' ', '\n')) {
                 queue.Enqueue(item);
             }
 
@@ -52,9 +45,8 @@ namespace AsysEditor.Forms
         {
             string currentWord = String.Empty;
             string correction = String.Empty;
-                        
-            while (correction.Equals(currentWord, StringComparison.InvariantCultureIgnoreCase))
-            {
+
+            while (correction.Equals(currentWord, StringComparison.InvariantCultureIgnoreCase)) {
                 if (queue.Count <= 0) break;
 
                 currentWord = queue.Dequeue();
@@ -77,19 +69,17 @@ namespace AsysEditor.Forms
         {
             input = input.Trim();
             string cleanedString;
-                                                            // Remove these characters
+            // Remove these characters
             cleanedString = Regex.Replace(input.ToLower(), "[_0123456789\"\'<>|\\/@#$%^&*()\\[\\]\\{\\}+=]", string.Empty);
 
             // Remove punctuation
             if (cleanedString.EndsWith(".") || cleanedString.EndsWith(",") || cleanedString.EndsWith(":") || cleanedString.EndsWith(";") ||
-                cleanedString.EndsWith("!") || cleanedString.EndsWith("?") || cleanedString.EndsWith("\"") || cleanedString.EndsWith("\'"))
-            {
+                cleanedString.EndsWith("!") || cleanedString.EndsWith("?") || cleanedString.EndsWith("\"") || cleanedString.EndsWith("\'")) {
                 cleanedString = cleanedString.Substring(0, cleanedString.Length - 1);
             }
 
             // Remove prefixes
-            if (cleanedString.StartsWith("\"") || cleanedString.StartsWith("\'"))
-            {
+            if (cleanedString.StartsWith("\"") || cleanedString.StartsWith("\'")) {
                 cleanedString = cleanedString.Substring(1);
             }
 
@@ -108,7 +98,7 @@ namespace AsysEditor.Forms
 
         private void AsysSpellCheck_Shown(object sender, EventArgs e)
         {
-            
+
             spellCheck = new SpellCheck();
             spellCheck.Init();
             lblLoading.Visible = false;

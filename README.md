@@ -11,6 +11,8 @@ These instructions will get you a copy of the project up and running on your loc
 Asys requires the .NET Framework 4.5 be installed on your system.
  - If you are installing for development or testing purposes, you may need to install the framework manually.
  - If you are installing as a user, the framework should be automatically installed through the installer.
+
+The Asys Installer requires [SharpZipLib](http://www.icsharpcode.net/OpenSource/SharpZipLib/Default.aspx)
  
 ###Installing
 

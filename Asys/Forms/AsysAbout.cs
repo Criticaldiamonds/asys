@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AsysEditor.Forms
@@ -12,7 +7,7 @@ namespace AsysEditor.Forms
     partial class AsysAbout : Form
     { 
         string                  NAME        = "Asys";
-        static string           VERSION     = "1.2.8";
+        static string           VERSION     = "1.2.9";
         string                  COPYRIGHT   = "Copyright (c) 2017 Giovanni M.";
         string                  COMPANY     = "Waterleap";
 
