@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.IO;
 
 using AsysControls;
-
 using AsysEditor.Forms;
 
 namespace AsysEditor.Classes
@@ -18,7 +17,7 @@ namespace AsysEditor.Classes
         // All file paths for open documents [UCID, FilePath]
         Dictionary<int, string> fileNames;
         // All file types for open documents [UCID, File Type]
-        Dictionary<int, FileType> fileTypes; // TODO: How to do this with new DocumentInfo class??
+        Dictionary<int, FileType> fileTypes;
 
         AsysConsole console;
 

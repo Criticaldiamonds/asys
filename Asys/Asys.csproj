@@ -104,6 +104,7 @@
     <Compile Include="Classes\DocumentInfo.cs" />
     <Compile Include="Classes\DocumentInteraction.cs" />
     <Compile Include="Classes\FileType.cs" />
+    <Compile Include="Classes\EventHandler.cs" />
     <Compile Include="Classes\Strings.cs" />
     <Compile Include="Classes\SpellCheck.cs" />
     <Compile Include="Classes\UCID.cs" />

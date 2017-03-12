@@ -22,13 +22,15 @@ namespace AsysEditor.Forms
         #region Variables
 
         /// <summary>Implementation of the FileInteraction class used by the form</summary>
-        private FileInteraction fileInteraction;
+        internal FileInteraction fileInteraction;
         /// <summary>Implementation of the DocumentInteraction class used by the form</summary>
         private DocumentInteraction documentInteraction;
         /// <summary>Implementation of the Asys Updater system</summary>
         private static Updater updater;
         /// <summary>Implementation of the console window</summary>
         public static AsysConsole console;
+        /// <summary>Implementation of the Handler used by Asys</summary>
+        private Classes.EventHandler handler;
 
         /// <summary>Represents the number of tabs currently open</summary>
         private int tabCount = 0;
@@ -45,7 +47,7 @@ namespace AsysEditor.Forms
 
         /// <summary>Gets the currently selected document in context</summary>
         /// <value>Returns the RichTextBoxPrintCtrl object currently in use</value>
-        private RichTextBoxPrintCtrl GetCurrentDocument
+        public RichTextBoxPrintCtrl GetCurrentDocument
         {
             get
             {
@@ -86,6 +88,7 @@ namespace AsysEditor.Forms
             fileInteraction = new FileInteraction();
             fileInteraction.Init(console);
             documentInteraction = new DocumentInteraction();
+            handler = new Classes.EventHandler(this);
 
             // Display toolars based on user preferences
             sidebarToolStripMenuItem.Checked = Properties.Settings.Default.prefShowSidebar;
@@ -292,6 +295,7 @@ namespace AsysEditor.Forms
             if (!(Properties.Settings.Default.prefShowChangelog | Properties.Settings.Default.prefShowWelcome | cmdArgsOpen)) {
                 AddTab();
             }
+            handler.Handle("asys.updateformat");
         }
 
         #endregion Tabs
@@ -775,6 +779,7 @@ namespace AsysEditor.Forms
                 // Set the tab text to the filename
                 documentTab.SelectedTab.Text = info.FileName;
                 documentTab.SelectedTab.Name = info.ID + "";
+                handler.Handle("asys.updateformat");
             }
         }
 
@@ -791,6 +796,7 @@ namespace AsysEditor.Forms
                 // Set the tab name and text to the filename
                 documentTab.SelectedTab.Text = info.FileName;
                 documentTab.SelectedTab.Name = info.ID + "";
+                handler.Handle("asys.updateformat");
             }
         }
 
@@ -809,6 +815,7 @@ namespace AsysEditor.Forms
                 // Set the tab text to the filename
                 documentTab.SelectedTab.Text = info.FileName;
                 documentTab.SelectedTab.Name = info.ID + "";
+                handler.Handle("asys.updateformat");
             }
         }
 
@@ -844,6 +851,7 @@ namespace AsysEditor.Forms
                 // Set the tab text to the filename
                 documentTab.SelectedTab.Text = info.FileName;
                 documentTab.SelectedTab.Name = info.ID + "";
+                handler.Handle("asys.updateformat");
             }
         }
 
@@ -1008,6 +1016,8 @@ namespace AsysEditor.Forms
         // TODO: NOT WORKING
         private void documentTab_SelectedIndexChanged(object sender, EventArgs e)
         {
+            handler.Handle("asys.updateformat");
+                        
             //if (!documentTab.SelectedTab.Name.StartsWith(""))
             //{
             //    int id = Int16.Parse(documentTab.SelectedTab.Name);
